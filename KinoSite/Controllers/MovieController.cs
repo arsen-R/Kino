@@ -17,20 +17,5 @@ namespace KinoSite.Controllers
         {
             this.context = context;
         }
-        //public async Task<IActionResult> ListMovie()
-        //{          
-        //    return View(context.Movies.ToList());
-        //}
-        //public IActionResult CreateMovie()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //public async Task<IActionResult> CreateMovie(Movie movie)
-        //{
-        //    context.Movies.Add(movie);
-        //    context.SaveChanges();
-        //    return View();
-        //}
     }
 }
