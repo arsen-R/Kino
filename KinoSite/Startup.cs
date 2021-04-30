@@ -35,6 +35,7 @@ namespace KinoSite
                     .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationContext>();
 
+            services.AddAuthentication();
             services.AddRazorPages();
             services.AddControllersWithViews();
         }
@@ -56,9 +57,9 @@ namespace KinoSite
             app.UseStaticFiles();
 
             app.UseRouting();
-
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {

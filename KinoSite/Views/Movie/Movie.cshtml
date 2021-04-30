@@ -1,0 +1,121 @@
+﻿@model KinoSite.Models.Movie
+@{
+    ViewData["Title"] = "Movie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-main">
+    <div class="container-info-movie">
+        <div class="image-container poster">
+            @{
+                var base64 = Convert.ToBase64String(Model.Image);
+                var imgsrc = string.Format("data:image/jpg; base64,{0}", base64);
+            }
+            <img src="@imgsrc" alt="" class="image-movie">
+        </div>
+        <table class="table-info">
+            <tr>
+                <td colspan="2" class="title-movie">@Model.Title</td>
+            </tr>
+            <tr>
+                <td>Рейтинг</td>
+                <td>
+                    @Model.Rating
+                </td>
+            </tr>
+            <tr>
+                <td>Слоган</td>
+                <td>@Model.Slogan</td>
+            </tr>
+            <tr>
+                <td>Дата виходу:</td>
+                <td>@Model.DateRealise</td>
+            </tr>
+            <tr>
+                <td>Країна:</td>
+                <td><span class="country">@Model.CountryRealise</span></td>
+            </tr>
+            <tr>
+                <td>Режисер:</td>
+                <td>
+                    <span class="item">
+                        <span class="person-list" itemprop="director">
+                            @*<a href="#"><span class="name">Ендрю Адамсон</span></a>*@
+                        </span>
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Жанр:</td>
+                <td>
+                    @*<a href="#"><span class="genre">Пригоди</span></a>,
+                        <a href="#"><span class="genre">Комедії</span></a>,
+                        <a href="#"><span class="genre">Фентезі</span></a>,
+                        <a href="#"><span class="genre">Сімейні</span></a>,
+                        <a href="#"><span class="genre">Дитячі</span></a>,
+                        <a href="#"><span class="genre">Повнометражні</span></a>,
+                        <a href="#"><span class="genre">Зарубіжні</span></a>*@
+                </td>
+            </tr>
+            <tr>
+                <td>Вік:</td>
+                <td><span class="age">@Model.Age+</span></td>
+            </tr>
+            <tr>
+                <td>Тривалість:</td>
+                <td>@Model.TimeLenght хв.</td>
+            </tr>
+            <tr>
+                <div class="list-persone">
+                    <td>У головних ролях:</td>
+                    <td>
+                        @*<span class="item">
+                                <span class="person-list" itemprop="actor">
+                                    <a href="#">
+                                        <span class="name">Майк Майерс</span>
+                                    </a>
+                                </span>
+                            </span>,
+                            <span class="item">
+                                <span class="person-list" itemprop="actor">
+                                    <a href="#">
+                                        <span class="name">Камерон Діаз</span>
+                                    </a>
+                                </span>
+                            </span>,
+                            <span class="item">
+                                <span class="person-list" itemprop="actor">
+                                    <a href="#">
+                                        <span class="name">Едді Мерфі</span>
+                                    </a>
+                                </span>
+                            </span>,
+                            <span class="item">
+                                <span class="person-list" itemprop="actor">
+                                    <a href="#">
+                                        <span class="name">Джон Лізгоу</span>
+                                    </a>
+                                </span>
+                            </span>*@
+                    </td>
+                </div>
+            </tr>
+        </table>
+    </div>
+    <div class="description">
+        <h2>Про що мультфільм "Шрек"</h2>
+        <div class="descriptions-text">
+            @Model.Description
+        </div>
+    </div>
+    <div class="movie-video">
+        <video controls controlsList="nodownload">
+                @{
+                    var link = "https://res.cloudinary.com/arsenr/video/upload/";
+                    var model = Model.Video;
+                    var movieLink = link + model;
+                }
+                <source src="@movieLink" type="video/mp4">
+            </video>
+    </div>
+</div>

@@ -24,6 +24,6 @@ namespace KinoSite.Models
         public List<Actor> MainRoles { get; set; }
 
         public byte[] Image { get; set; }
-        public byte[] Video { get; set; }
+        public string Video { get; set; }
     }
 }

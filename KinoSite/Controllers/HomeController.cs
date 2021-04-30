@@ -20,9 +20,17 @@ namespace KinoSite.Controllers
             this.context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
         {
-            return View();
+            //var movies = from m in context.Movies
+            //             select m;
+            var movies = context.Movies.Select(m => m);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(s => s.Title.Contains(searchString));
+            }
+
+            return View(movies.ToList());
         }
 
         public IActionResult Privacy()

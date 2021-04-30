@@ -1,0 +1,337 @@
+﻿/* ||||||||||||||||||||||||||||||||||||||| */
+/* +++++++++++++++ Style.css +++++++++++++++  */
+/* ||||||||||||||||||||||||||||||||||||||| */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #ece9e9;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*header, main, footer {
+    display: block;
+}*/
+/* ======================================= */
+/* =============== Header ===============  */
+/* ======================================= */
+.header-container {
+    width: 100%;
+    height: 125px;
+    background-color: #fbfbfb;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container {
+    display: flex;
+    align-self: center;
+}
+/* =============== Logo ===============  */
+.logo-block {
+    padding-left: 10px;
+    align-self: center;
+}
+
+.logo {
+    text-decoration: none;
+}
+
+.logo-icon {
+    width: 100px;
+    height: 100px;
+}
+
+.logo-container {
+    background-color: #f9842f;
+    color: #000000;
+    border-radius: 15px;
+    padding: 0 15px;
+    margin-left: 5px;
+}
+/* =============== Navbar =============== */
+.navbar {
+    padding-left: 15px;
+    align-self: center;
+}
+
+/*.navbar-link {
+    color: #000000;
+    text-decoration: none;
+    margin-right: 45px;
+    padding: 10px 15px;
+}
+*/
+/*.navbar-link:hover {
+        text-decoration: none;
+        color: #fff;
+        background-color: #000000;
+        border: none;
+        border-radius: 15px;*/
+/* padding: 20px 15px; */
+/*}*/
+/* =============== Search =============== */
+.form-search {
+    align-self: center;
+    /* justify-content: center; */
+}
+
+.search-input {
+    height: 35px;
+    width: 350px;
+    border-radius: 15px;
+    border: 1px solid #000000;
+    /* font-size: 22px; */
+    padding-left: 15px;
+    color: #000000;
+}
+
+.submit-search {
+    border-radius: 5px;
+    border: none;
+    margin-left: 5px;
+    text-align: center;
+}
+
+.icon-search {
+    margin-top: 5px;
+    width: 35px;
+    height: 35px;
+}
+/* =============== Account =============== */
+.account-user {
+    margin: 0 15px;
+    height: 35px;
+    width: 35px;
+}
+
+.img-account {
+    margin-top: 5px;
+    height: 35px;
+    width: 35px;
+}
+/* ======================================= */
+/* =============== Main =============== */
+/* ======================================= */
+.main {
+    background-color: #fbfbfb;
+    width: 1240px;
+    border: none;
+    border-radius: 15px;
+    margin: 100px auto;
+    padding: 15px 0 25px 20px;
+}
+/* =============== Tabs =============== */
+.tabs {
+    padding: 35px 0;
+}
+
+.tabs-container {
+    text-align: right;
+}
+
+/*.btn {
+    color: #000000;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 20px;
+    margin-right: 10px;
+}*/
+
+.active-tabs {
+    background-color: #000000;
+    color: #fff;
+}
+
+.btn-filter-type {
+    float: right;
+    margin-top: -10px;
+}
+/* =============== Slider =============== */
+.slider {
+    max-width: 90%;
+    position: relative;
+    margin: auto;
+}
+
+.see-more-movie {
+    width: 1180px;
+    height: 635px;
+    margin-top: 30px;
+    margin-left: -30px;
+    object-fit: cover;
+}
+
+.previous, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    font-size: 26px;
+    font-weight: bold;
+    padding: 15px;
+    transition: 0.6s ease;
+    border-radius: 3px 0 0 3px;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+    .previous:hover, .next:hover {
+        color: #000000;
+    }
+
+.item {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0.4;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+/* =============== Movie container =============== */
+.container-movie {
+    margin: 10px 30px;
+}
+
+.movie-container-block {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-left: 35px;
+}
+
+.list-container-movie {
+    /* margin-top: 50px; */
+    text-align: center;
+    width: 230px;
+    height: 331px;
+    padding-bottom: 50px;
+}
+
+.image-container {
+    width: 210px;
+    height: 290px;
+    border: none;
+    border-radius: 15px;
+    background-color: #ece9e9;
+    margin-bottom: 15px;
+}
+
+.image-movie {
+    padding: 15px;
+    width: 200px;
+    height: 280px;
+}
+
+.name-movie {
+    color: #000000;
+    text-decoration: none;
+}
+
+.button-link {
+    background-color: #f9842f;
+    color: #000000;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 15px;
+}
+/* =============== Pagination =============== */
+.pagination {
+    position: relative;
+    padding: 35px 0;
+    text-align: center;
+}
+
+.page {
+    color: #000000;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.active, .pagination a:hover {
+    color: #fff;
+    background-color: #000000;
+}
+/* ======================================= */
+/* =============== Footer =============== */
+/* ======================================= */
+.footer {
+    margin-top: 50px;
+    /* position: relative;
+    width: 100%;
+    height: 100px;
+    background-color: #fff;
+    padding-top: 40px;*/
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+/* =============== Copyright =============== */
+.copyright {
+    /* padding-top: 25px; */
+    color: #000000;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+/* =============== Social Icon =============== */
+.social {
+    text-align: center;
+    margin-left: 30px;
+}
+
+    .social a {
+        text-decoration: none;
+    }
+
+        .social a img {
+            width: 30px;
+            height: 30px;
+            margin-right: 25px;
+        }
+
+
+
+.link {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+}
+
+.image img {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 225px;
+    height: 200px;
+}
+
+.link-item {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    text-align: center;
+    padding: 0;
+    width: 225px;
+    height: 225px;
+    background-color: #d4a6a6;
+}

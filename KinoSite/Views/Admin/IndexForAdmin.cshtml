@@ -3,4 +3,22 @@
     ViewData["Title"] = "IndexForAdmin";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<a asp-action="RoleManager" asp-controller="Admin" >Role Manager</a>
+<div class="container-movie">
+    <h1>Admin Panel</h1>
+    <div class="link">
+        <div class="link-item">
+            <a asp-action="RoleManager" asp-controller="Admin" class="image">
+                <img src="https://www.iconbunny.com/icons/media/catalog/product/6/4/640.6-admin-roles-icon-iconbunny.jpg" alt="">
+            </a>
+            <a asp-action="RoleManager" asp-controller="Admin">Role Manager</a>
+        </div>
+        <div class="link-item">
+            <a asp-action="ListMovie" asp-controller="Movie" class="image">
+                <img src="https://cdn5.vectorstock.com/i/1000x1000/37/39/cinema-icon-design-vector-7553739.jpg" alt="">
+            </a>
+            <a asp-action="ListMovie" asp-controller="Movie">Manage Movie</a>
+        </div>
+    </div>
+</div>
+@*<a asp-action="RoleManager" asp-controller="Admin">Role Manager</a>
+    <a asp-action="ListMovie" asp-controller="Movie">Manage Movie</a>*@
