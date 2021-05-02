@@ -24,7 +24,6 @@ namespace KinoSite.Controllers
         public async Task<IActionResult> ListMovie(string searchString)
         {
             var movies = context.Movies.Select(m => m);
-
             if (!String.IsNullOrEmpty(searchString))
             {
                 movies = movies.Where(s => s.Title.Contains(searchString));

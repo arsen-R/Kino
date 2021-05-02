@@ -20,6 +20,6 @@ namespace KinoSite.Data
         public DbSet<Direction> Directions { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Genre> Genres { get; set; }
-        public DbSet<Actor> MainRoles { get; set; }
+        public DbSet<Actor> Actors { get; set; }
     }
 }

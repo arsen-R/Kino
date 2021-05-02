@@ -147,7 +147,7 @@ namespace KinoSite.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MainRoles");
+                    b.ToTable("Actors");
                 });
 
             modelBuilder.Entity("KinoSite.Models.Category", b =>
