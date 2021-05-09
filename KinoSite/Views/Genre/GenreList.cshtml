@@ -1,0 +1,36 @@
+﻿@model IEnumerable<KinoSite.Models.Genre>
+
+@{
+    ViewData["Title"] = "GenreList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>GenreList</h1>
+
+<p>
+    <a asp-action="Create" asp-controller="Genre">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameGenre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameGenre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

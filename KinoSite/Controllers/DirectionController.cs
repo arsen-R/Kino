@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KinoSite.Models;
-
+using KinoSite.Areas.Identity.Data;
 namespace KinoSite.Controllers
 {
     public class DirectionController : Controller
     {
-        ApplicationContext context;
-        public DirectionController(ApplicationContext context)
+        MovieContext context;
+        public DirectionController(MovieContext context)
         {
             this.context = context;
         }
@@ -36,6 +36,7 @@ namespace KinoSite.Controllers
         {
             return View();
         }
+
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost]
         public async Task<IActionResult> Create(Direction direction)

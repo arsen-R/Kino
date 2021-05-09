@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KinoSite.Models;
-
+using KinoSite.Areas.Identity.Data;
 namespace KinoSite.Controllers
 {
     public class ActorController : Controller
     {
-        ApplicationContext context;
-        public ActorController(ApplicationContext context)
+        MovieContext context;
+        public ActorController(MovieContext context)
         {
             this.context = context;
         }

@@ -16,10 +16,6 @@ namespace KinoSite.Data
             : base(options)
         {
         }
-        public DbSet<Movie> Movies { get; set; }
-        public DbSet<Direction> Directions { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Genre> Genres { get; set; }
-        public DbSet<Actor> Actors { get; set; }
+
     }
 }

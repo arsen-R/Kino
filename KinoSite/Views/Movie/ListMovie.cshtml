@@ -22,20 +22,20 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>@item.Title</td>
-            <td>@item.DateRealise</td>
-            <td>@item.Rating</td>
-            <td><a asp-action="Details" asp-controller="Movie" asp-route-id="@item.Id">Details</a></td>
-            <td><a asp-action="Edit" asp-controller="Movie" asp-route-id="@item.Id">Edit</a></td>
-            <td>
-                <form asp-action="Delete" asp-route-id="@item.Id" method="post">
-                    <button type="submit" class="btn btn-sm btn-danger">
-                        Delete
-                    </button>
-                </form>
-            </td>
-        </tr>
+<tr>
+    <td>@item.Title</td>
+    <td>@item.DateRealise</td>
+    <td>@item.Rating</td>
+    <td><a asp-action="Details" asp-controller="Movie" asp-route-id="@item.Id">Details</a></td>
+    <td><a asp-action="Edit" asp-controller="Movie" asp-route-id="@item.Id">Edit</a></td>
+    <td>
+        <form asp-action="Delete" asp-route-id="@item.Id" method="post">
+            <button type="submit" class="btn btn-sm btn-danger">
+                Delete
+            </button>
+        </form>
+    </td>
+</tr>
 
     }
 </table>

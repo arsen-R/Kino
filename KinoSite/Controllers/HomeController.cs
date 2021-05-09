@@ -7,14 +7,14 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using KinoSite.Data;
-using KinoSite.Models;
+using KinoSite.Areas.Identity.Data;
 namespace KinoSite.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        ApplicationContext context;
-        public HomeController(ILogger<HomeController> logger, ApplicationContext context)
+        MovieContext context;
+        public HomeController(ILogger<HomeController> logger, MovieContext context)
         {
             _logger = logger;
             this.context = context;

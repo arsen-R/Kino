@@ -14,6 +14,7 @@ using Microsoft.AspNetCore;
 using KinoSite.Models;
 using KinoSite.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
+
 namespace KinoSite
 {
     public class Startup
@@ -30,6 +31,7 @@ namespace KinoSite
         {
             string connection = Configuration.GetConnectionString("ApplicationContextConnection");
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<MovieContext>(options => options.UseSqlServer(connection));
 
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                     .AddRoles<IdentityRole>()

@@ -15,7 +15,6 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace KinoSite.Controllers
 {
-    [Authorize(Roles = "Administrator")]
     public class AdminController : Controller
     {
         
@@ -31,15 +30,18 @@ namespace KinoSite.Controllers
         {
             return View();
         }
+        [Authorize(Roles = "Administrator")]
         public IActionResult RoleManager()
         {
             return View(roleManager.Roles);
         }
+        [Authorize(Roles = "Administrator")]
         [HttpGet]
         public IActionResult CreateRole()
         {
             return View();
         }
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> CreateRole(string name)
         {
@@ -53,7 +55,7 @@ namespace KinoSite.Controllers
             }
             return View(name);
         }
-
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> Delete(string id)
         {
@@ -71,6 +73,7 @@ namespace KinoSite.Controllers
             return View("Index", roleManager.Roles);
 
         }
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Update(string id)
         {
             IdentityRole role = await roleManager.FindByIdAsync(id);
@@ -88,6 +91,7 @@ namespace KinoSite.Controllers
                 NonMembers = nonMembers
             });
         }
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> Update(RoleModification model)
         {

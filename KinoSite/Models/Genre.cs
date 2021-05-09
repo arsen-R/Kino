@@ -10,7 +10,7 @@ namespace KinoSite.Models
         public int Id { get; set; }
         public string NameGenre { get; set; }
 
-        public List<Movie> Movies { get; set; }
+        public List<GenreMovie> GenreMovies { get; set; }
         public List<Category> Categories { get; set; }
     }
 }

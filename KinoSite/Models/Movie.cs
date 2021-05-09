@@ -15,12 +15,13 @@ namespace KinoSite.Models
         public string CountryRealise { get; set; }
         public string Description { get; set; }
 
+        public int DirectionId { get; set; }
         public Direction Directions { get; set; }
 
         public string Age { get; set; }
         public int TimeLenght { get; set; }
 
-        public List<Genre> Genres { get; set; }
+        public List<GenreMovie> GenreMovies { get; set; }
         public List<Actor> MainRoles { get; set; }
 
         public byte[] Image { get; set; }
