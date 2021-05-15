@@ -39,12 +39,13 @@ namespace KinoSite.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            List<SelectListItem> selectListItems = context.Genres.Select(a => new SelectListItem
-            {
-                Text = a.NameGenre,
-                Value = a.Id.ToString()
-            }).ToList();
-            ViewBag.GenreId = selectListItems;
+            //List<SelectListItem> selectListItems = context.Genres.Select(a => new SelectListItem
+            //{
+            //    Text = a.NameGenre,
+            //    Value = a.Id.ToString()
+            //}).ToList();
+            //ViewBag.GenreId = selectListItems;
+
             ViewBag.DirectionId = new SelectList(context.Directions, "Id", "SurnameDirection");
             return View();
         }
@@ -58,18 +59,18 @@ namespace KinoSite.Controllers
                 movie = await ActionWithImage(movie, Image);
                 context.Movies.Add(movie);
                 context.SaveChanges();
-                foreach (var item in GenreIdList)
-                {
-                    GenreMovie movieGenre = new GenreMovie()
-                    {
-                        GenreId = item,
-                        MovieId = movie.Id,
-                        Genre = context.Genres.Where(x => x.Id == item).FirstOrDefault(),
-                        Movie = movie
-                    };
-                    context.GenreMovies.Add(movieGenre);
-                }
-                context.SaveChanges();
+                //foreach (var item in GenreIdList)
+                //{
+                //    GenreMovie movieGenre = new GenreMovie()
+                //    {
+                //        GenreId = item,
+                //        MovieId = movie.Id,
+                //        Genre = context.Genres.Where(x => x.Id == item).FirstOrDefault(),
+                //        Movie = movie
+                //    };
+                //    context.GenreMovies.Add(movieGenre);
+                //}
+                //context.SaveChanges();
                 return RedirectToAction("ListMovie");
             }
             return View();
@@ -81,15 +82,13 @@ namespace KinoSite.Controllers
         {
             if (Id == null)
             {
-                return RedirectToAction("Index", "Home");
+                return NotFound();
             }
-            Movie movie = context.Movies
+            var movie = context.Movies
                 .Select(m => m)
                 .Where(m => m.Id == Id)
-                .Include(m => m.Directions)
-                .Include(m => m.GenreMovies)
+                .Include(d => d.Directions)
                 .FirstOrDefault();
-            //context.Movies.Include(m => m.Directions);
             return View(movie);
         }
 
@@ -99,25 +98,26 @@ namespace KinoSite.Controllers
         {
             if (Id == null)
             {
-                return RedirectToAction("Index", "Home");
+                return NotFound();
             }
 
-            List<SelectListItem> selectListItems = context.Genres.Select(a => new SelectListItem
-            {
-                Text = a.NameGenre,
-                Value = a.Id.ToString()
-            }).ToList();
-            ViewBag.GenreId = selectListItems;
+            //List<SelectListItem> selectListItems = context.Genres.Select(a => new SelectListItem
+            //{
+            //    Text = a.NameGenre,
+            //    Value = a.Id.ToString()
+            //}).ToList();
+            //ViewBag.GenreId = selectListItems;
+            
+            ViewBag.DirectionId = new SelectList(context.Directions, "Id", "SurnameDirection");
 
             ViewBag.Movies = Id;
-            ViewBag.DirectionId = new SelectList(context.Directions, "Id", "SurnameDirection");
             Movie movie = context.Movies.Select(m => m).Where(m => m.Id == Id).First();
             return View(movie);
         }
 
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost]
-        public async Task<IActionResult> Edit(Movie movie, List<IFormFile> Image)
+        public async Task<IActionResult> Edit(Movie movie, List<IFormFile> Image, List<int> GenreIdList)
         {
             if (ModelState.IsValid)
             {
@@ -136,7 +136,7 @@ namespace KinoSite.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction("Index", "Home");
+                return NotFound();
             }
             ViewBag.MovieDetails = id;
             Movie movie = context.Movies.Select(m => m).Where(m => m.Id == id).First();
@@ -161,12 +161,15 @@ namespace KinoSite.Controllers
         {
             if (Id == null)
             {
-                return RedirectToAction("Index", "Home");
+                return NotFound();
             }
-            var movie = context.Movies.Select(m => m).Where(m => m.Id == Id).FirstOrDefault();
+            Movie movie = context.Movies
+                .Select(m => m)
+                .Where(m => m.Id == Id)
+                .Include(m => m.Directions)
+                .FirstOrDefault();           
             return View(movie);
         }
-
 
         private async Task<Movie> ActionWithImage(Movie details, List<IFormFile> Image)
         {

@@ -38,10 +38,13 @@
                 <label asp-for="DirectionId" class="control-label"></label>
                 <select asp-for="DirectionId" class="form-control" asp-items="ViewBag.DirectionId"></select>
             </div>
-            <div class="form-group">
+
+            @*<div class="form-group">
                 <label class="control-label"></label>
-                <select class="form-control" asp-items="ViewBag.GenreId" name="GenreIdList"></select>
-            </div>
+                <select class="form-control" id="multiSelect" asp-items="ViewBag.GenreId" name="GenreIdList" multiple>
+                </select>
+            </div>*@
+
             <div class="form-group">
                 <label asp-for="CountryRealise" class="control-label"></label>
                 <input asp-for="CountryRealise" class="form-control" />
@@ -83,3 +86,10 @@
     <a asp-action="ListMovie" asp-controller="Movie">Back to List</a>
 </div>
 
+@section Scripts {
+    <script>
+    $(function () {
+        $("#multiSelect").chosen();
+    });
+    </script>
+} 

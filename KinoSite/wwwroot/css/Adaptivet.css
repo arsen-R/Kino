@@ -1,0 +1,2700 @@
+﻿/* ||||||||||||||||||||||||||||||||||||||| */
+/* +++++++++++++++ Adaptive.css +++++++++++++++ */
+/* ||||||||||||||||||||||||||||||||||||||| */
+
+/* =============== 240px - 320px =============== */
+@media screen and (max-width: 319px) and (min-width: 240px) {
+    /* ======================================= */
+    /* =============== Header ===============  */
+    /* ======================================= */
+    
+    /* ======================================= */
+    /* =============== Main ===============*/
+    /* ======================================= */
+    .main {
+        width: 228px;
+        border-radius: 5px;
+        margin: 100px auto;
+        padding: 10px;
+
+    }
+    /* =============== Slider =============== */
+    .slider {
+        max-width: 90%;
+        position: relative;
+        margin: auto;
+    }
+
+    .see-more-movie {
+        width: 206px;
+        height: 150px;
+        margin-top: 10px;
+        margin-left: 2px;
+        object-fit: cover;
+    }
+
+    .previous, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 5px;
+        transition: 0.6s ease;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+        .previous:hover, .next:hover {
+            color: #000000;
+        }
+
+    .item {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 0.4;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+    /* =============== Tabs =============== */
+    .tabs {
+        font-size: 5px;
+        padding: 15px 0;
+    }
+
+    .tabs-container {
+        text-align: right;
+    }
+
+    .btn {
+        border-radius: 5px;
+        padding: 3px;
+        margin-right: 2.5px;
+    }
+
+    .btn-filter-type {
+        float: right;
+        margin-top: -3px;
+    }
+    /* =============== Movie container =============== */
+    .container-movie {
+        margin: 10px;
+    }
+
+    .movie-container-block {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin-left: 5px;
+    }
+
+    .list-container-movie {
+        width: 50px;
+        height: 85px;
+        line-height: 5px;
+    }
+
+    .image-container {
+        width: 45px;
+        height: 85px;
+        border-radius: 5px;
+        margin-bottom: 1px;
+    }
+
+    .image-movie {
+        padding: 5px;
+        width: 35px;
+        height: 75px;
+    }
+
+    .name-movie {
+        font-size: 5px;
+    }
+    /* =============== Pagination =============== */
+    .pagination {
+        padding: 15px 0;
+        font-size: 5px;
+    }
+
+    .page {
+        padding: 5px;
+        border-radius: 5px;
+    }
+    /* ======================================= */
+    /* =============== Footer =============== */
+    /* ======================================= */
+    .footer {
+        margin-top: auto;
+        width: 100%;
+        height: 40px;
+        padding-top: 15px;
+    }
+    /* =============== Copyright =============== */
+    .copyright {
+        /* padding-top: 25px; */
+        font-size: 4px;
+    }
+    /* =============== Social Icon =============== */
+    .social {
+        margin-left: 15px;
+    }
+
+        .social a {
+            text-decoration: none;
+        }
+
+            .social a img {
+                width: 5px;
+                height: 5px;
+                margin-right: 5px;
+            }
+    /* ======================================= */
+    /* =============== Show Film =============== */
+    /* ======================================= */
+    .container-main {
+        width: 228px;
+        border: none;
+        margin: 15px auto;
+    }
+
+    .container-info-movie {
+        width: 228px;
+        border-radius: 15px;
+        padding: 5px 0 10px 0;
+    }
+
+    tr {
+        line-height: 9px;
+    }
+
+    td {
+        border: none;
+        font-size: 7px;
+        padding: 5px;
+    }
+
+    .rating {
+        padding-right: 25px;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .title-movie {
+        font-size: 14px;
+    }
+
+    .poster {
+        margin: 5px 5px 0 10px;
+    }
+
+    .description {
+        width: 228px;
+        margin: 15px auto;
+        padding: 0 0 5px 0;
+        font-size: 6px;
+    }
+
+    .descriptions-text {
+        padding: 5px;
+        line-height: 10px;
+    }
+    /* =============== Video container =============== */
+
+    video {
+        /* height: 814px; */
+        width: 228px;
+        height: 214px;
+    }
+    /* =============== All part movie =============== */
+    .all-part-movie {
+        padding: 10px;
+        margin: 15px 0;
+        width: 208px;
+    }
+
+    .part-container-item {
+        margin-bottom: 15px;
+        width: 208px;
+        line-height: 0px;
+        height: 12px;
+    }
+
+    .path-number, .path-name-movie, .path-year, .path-rating {
+        font-weight: bold;
+        font-size: 6px;
+        padding-right: 15px;
+    }
+
+    .path-number {
+        display: table-cell;
+    }
+
+    .path-name-movie {
+        display: table-cell;
+        vertical-align: middle;
+        width: 132px;
+    }
+
+    .path-year {
+        display: table-cell;
+        text-align: right;
+    }
+
+    .path-rating {
+        display: table-cell;
+        border-radius: 15px;
+        padding: 7px;
+        margin-bottom: 20px;
+    }
+    /* =============== Another movie =============== */
+    .more-movie-container {
+        width: 228px;
+    }
+
+        .more-movie-container h2 {
+            font-size: 12px;
+        }
+
+    /* =============== Commentars =============== */
+    .commentars {
+        width: 208px;
+    }
+
+        .commentars h2 {
+            font-size: 16px;
+        }
+
+    .textarea-container {
+        width: 208px;
+        min-width: 208px;
+        max-width: 208px;
+        height: 39.71px;
+        min-height: 39.71px;
+        border: none;
+        border-radius: 15px;
+        padding-left: 15px;
+        padding-top: 10px;
+        font-size: 10px;
+    }
+
+    .comentar {
+        margin: 15px 0;
+        border-radius: 15px;
+        padding: 10px 0 5px 15px;
+        width: 208px;
+        display: flex;
+        justify-content: safe;
+    }
+
+    .icon-account {
+        border-radius: 100%;
+        background-color: #f9842f;
+        float: left;
+        width: 20px;
+        height: 20px;
+        margin-right: 15px;
+        /* margin-top: 10px; */
+    }
+
+    .commentar-text {
+        margin: -10px 0 5px -8px;
+        line-height: 19px;
+    }
+
+    .user-name {
+        margin-top: 5px;
+        font-size: 10px;
+    }
+
+    .text {
+        font-size: 8px;
+        font-weight: bold;
+    }
+
+    .icon-account img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .answer:hover {
+        text-decoration: underline;
+    }
+
+    .answer {
+        font-size: 8px;
+    }
+
+    .like {
+        font-size: 8px;
+        margin-left: 25px;
+    }
+
+        .like:hover {
+            text-decoration: underline;
+        }
+
+    /* ======================================= */
+    /* =============== Login Film =============== */
+    /* ======================================= */
+    form h4 {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .login, .email, .password {
+        width: 190px;
+        height: 35px;
+        border: none;
+        border-radius: 15px;
+        font-size: 10px;
+        padding-left: 15px;
+    }
+
+    .image {
+        display: none;
+    }
+
+    .login-container {
+        margin: 15px auto;
+        padding-bottom: 20px;
+        width: 228px;
+        border: none;
+        border-radius: 15px;
+    }
+
+    .form-login {
+        padding-top: 10px;
+        width: 228px;
+        font-size: 10px;
+    }
+
+    .textbox {
+        text-align: center;
+        padding: 10px 0;
+        position: relative;
+        max-width: 310px;
+        /* font-size: 14px; */
+    }
+
+    .button-log-in {
+        display: block;
+        width: 120px;
+        height: 35px;
+        margin: 15px 0;
+        font-size: 10px;
+        margin: 0 auto;
+    }
+
+    .link-for-sing-up {
+        margin-left: 5px;
+        font-size: 10px;
+    }
+
+    .form-login p {
+        text-align: center;
+    }
+
+    /* =============== Support.html =============== */
+    .support-main {
+        width: 228px;
+        border: none;
+        border-radius: 15px;
+        margin: 35px auto;
+        padding: 0 0 25px 0;
+        min-height: 357px;
+    }
+
+    label {
+        margin-top: 15px;
+        font-size: 10px;
+    }
+
+    .support {
+        padding: 5px 10px;
+        min-height: 347px;
+    }
+
+    .support-select {
+        width: 190px;
+        height: 35px;
+        padding-left: 15px;
+        font-size: 10px;
+    }
+
+    .support-text {
+        width: 190px;
+        max-width: 190px;
+        min-width: 190px;
+        height: 50px;
+        min-height: 50px;
+        font-size: 10px;
+    }
+
+    .button-send {
+        border: none;
+        border-radius: 15px;
+        height: 35px;
+        width: 164px;
+        font-size: 10px;
+    }
+}
+/* =============== 320px - 480px =============== */
+@media screen and (max-width: 479px) and (min-width: 320px) {
+    /* ======================================= */
+    /* =============== Header ===============  */
+    /* ======================================= */
+    
+    /* ======================================= */
+    /* =============== Main ===============*/
+    /* ======================================= */
+    .main {
+        width: 310px;
+        border-radius: 5px;
+        margin: 100px auto;
+        padding: 0 0 5px 0;
+    }
+    /* =============== Slider =============== */
+    .slider {
+        max-width: 90%;
+        position: relative;
+        margin: auto;
+    }
+
+    .see-more-movie {
+        width: 290px;
+        height: 170px;
+        margin-top: 10px;
+        margin-left: -5px;
+        object-fit: cover;
+    }
+
+    .previous, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 5px;
+        transition: 0.6s ease;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+        .previous:hover, .next:hover {
+            color: #000000;
+        }
+
+    .item {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 0.4;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+    /* =============== Tabs =============== */
+    .tabs {
+        font-size: 7px;
+        padding: 15px 0;
+    }
+
+    .tabs-container {
+        text-align: right;
+    }
+
+    .btn {
+        border-radius: 5px;
+        padding: 3px;
+        margin-right: 2.5px;
+    }
+
+    .btn-filter-type {
+        float: right;
+        margin-top: -3px;
+    }
+    /* =============== Movie container =============== */
+    .container-movie {
+        margin: 10px;
+    }
+
+    .movie-container-block {
+        grid-template-columns: repeat(4, 1fr);
+        margin-left: 0;
+    }
+
+    .list-container-movie {
+        width: 70px;
+        height: 120px;
+        line-height: 8px;
+        padding-bottom: 40px;
+    }
+
+    .image-container {
+        width: 70px;
+        height: 115px;
+        border-radius: 5px;
+        margin-bottom: 1px;
+    }
+
+    .image-movie {
+        padding: 5px;
+        width: 60px;
+        height: 105px;
+    }
+
+    .name-movie {
+        font-size: 8px;
+    }
+    /* =============== Pagination =============== */
+    .pagination {
+        padding: 15px 0;
+        font-size: 8px;
+    }
+
+    .page {
+        padding: 5px;
+        border-radius: 5px;
+    }
+    /* ======================================= */
+    /* =============== Footer =============== */
+    /* ======================================= */
+    .footer {
+        margin-top: auto;
+        width: 100%;
+        height: 40px;
+        padding-top: 15px;
+    }
+    /* =============== Copyright =============== */
+    .copyright {
+        /* padding-top: 25px; */
+        font-size: 7px;
+    }
+    /* =============== Social Icon =============== */
+    .social {
+        margin-left: 15px;
+    }
+
+        .social a {
+            text-decoration: none;
+        }
+
+            .social a img {
+                width: 10px;
+                height: 10px;
+                margin-right: 5px;
+            }
+    /* ======================================= */
+    /* =============== Show Film =============== */
+    /* ======================================= */
+    .container-main {
+        width: 310px;
+        border: none;
+        margin: 15px auto;
+    }
+
+    .container-info-movie {
+        width: 310px;
+        border-radius: 15px;
+        padding: 5px 0 15px 0;
+    }
+
+    tr {
+        line-height: 10px;
+    }
+
+    td {
+        border: none;
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    .rating {
+        padding-right: 25px;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .title-movie {
+        font-size: 18px;
+    }
+
+
+    .description {
+        width: 310px;
+        margin: 15px auto;
+        padding: 0 0 5px 0;
+        font-size: 8px;
+    }
+
+    .descriptions-text {
+        padding: 5px;
+        line-height: 12px;
+    }
+    /* =============== Video container =============== */
+
+    video {
+        /* height: 814px; */
+        width: 310px;
+        height: 214px;
+    }
+    /* =============== All part movie =============== */
+    .all-part-movie {
+        padding: 10px;
+        margin: 15px 0;
+        width: 290px;
+    }
+
+    .part-container-item {
+        margin-bottom: 15px;
+        width: 290px;
+        line-height: 0px;
+    }
+
+    .path-number, .path-name-movie, .path-year, .path-rating {
+        font-weight: bold;
+        font-size: 10px;
+        padding-right: 15px;
+    }
+
+    .path-number {
+        display: table-cell;
+    }
+
+    .path-name-movie {
+        display: table-cell;
+        vertical-align: middle;
+        width: 172px;
+    }
+
+    .path-year {
+        display: table-cell;
+        text-align: right;
+    }
+
+    .path-rating {
+        display: table-cell;
+        border-radius: 15px;
+        padding: 7px;
+        margin-bottom: 20px;
+    }
+    /* =============== Another movie =============== */
+    .more-movie-container {
+        width: 310px;
+    }
+
+        .more-movie-container h2 {
+            font-size: 16px;
+        }
+    /* =============== Commentars =============== */
+    .commentars {
+        width: 290px;
+    }
+
+        .commentars h2 {
+            font-size: 16px;
+        }
+
+    .textarea-container {
+        width: 290px;
+        min-width: 290px;
+        max-width: 290px;
+        height: 39.71px;
+        min-height: 39.71px;
+        border: none;
+        border-radius: 15px;
+        padding-left: 15px;
+        padding-top: 10px;
+        font-size: 12px;
+    }
+
+    .comentar {
+        margin: 15px 0;
+        border-radius: 15px;
+        padding: 10px 0 5px 15px;
+        width: 290px;
+        display: flex;
+        justify-content: safe;
+    }
+
+    .icon-account {
+        border-radius: 100%;
+        float: left;
+        width: 20px;
+        height: 20px;
+        margin-right: 15px;
+        /* margin-top: 10px; */
+    }
+
+    .commentar-text {
+        margin: -5px 0 5px 8px;
+        line-height: 16px;
+    }
+
+    .user-name {
+        margin-top: 5px;
+        font-size: 10px;
+    }
+
+    .text {
+        font-size: 8px;
+        font-weight: bold;
+    }
+
+    .icon-account img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .answer:hover {
+        text-decoration: underline;
+    }
+
+    .answer {
+        font-size: 8px;
+    }
+
+    .like {
+        font-size: 8px;
+        margin-left: 25px;
+    }
+
+        .like:hover {
+            text-decoration: underline;
+        }
+
+    /* ======================================= */
+    /* =============== Login Film =============== */
+    /* ======================================= */
+    form h4 {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .login, .email, .password {
+        width: 230px;
+        height: 35px;
+        font-size: 10px;
+        padding-left: 15px;
+    }
+
+    .image {
+        display: none;
+    }
+
+    .login-container {
+        margin: 15px auto;
+        padding-bottom: 20px;
+        width: 310px;
+    }
+
+    .form-login {
+        padding-top: 10px;
+        width: 310px;
+    }
+
+    .textbox {
+        text-align: center;
+        padding: 10px 0;
+        position: relative;
+        max-width: 310px;
+        /* font-size: 14px; */
+    }
+
+    .button-log-in {
+        display: block;
+        width: 120px;
+        height: 35px;
+        border: none;
+        border-radius: 15px;
+        margin: 15px 0;
+        font-size: 14px;
+        margin: 0 auto;
+    }
+
+    .link-for-sing-up {
+        margin-left: 5px;
+        font-size: 14px;
+    }
+
+    .form-login p {
+        text-align: center;
+    }
+
+    /* =============== Support.html =============== */
+    .support-main {
+        width: 310px;
+        margin: 15px auto;
+        padding: 0 0 5px 0;
+        min-height: 410px;
+    }
+
+    label {
+        margin-top: 15px;
+        font-size: 10px;
+    }
+
+    .support {
+        padding: 10px 30px;
+        height: 357px;
+    }
+
+    .support-select {
+        width: 250px;
+        height: 35px;
+        padding-left: 15px;
+        font-size: 10px;
+    }
+
+    .support-text {
+        width: 250px;
+        max-width: 250px;
+        min-width: 250px;
+        height: 100px;
+        min-height: 100px;
+        font-size: 10px;
+    }
+
+    .button-send {
+        height: 35px;
+        width: 250px;
+        font-size: 10px;
+    }
+}
+/* =============== 480px - 760px =============== */
+@media screen and (max-width: 759px) and (min-width: 480px) {
+    /* ======================================= */
+    /* =============== Header ===============  */
+    /* ======================================= */
+   
+
+    /* ======================================= */
+    /* =============== Main ===============  */
+    /* ======================================= */
+    .main {
+        width: 456px;
+        border: none;
+        border-radius: 5px;
+        margin: 100px auto;
+        padding: 0 0 5px 0;
+    }
+
+    .container-movie {
+        margin: 15px;
+    }
+    /* =============== Tabs =============== */
+    .tabs {
+        font-size: 10px;
+        padding: 15px 0;
+    }
+
+    .tabs-container {
+        text-align: right;
+    }
+
+    .btn {
+        border: none;
+        border-radius: 5px;
+        padding: 3px;
+        margin-right: 5px;
+    }
+
+    .btn-filter-type {
+        float: right;
+        margin-top: -5px;
+    }
+    /* =============== Movie Container =============== */
+    .movie-container-block {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin-left: 5px;
+    }
+
+    .list-container-movie {
+        text-align: center;
+        width: 100px;
+        height: 160px;
+    }
+
+    .image-container {
+        width: 100px;
+        height: 155px;
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 1px;
+    }
+
+    .image-movie {
+        padding: 5px;
+        width: 90px;
+        height: 145px;
+    }
+
+    .name-movie {
+        text-decoration: none;
+        font-size: 10px;
+    }
+
+    .info-movie {
+        color: #fff;
+        text-decoration: none;
+        font-size: 8px;
+    }
+    /* =============== Pagination =============== */
+    .pagination {
+        position: relative;
+        padding: 15px 0;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .page {
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    /* ======================================= */
+    /* =============== Footer ===============  */
+    /* ======================================= */
+    .footer {
+        width: 100%;
+        height: 70px;
+        padding-top: 15px;
+    }
+
+    .copyright {
+        /* padding-top: 25px; */
+        font-size: 10px;
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    /* =============== Social Icon =============== */
+    .social {
+        margin-left: 15px;
+    }
+
+        .social a {
+            text-decoration: none;
+        }
+
+            .social a img {
+                width: 20px;
+                height: 20px;
+                margin-right: 5px;
+            }
+    /* =============== Slider =============== */
+    .slider {
+        max-width: 90%;
+        position: relative;
+        margin: auto;
+    }
+
+    .see-more-movie {
+        width: 100%;
+        height: 230px;
+        margin-top: 10px;
+        margin-left: 0;
+        object-fit: cover;
+    }
+
+    .previous, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 15px;
+        transition: 0.6s ease;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .item {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 0.4;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* ======================================= */
+    /* =============== Show Film =============== */
+    /* ======================================= */
+    .container-main {
+        width: 456px;
+        border: none;
+        margin: 15px auto;
+    }
+
+    .container-info-movie {
+        width: 456px;
+        border: none;
+        border-radius: 15px;
+        padding: 5px 0 15px 0;
+    }
+    /* =============== Table =============== */
+    tr {
+        line-height: 12px;
+    }
+
+    td {
+        border: none;
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    .rating {
+        padding-right: 25px;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .poster {
+        float: left;
+        margin: 15px;
+    }
+
+    .title-movie {
+        font-size: 20px;
+    }
+    /* =============== Descriptions =============== */
+    .description {
+        width: 456px;
+        margin: 15px auto;
+        padding: 0 0 5px 0;
+        font-size: 12px;
+    }
+
+    .descriptions-text {
+        padding: 5px;
+        line-height: 14px;
+    }
+
+    /* =============== Movie container =============== */
+
+    video {
+        /* height: 814px; */
+        width: 456px;
+        height: 314px;
+    }
+    /* =============== All Part Movie =============== */
+    .all-part-movie {
+        border: none;
+        border-radius: 15px;
+        padding: 10px;
+        margin: 15px 0;
+        width: 436px;
+        /* display: table; */
+        /* width: 840px; */
+    }
+
+    .part-container-item {
+        /* display: table-row; */
+        /* border-bottom: 1px solid #fff; */
+        margin-bottom: 15px;
+        width: 436px;
+        line-height: 0px;
+    }
+
+    .path-number, .path-name-movie, .path-year, .path-rating {
+        font-weight: bold;
+        font-size: 14px;
+        padding-right: 15px;
+    }
+
+    .path-number {
+        display: table-cell;
+    }
+
+    .path-name-movie {
+        display: table-cell;
+        vertical-align: middle;
+        width: 340px;
+    }
+
+    .path-year {
+        display: table-cell;
+        text-align: right;
+    }
+
+    .path-rating {
+        display: table-cell;
+        border-radius: 15px;
+        padding: 7px;
+        margin-bottom: 20px;
+    }
+    /* =============== More movie watch =============== */
+    .more-movie-container {
+        width: 456px;
+    }
+
+        .more-movie-container h2 {
+            font-size: 16px;
+        }
+
+    /* =============== Commentar =============== */
+    .commentars {
+        width: 436px;
+    }
+
+        .commentars h2 {
+            font-size: 18px;
+        }
+
+    .textarea-container {
+        width: 436px;
+        min-width: 436px;
+        max-width: 4360px;
+        height: 39.71px;
+        min-height: 39.71px;
+        border: none;
+        border-radius: 15px;
+        padding-left: 15px;
+        padding-top: 10px;
+        ;
+        font-size: 12px;
+    }
+
+    .comentar {
+        margin: 15px 0;
+        border-radius: 15px;
+        padding: 10px 0 5px 15px;
+        width: 436px;
+        display: flex;
+        justify-content: safe;
+    }
+
+    .icon-account {
+        border-radius: 100%;
+        float: left;
+        width: 40px;
+        height: 40px;
+        margin-right: 15px;
+        /* margin-top: 10px; */
+    }
+
+    .commentar-text {
+        margin: -5px 0 5px 8px;
+        /* line-height: 10px; */
+    }
+
+    .coment-texblock {
+        width: 360px;
+    }
+
+    .user-name {
+        font-size: 16px;
+    }
+
+    .text {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .icon-account img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .answer:hover {
+        text-decoration: underline;
+    }
+
+    .answer {
+        font-size: 12px;
+    }
+
+    .like {
+        font-size: 12px;
+        margin-left: 25px;
+    }
+
+        .like:hover {
+            text-decoration: underline;
+        }
+
+    /* ======================================= */
+    /* =============== Login Film =============== */
+    /* ======================================= */
+    form h4 {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .login, .email, .password {
+        max-width: 350px;
+        max-height: 35px;
+        font-size: 14px;
+        padding-left: 15px;
+    }
+
+    .image {
+        display: none;
+    }
+
+    .login-container {
+        margin: 15px auto;
+        width: 456px;
+    }
+
+    .form-login {
+        padding-top: 10px;
+        width: 456px;
+    }
+
+    .textbox {
+        text-align: center;
+        padding: 10px 0;
+        position: relative;
+        width: 456px;
+        font-size: 14px;
+    }
+
+    .button-log-in {
+        display: block;
+        width: 120px;
+        height: 35px;
+        margin: 15px 0;
+        font-size: 14px;
+        margin: 0 auto;
+    }
+
+    .link-for-sing-up {
+        margin-left: 5px;
+        font-size: 14px;
+    }
+
+    /* =============== Support.html =============== */
+    .support-main {
+        width: 456px;
+        margin: 45px auto;
+        padding: 0 0 15px 0;
+        min-height: 430px;
+    }
+
+    label {
+        margin-top: 15px;
+        padding-left: 30px;
+    }
+
+    .support {
+        height: 426px;
+        padding: 10px 0;
+    }
+
+        .support h3 {
+            padding-left: 30px;
+        }
+
+    .support-container {
+        padding: 10px 0;
+        position: relative;
+        margin-left: 15px;
+    }
+
+    .support-select {
+        width: 350px;
+        height: 40px;
+        padding-left: 15px;
+        font-size: 17px;
+    }
+
+    .support-text {
+        width: 350px;
+        max-width: 350px;
+        min-width: 350px;
+        height: 100px;
+        min-height: 100px;
+    }
+
+    .button-send {
+        margin-left: 15px;
+        height: 50px;
+        width: 350px;
+        font-size: 14px;
+    }
+}
+/* =============== 760px - 980px =============== */
+@media screen and (max-width: 979px) and (min-width: 760px) {
+    /* ======================================= */
+    /* =============== Header ===============  */
+    /* ======================================= */
+    
+    /* ======================================= */
+    /* =============== Main ===============  */
+    /* ======================================= */
+    .main {
+        width: 722px;
+        margin: 100px auto;
+    }
+
+    .container-movie {
+        margin: 15px;
+    }
+    /* =============== Tabs =============== */
+    .tabs {
+        font-size: 14px;
+        padding: 25px 0;
+    }
+
+    .tabs-container {
+        text-align: right;
+    }
+
+    .btn {
+        border-radius: 10px;
+        padding: 5px;
+        margin-right: 10px;
+    }
+
+    .btn-filter-type {
+        float: right;
+        margin-top: -5px;
+    }
+    /* =============== Movie Container =============== */
+    .movie-container-block {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin-left: 5px;
+    }
+
+    .list-container-movie {
+        width: 170px;
+        height: 240px;
+        padding-bottom: 60px;
+    }
+
+    .image-container {
+        width: 160px;
+        height: 240px;
+        margin-bottom: 2px;
+    }
+
+    .image-movie {
+        padding: 10px;
+        width: 140px;
+        height: 220px;
+    }
+
+    .name-movie {
+        text-decoration: none;
+        font-size: 14px;
+    }
+    /* =============== Pagination =============== */
+    .pagination {
+        position: relative;
+        padding: 15px 0;
+        font-size: 14px;
+    }
+
+    .page {
+        padding: 5px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    /* ======================================= */
+    /* =============== Footer ===============  */
+    /* ======================================= */
+    .footer {
+        bottom: 0;
+        width: 100%;
+        height: 70px;
+        padding-top: 15px;
+    }
+
+    .copyright {
+        font-size: 12px;
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    /* =============== Social Icon =============== */
+    .social {
+        margin-left: 15px;
+    }
+
+        .social a {
+            text-decoration: none;
+        }
+
+            .social a img {
+                width: 20px;
+                height: 20px;
+                margin-right: 5px;
+            }
+    /* =============== Slider =============== */
+    .slider {
+        max-width: 95%;
+        position: relative;
+        margin: auto;
+    }
+
+    .see-more-movie {
+        width: 100%;
+        height: 360px;
+        margin-top: 10px;
+        margin-left: 0;
+        object-fit: cover;
+    }
+
+    .previous, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 15px;
+        transition: 0.6s ease;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+        .previous:hover, .next:hover {
+            color: #000000;
+        }
+
+    .item {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 0.4;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* ======================================= */
+    /* =============== Show Film =============== */
+    /* ======================================= */
+    .container-main {
+        width: 722px;
+        border: none;
+        margin: 15px auto;
+    }
+
+    .container-info-movie {
+        width: 722px;
+        border: none;
+        border-radius: 15px;
+        padding: 5px 0 15px 0;
+    }
+    /* =============== Table =============== */
+    tr {
+        line-height: 14px;
+    }
+
+    td {
+        border: none;
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .poster {
+        float: left;
+        margin: 15px;
+    }
+
+    .title-movie {
+        font-size: 25px;
+    }
+    /* =============== Descriptions =============== */
+    .description {
+        width: 722px;
+        margin: 15px auto;
+        padding: 0 0 5px 0;
+        font-size: 14px;
+    }
+
+    .descriptions-text {
+        padding: 5px;
+        line-height: 14px;
+    }
+
+    /* =============== Movie container =============== */
+
+    video {
+        /* height: 814px; */
+        width: 722px;
+        height: 514px;
+    }
+    /* =============== All Part Movie =============== */
+    .all-part-movie {
+        padding: 10px;
+        margin: 15px 0;
+        width: 702px;
+    }
+
+    .part-container-item {
+        margin-bottom: 15px;
+        width: 702px;
+        line-height: 0px;
+    }
+
+    .path-number, .path-name-movie, .path-year, .path-rating {
+        font-weight: bold;
+        font-size: 16px;
+        padding-right: 15px;
+    }
+
+    .path-number {
+        display: table-cell;
+    }
+
+    .path-name-movie {
+        display: table-cell;
+        vertical-align: middle;
+        width: 586px;
+    }
+
+    .path-year {
+        display: table-cell;
+        text-align: right;
+    }
+
+    .path-rating {
+        display: table-cell;
+        border-radius: 15px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    /* =============== More movie watch =============== */
+    .more-movie-container {
+        width: 722px;
+    }
+
+        .more-movie-container h2 {
+            font-size: 18px;
+        }
+
+    /* =============== Commentar =============== */
+    .commentars {
+        width: 702px;
+    }
+
+        .commentars h2 {
+            font-size: 18px;
+        }
+
+    .textarea-container {
+        width: 702px;
+        min-width: 702px;
+        max-width: 702px;
+        height: 39.71px;
+        min-height: 39.71px;
+        border: none;
+        border-radius: 15px;
+        padding-left: 15px;
+        padding-top: 10px;
+        font-size: 14px;
+    }
+
+    .comentar {
+        margin: 15px 0;
+        padding: 10px 0 5px 15px;
+        width: 702px;
+        display: flex;
+        justify-content: safe;
+    }
+
+    .icon-account {
+        border-radius: 100%;
+        background-color: #f9842f;
+        float: left;
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+        /* margin-top: 10px; */
+    }
+
+    .commentar-text {
+        margin: -5px 0 5px 8px;
+        /* line-height: 10px; */
+    }
+
+    .coment-texblock {
+        width: 620px;
+    }
+
+    .user-name {
+        font-size: 18px;
+    }
+
+    .text {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .icon-account img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .answer:hover {
+        text-decoration: underline;
+    }
+
+    .answer {
+        font-size: 14px;
+    }
+
+    .like {
+        font-size: 14px;
+        margin-left: 25px;
+    }
+
+        .like:hover {
+            text-decoration: underline;
+        }
+
+    /* ======================================= */
+    /* =============== Login Film =============== */
+    /* ======================================= */
+    form h4 {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .login, .email, .password {
+        width: 480px;
+        max-height: 35px;
+        font-size: 14px;
+        padding-left: 15px;
+    }
+
+    .image {
+        display: none;
+    }
+
+    .login-container {
+        margin: 15px auto;
+        width: 722px;
+    }
+
+    .form-login {
+        padding-top: 10px;
+        width: 722px;
+    }
+
+    .textbox {
+        text-align: center;
+        padding: 10px 0;
+        position: relative;
+        width: 722px;
+        font-size: 14px;
+    }
+
+    .button-log-in {
+        display: block;
+        width: 225px;
+        height: 35px;
+        margin: 15px 0;
+        font-size: 14px;
+        margin: 0 auto;
+    }
+
+    .link-for-sing-up {
+        margin-left: 5px;
+        font-size: 14px;
+    }
+
+        .link-for-sing-up:hover {
+            color: #aba8a8;
+        }
+
+    .form-login p {
+        text-align: center;
+    }
+
+    /* =============== Support.html =============== */
+    .support-main {
+        width: 722px;
+        margin: 85px auto;
+        padding: 0 0 25px 0;
+        min-height: 470px;
+    }
+
+    label {
+        margin-top: 15px;
+        padding-left: 30px;
+    }
+
+    .support {
+        padding: 30px 0;
+        height: 466px;
+    }
+
+        .support h3 {
+            padding-left: 30px;
+        }
+
+    .support-container {
+        padding: 10px 0;
+        position: relative;
+        margin-left: 25px;
+    }
+
+    .support-select {
+        width: 450px;
+        height: 40px;
+        font-size: 17px;
+        padding-left: 15px;
+    }
+
+    .support-text {
+        width: 650px;
+        max-width: 650px;
+        min-width: 650px;
+        height: 100px;
+        min-height: 100px;
+    }
+
+    .button-send {
+        margin-left: 35px;
+        height: 50px;
+        width: 240px;
+        font-size: 14px;
+    }
+}
+/* =============== 980px - 1200px =============== */
+@media screen and (max-width: 1199px) and (min-width: 980px) {
+    
+    /* ======================================= */
+    /* =============== Main ===============  */
+    /* ======================================= */
+    .main {
+        width: 931px;
+        margin: 100px auto;
+        padding: 0 0 5px 0;
+    }
+
+    .container-movie {
+        margin: 15px;
+    }
+    /* =============== Tabs =============== */
+    .tabs {
+        font-size: 16px;
+        padding: 25px 0;
+    }
+
+    .tabs-container {
+        text-align: right;
+    }
+
+    .btn {
+        border-radius: 10px;
+        padding: 5px;
+        margin-right: 10px;
+    }
+
+    .btn-filter-type {
+        float: right;
+        margin-top: -5px;
+    }
+    /* =============== Movie Container =============== */
+    .movie-container-block {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin-left: 5px;
+    }
+
+    .list-container-movie {
+        width: 220px;
+        height: 300px;
+    }
+
+    .image-container {
+        width: 210px;
+        height: 290px;
+        margin-bottom: 10px;
+    }
+
+    .image-movie {
+        padding: 10px;
+        width: 190px;
+        height: 270px;
+    }
+    /* =============== Pagination =============== */
+    .pagination {
+        position: relative;
+        padding: 15px 0;
+        font-size: 18px;
+    }
+
+    .page {
+        padding: 5px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    /* ======================================= */
+    /* =============== Footer ===============  */
+    /* ======================================= */
+    .footer {
+        bottom: 0;
+        width: 100%;
+        height: 70px;
+        padding-top: 15px;
+    }
+
+    .copyright {
+        font-size: 14px;
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    /* =============== Social Icon =============== */
+    .social {
+        margin-left: 15px;
+    }
+
+        .social a {
+            text-decoration: none;
+        }
+
+            .social a img {
+                width: 20px;
+                height: 20px;
+                margin-right: 5px;
+            }
+    /* =============== Slider =============== */
+    .slider {
+        max-width: 884.84px;
+        position: relative;
+        margin: auto;
+    }
+
+    .see-more-movie {
+        width: 884.84px;
+        height: 460px;
+        margin-top: 20px;
+        margin-left: 0;
+        object-fit: cover;
+    }
+
+    .previous, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 15px;
+        transition: 0.6s ease;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+        .previous:hover, .next:hover {
+            color: #000000;
+        }
+
+    .item {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 0.4;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* ======================================= */
+    /* =============== Show Film =============== */
+    /* ======================================= */
+    .container-main {
+        width: 931px;
+        border: none;
+        margin: 15px auto;
+    }
+
+    .container-info-movie {
+        width: 931px;
+        padding: 15px 0 15px 0;
+    }
+    /* =============== Table =============== */
+    tr {
+        line-height: 18px;
+    }
+
+    td {
+        border: none;
+        font-size: 18px;
+        padding: 5px;
+    }
+
+    .rating {
+        padding-right: 25px;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .poster {
+        float: left;
+        margin: 15px;
+    }
+
+    .title-movie {
+        font-size: 30px;
+    }
+    /* =============== Descriptions =============== */
+    .description {
+        width: 931px;
+        margin: 15px auto;
+        padding: 0 0 5px 0;
+        font-size: 14px;
+    }
+
+    .descriptions-text {
+        padding: 5px;
+        line-height: 14px;
+    }
+
+    /* =============== Movie container =============== */
+
+    video {
+        /* height: 814px; */
+        width: 931px;
+        height: 614px;
+    }
+    /* =============== All Part Movie =============== */
+    .all-part-movie {
+        padding: 10px;
+        margin: 15px 0;
+        width: 911px;
+    }
+
+    .part-container-item {
+        margin-bottom: 15px;
+        width: 911px;
+        line-height: 0px;
+    }
+
+    .path-number, .path-name-movie, .path-year, .path-rating {
+        font-weight: bold;
+        font-size: 20px;
+        padding-right: 15px;
+    }
+
+    .path-number {
+        display: table-cell;
+    }
+
+    .path-name-movie {
+        display: table-cell;
+        vertical-align: middle;
+        width: 779px;
+    }
+
+    .path-year {
+        display: table-cell;
+        text-align: right;
+    }
+
+    .path-rating {
+        display: table-cell;
+        border-radius: 15px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    /* =============== More movie watch =============== */
+    .more-movie-container {
+        width: 931px;
+    }
+
+        .more-movie-container h2 {
+            font-size: 18px;
+        }
+
+    /* =============== Commentar =============== */
+    .commentars {
+        width: 911px;
+    }
+
+        .commentars h2 {
+            font-size: 18px;
+        }
+
+    .textarea-container {
+        width: 911px;
+        min-width: 911px;
+        max-width: 911px;
+        height: 69.71px;
+        min-height: 69.71px;
+        padding-left: 15px;
+        padding-top: 10px;
+        font-size: 18px;
+    }
+
+    .comentar {
+        margin: 15px 0;
+        padding: 10px 0 5px 15px;
+        width: 911px;
+        display: flex;
+        justify-content: safe;
+    }
+
+    .icon-account {
+        border-radius: 100%;
+        float: left;
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+        /* margin-top: 10px; */
+    }
+
+    .commentar-text {
+        margin: 5px 0 5px 8px;
+        /* line-height: 10px; */
+    }
+
+    .coment-texblock {
+        width: 825px;
+    }
+
+    .user-name {
+        font-size: 20px;
+    }
+
+    .text {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .icon-account img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .answer:hover {
+        text-decoration: underline;
+    }
+
+    .answer {
+        font-size: 14px;
+    }
+
+    .like {
+        font-size: 14px;
+        margin-left: 25px;
+    }
+
+        .like:hover {
+            text-decoration: underline;
+        }
+
+    /* ======================================= */
+    /* =============== Login Film =============== */
+    /* ======================================= */
+    form h4 {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .login, .email, .password {
+        width: 480px;
+        max-height: 35px;
+        font-size: 14px;
+        padding-left: 15px;
+    }
+
+    .image {
+        display: none;
+    }
+
+    .login-container {
+        margin: 15px auto;
+        width: 722px;
+    }
+
+    .form-login {
+        padding-top: 10px;
+        width: 722px;
+    }
+
+    .textbox {
+        text-align: center;
+        /* margin: 0 auto; */
+        padding: 10px 0;
+        position: relative;
+        width: 722px;
+        font-size: 14px;
+    }
+
+    .button-log-in {
+        display: block;
+        width: 225px;
+        height: 35px;
+        margin: 15px 0;
+        font-size: 14px;
+        margin: 0 auto;
+    }
+
+    .link-for-sing-up {
+        margin-left: 5px;
+        font-size: 14px;
+    }
+
+    .form-login p {
+        text-align: center;
+    }
+
+
+    /* =============== Support.html =============== */
+    .support-main {
+        position: relative;
+        width: 722px;
+        margin: 85px auto;
+        padding: 0 0 5px 0;
+        min-height: 470px;
+    }
+
+    label {
+        margin-top: 15px;
+        padding-left: 30px;
+    }
+
+    .support {
+        padding: 30px 0;
+    }
+
+        .support h3 {
+            padding-left: 30px;
+        }
+
+    .support-container {
+        padding: 10px 0;
+        position: relative;
+        margin-left: 25px;
+    }
+
+    .support-select {
+        width: 450px;
+        height: 40px;
+        padding-left: 15px;
+        font-size: 17px;
+    }
+
+    .support-text {
+        width: 650px;
+        max-width: 650px;
+        min-width: 650px;
+        height: 100px;
+        min-height: 100px;
+    }
+
+    .button-send {
+        margin-left: 35px;
+        height: 50px;
+        width: 240px;
+        font-size: 14px;
+    }
+}
+/* =============== 1200px - 1400px =============== */
+@media screen and (max-width: 1399px) and (min-width: 1200px) {
+   
+    /* ======================================= */
+    /* =============== Main ===============  */
+    /* ======================================= */
+    .main {
+        width: 1140px;
+        margin: 100px auto;
+        padding: 0 0 5px 0;
+    }
+
+    .container-movie {
+        margin: 15px;
+    }
+    /* =============== Tabs =============== */
+    .tabs {
+        font-size: 16px;
+        padding: 25px 15px;
+        margin-left: 25px;
+    }
+
+    .tabs-container {
+        text-align: right;
+    }
+
+    .btn {
+        padding: 5px;
+        margin-right: 10px;
+    }
+
+    .btn-filter-type {
+        float: right;
+        margin-top: -5px;
+    }
+    /* =============== Movie Container =============== */
+    .movie-container-block {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin-left: 35px;
+        margin-right: 25px;
+    }
+
+    .list-container-movie {
+        /* margin-top: 50px; */
+        text-align: center;
+        width: 220px;
+        height: 331px;
+    }
+
+    .image-container {
+        width: 230px;
+        height: 310px;
+        margin-bottom: 10px;
+    }
+
+    .image-movie {
+        padding: 15px;
+        width: 200px;
+        height: 280px;
+    }
+    /* =============== Pagination =============== */
+    .pagination {
+        position: relative;
+        padding: 35px 0;
+        text-align: center;
+    }
+
+    .page {
+        padding: 15px;
+    }
+
+    /* ======================================= */
+    /* =============== Footer ===============  */
+    /* ======================================= */
+    .footer {
+        margin-top: 45px;
+        width: 100%;
+        height: 100px;
+        padding-top: 40px;
+    }
+
+    .copyright {
+        font-size: 14px;
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    /* =============== Social Icon =============== */
+    .social {
+        margin-left: 15px;
+    }
+
+        .social a {
+            text-decoration: none;
+        }
+
+            .social a img {
+                width: 30px;
+                height: 30px;
+                margin-right: 15px;
+            }
+    /* =============== Slider =============== */
+    .slider {
+        max-width: 1026px;
+        position: relative;
+        margin: auto;
+    }
+
+    .see-more-movie {
+        width: 1026px;
+        height: 560px;
+        margin-top: 30px;
+        margin-left: 0;
+        object-fit: cover;
+    }
+
+    .previous, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 15px;
+        transition: 0.6s ease;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .item {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 0.4;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* ======================================= */
+    /* =============== Show Film =============== */
+    /* ======================================= */
+    .container-main {
+        width: 1026px;
+        margin: 45px auto;
+    }
+
+    .container-info-movie {
+        width: 1026px;
+        padding: 25px 0 15px 0;
+    }
+    /* =============== Table =============== */
+    tr {
+        line-height: 18px;
+    }
+
+    td {
+        border: none;
+        font-size: 18px;
+        padding: 5px;
+    }
+
+    .rating {
+        padding-right: 25px;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .poster {
+        float: left;
+        margin: -5px 15px 15px;
+    }
+
+    .title-movie {
+        font-size: 30px;
+    }
+    /* =============== Descriptions =============== */
+    .description {
+        width: 1026px;
+        margin: 45px auto;
+        padding: 0 0 5px 0;
+        font-size: 16px;
+    }
+
+    .descriptions-text {
+        padding: 5px;
+        line-height: 16px;
+    }
+
+    /* =============== Movie container =============== */
+
+    video {
+        /* height: 814px; */
+        width: 1026px;
+        height: 714px;
+    }
+    /* =============== All Part Movie =============== */
+    .all-part-movie {
+        padding: 10px;
+        margin: 15px 0;
+        width: 1006px;
+    }
+
+    .part-container-item {
+        margin-bottom: 15px;
+        width: 1006px;
+        line-height: 0px;
+    }
+
+    .path-number, .path-name-movie, .path-year, .path-rating {
+        font-weight: bold;
+        font-size: 20px;
+        padding-right: 15px;
+    }
+
+    .path-number {
+        display: table-cell;
+    }
+
+    .path-name-movie {
+        display: table-cell;
+        vertical-align: middle;
+        width: 885px;
+    }
+
+    .path-year {
+        display: table-cell;
+        text-align: right;
+    }
+
+    .path-rating {
+        display: table-cell;
+        border-radius: 15px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    /* =============== More movie watch =============== */
+    .more-movie-container {
+        width: 1026px;
+    }
+
+    /* =============== Commentar =============== */
+    .commentars {
+        width: 1006px;
+    }
+
+        .commentars h2 {
+            font-size: 18px;
+        }
+
+    .textarea-container {
+        width: 1006px;
+        min-width: 1006px;
+        max-width: 1006px;
+        height: 69.71px;
+        min-height: 69.71px;
+        padding-left: 15px;
+        padding-top: 10px;
+        font-size: 18px;
+    }
+
+    .comentar {
+        margin: 15px 0;
+        padding: 10px 0 5px 15px;
+        width: 1006px;
+        display: flex;
+        justify-content: safe;
+    }
+
+    .icon-account {
+        border-radius: 100%;
+        background-color: #f9842f;
+        float: left;
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+        /* margin-top: 10px; */
+    }
+
+    .commentar-text {
+        margin: 5px 0 5px 8px;
+        /* line-height: 10px; */
+    }
+
+    .coment-texblock {
+        width: 925px;
+    }
+
+    .user-name {
+        font-size: 20px;
+    }
+
+    .text {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .icon-account img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .answer:hover {
+        text-decoration: underline;
+    }
+
+    .answer {
+        font-size: 14px;
+    }
+
+    .like {
+        font-size: 14px;
+        margin-left: 25px;
+    }
+
+        .like:hover {
+            text-decoration: underline;
+        }
+
+    /* ======================================= */
+    /* =============== Login Film =============== */
+    /* ======================================= */
+    form h4 {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .login, .email, .password {
+        width: 480px;
+        max-height: 35px;
+        font-size: 14px;
+        padding-left: 15px;
+    }
+
+    .image {
+        display: none;
+    }
+
+    .login-container {
+        margin: 15px auto;
+        width: 722px;
+    }
+
+    .form-login {
+        padding-top: 10px;
+        width: 722px;
+    }
+
+    .textbox {
+        text-align: center;
+        padding: 10px 0;
+        position: relative;
+        width: 722px;
+        font-size: 14px;
+    }
+
+    .button-log-in {
+        display: block;
+        width: 225px;
+        height: 35px;
+        margin: 15px 0;
+        font-size: 14px;
+        margin: 0 auto;
+    }
+
+    .link-for-sing-up {
+        margin-left: 5px;
+        font-size: 14px;
+    }
+
+        .link-for-sing-up:hover {
+            color: #aba8a8;
+        }
+
+    .form-login p {
+        text-align: center;
+    }
+    /* =============== Support.html =============== */
+    .support-main {
+        position: relative;
+        width: 1026px;
+        margin: 85px auto;
+        padding: 0 0 5px 0;
+        min-height: 738px;
+    }
+
+    label {
+        margin-top: 15px;
+        padding-left: 30px;
+    }
+
+    .support {
+        padding: 30px 0;
+    }
+
+        .support h3 {
+            padding-left: 30px;
+        }
+
+    .support-container {
+        padding: 10px 0;
+        position: relative;
+        margin-left: 25px;
+    }
+
+    .button-send {
+        margin-left: 35px;
+    }
+}

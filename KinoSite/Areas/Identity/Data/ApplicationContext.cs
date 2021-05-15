@@ -16,6 +16,7 @@ namespace KinoSite.Data
             : base(options)
         {
         }
+        public DbSet<KinoSite.Models.Genre> Genre { get; set; }
 
     }
 }

@@ -16,7 +16,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.NameGenre)
             </th>
-            <th></th>
+            <th>
+                Update
+            </th>
+            <th>
+                Delete
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -26,9 +31,14 @@
                 @Html.DisplayFor(modelItem => item.NameGenre)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-controller="Genre" asp-route-id="@item.Id">Edit</a>
+            </td>
+            <td>               
+                <form asp-action="Delete" asp-route-id="@item.Id" method="post">
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
+                </form>
             </td>
         </tr>
 }

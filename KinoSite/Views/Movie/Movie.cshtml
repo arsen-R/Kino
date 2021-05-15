@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>Дата виходу:</td>
-                <td>@Model.DateRealise</td>
+                <td>@Model.DateRealise.ToLongDateString()</td>
             </tr>
             <tr>
                 <td>Країна:</td>
@@ -39,7 +39,7 @@
                 <td>
                     <span class="item">
                         <span class="person-list" itemprop="director">
-                            @*<a href="#"><span class="name">Ендрю Адамсон</span></a>*@
+                            <p>@Model.Directions.NameDirection @Model.Directions.SurnameDirection</p>
                         </span>
                     </span>
                 </td>
@@ -109,13 +109,14 @@
         </div>
     </div>
     <div class="movie-video">
-        <video controls controlsList="nodownload">
-                @{
-                    var link = "https://res.cloudinary.com/arsenr/video/upload/";
-                    var model = Model.Video;
-                    var movieLink = link + model;
-                }
-                <source src="@movieLink" type="video/mp4">
-            </video>
+       
     </div>
+    <center>
+        @{
+            var link = "https://28.svetacdn.in/MrJszJIePquE/movie/";
+            var model = Model.Video;
+            var movieLink = link + model;
+        }
+        <iframe src="@movieLink" width="1020" height="532" frameborder="0" allowfullscreen></iframe>
+    </center>
 </div>

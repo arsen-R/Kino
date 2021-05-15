@@ -3,14 +3,13 @@
     ViewData["Title"] = "ListMovie";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>ListMovie</h1>
 <h1 class="bg-info text-white">All Movie</h1>
 <a asp-action="Create" asp-controller="Movie">Create movie</a>
 <form asp-controller="Movie" asp-action="ListMovie" method="get">
     <input type="text" name="SearchString" />
     <input type="submit" value="Search" />
 </form>
-<table class="table table-sm table-bordered table-bordered">
+<table class="table">
     <tr>
         <th>Title</th>
         <th>Release</th>

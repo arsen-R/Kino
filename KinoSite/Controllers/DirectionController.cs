@@ -9,6 +9,7 @@ using KinoSite.Models;
 using KinoSite.Areas.Identity.Data;
 namespace KinoSite.Controllers
 {
+    [Authorize(Roles = "Administrator, Moderator")]
     public class DirectionController : Controller
     {
         MovieContext context;
@@ -17,7 +18,6 @@ namespace KinoSite.Controllers
             this.context = context;
         }
 
-        [Authorize(Roles = "Administrator, Moderator")]
         [HttpGet]
         public async Task<IActionResult> DirectionList(string searchString)
         {
@@ -30,14 +30,12 @@ namespace KinoSite.Controllers
             return View(direction.ToList());
         }
 
-        [Authorize(Roles = "Administrator, Moderator")]
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost]
         public async Task<IActionResult> Create(Direction direction)
         {
@@ -50,20 +48,18 @@ namespace KinoSite.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Administrator, Moderator")]
         [HttpGet]
         public async Task<IActionResult> Edit(int? Id)
         {
             if (Id == null)
             {
-                return RedirectToAction("Index", "Home");
+                return NotFound();
             }
             ViewBag.Direction = Id;
             Direction direction = context.Directions.Select(m => m).Where(m => m.Id == Id).First();
             return View(direction);
         }
-
-        [Authorize(Roles = "Administrator, Moderator")]
+      
         [HttpPost]
         public async Task<IActionResult> Edit(Direction direction)
         {
@@ -76,20 +72,18 @@ namespace KinoSite.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Administrator, Moderator")]
         [HttpGet]
         public IActionResult Delete(int? id)
         {
             if (id == null)
             {
-                return RedirectToAction("DirectionList", "Direction");
+                return NotFound();
             }
             ViewBag.Direction = id;
             Direction direction = context.Directions.Select(m => m).Where(m => m.Id == id).First();
             return View(direction);
         }
-
-        [Authorize(Roles = "Administrator, Moderator")]
+       
         [HttpPost]
         public async Task<IActionResult> Delete(Direction direction)
         {

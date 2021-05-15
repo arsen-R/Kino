@@ -26,6 +26,7 @@ namespace KinoSite.Controllers
             this.roleManager = roleManager;
             this.userManager = userManager;
         }
+        [Authorize(Roles = "Administrator, Moderator")]
         public IActionResult IndexForAdmin()
         {
             return View();
