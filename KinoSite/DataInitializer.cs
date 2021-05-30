@@ -11,15 +11,7 @@ namespace KinoSite
     {
         public static void Initialize(MovieContext context)
         {
-            if (!context.Categories.Any())
-            {
-                context.Categories.AddRange(
-                    new Category { NameCategory = "Movie" },
-                    new Category { NameCategory = "Serial" },
-                    new Category { NameCategory = "Cartoon" }
-                    );
-                context.SaveChanges();
-            }
+            
         }
     }
 }

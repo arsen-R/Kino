@@ -10,16 +10,16 @@ namespace KinoSite.Areas.Identity.Data
     {
         public MovieContext(DbContextOptions<MovieContext> options): base (options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
 
         public DbSet<Movie> Movies { get; set; }
-        public DbSet<Direction> Directions { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Direction> Directions { get; set; }       
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Actor> Actors { get; set; }
 
         public DbSet<GenreMovie> GenreMovies { get; set; }
+        public DbSet<ActorMovie> ActorMovies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,6 +33,17 @@ namespace KinoSite.Areas.Identity.Data
                 .HasOne(bc => bc.Genre)
                 .WithMany(c => c.GenreMovies)
                 .HasForeignKey(bc => bc.GenreId);
+
+            modelBuilder.Entity<ActorMovie>()
+         .HasKey(bc => new { bc.MovieId, bc.ActorId });
+            modelBuilder.Entity<ActorMovie>()
+                .HasOne(bc => bc.Movie)
+                .WithMany(b => b.ActorMovies)
+                .HasForeignKey(bc => bc.MovieId);
+            modelBuilder.Entity<ActorMovie>()
+                .HasOne(bc => bc.Actor)
+                .WithMany(c => c.ActorMovies)
+                .HasForeignKey(bc => bc.ActorId);
         }
     }
 }

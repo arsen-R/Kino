@@ -4,20 +4,52 @@ using KinoSite.Areas.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KinoSite.Migrations.Movie
 {
     [DbContext(typeof(MovieContext))]
-    partial class MovieContextModelSnapshot : ModelSnapshot
+    [Migration("20210515184350_Mg1")]
+    partial class Mg1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("ActorMovie", b =>
+                {
+                    b.Property<int>("MainRolesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MoviesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MainRolesId", "MoviesId");
+
+                    b.HasIndex("MoviesId");
+
+                    b.ToTable("ActorMovie");
+                });
+
+            modelBuilder.Entity("CategoryGenre", b =>
+                {
+                    b.Property<int>("CategoriesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GenresId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CategoriesId", "GenresId");
+
+                    b.HasIndex("GenresId");
+
+                    b.ToTable("CategoryGenre");
+                });
 
             modelBuilder.Entity("KinoSite.Models.Actor", b =>
                 {
@@ -37,19 +69,19 @@ namespace KinoSite.Migrations.Movie
                     b.ToTable("Actors");
                 });
 
-            modelBuilder.Entity("KinoSite.Models.ActorMovie", b =>
+            modelBuilder.Entity("KinoSite.Models.Category", b =>
                 {
-                    b.Property<int>("MovieId")
-                        .HasColumnType("int");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ActorId")
-                        .HasColumnType("int");
+                    b.Property<string>("NameCategory")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("MovieId", "ActorId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ActorId");
-
-                    b.ToTable("ActorMovies");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("KinoSite.Models.Direction", b =>
@@ -147,23 +179,34 @@ namespace KinoSite.Migrations.Movie
                     b.ToTable("Movies");
                 });
 
-            modelBuilder.Entity("KinoSite.Models.ActorMovie", b =>
+            modelBuilder.Entity("ActorMovie", b =>
                 {
-                    b.HasOne("KinoSite.Models.Actor", "Actor")
-                        .WithMany("ActorMovies")
-                        .HasForeignKey("ActorId")
+                    b.HasOne("KinoSite.Models.Actor", null)
+                        .WithMany()
+                        .HasForeignKey("MainRolesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("KinoSite.Models.Movie", "Movie")
-                        .WithMany("ActorMovies")
-                        .HasForeignKey("MovieId")
+                    b.HasOne("KinoSite.Models.Movie", null)
+                        .WithMany()
+                        .HasForeignKey("MoviesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CategoryGenre", b =>
+                {
+                    b.HasOne("KinoSite.Models.Category", null)
+                        .WithMany()
+                        .HasForeignKey("CategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Actor");
-
-                    b.Navigation("Movie");
+                    b.HasOne("KinoSite.Models.Genre", null)
+                        .WithMany()
+                        .HasForeignKey("GenresId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("KinoSite.Models.GenreMovie", b =>
@@ -196,11 +239,6 @@ namespace KinoSite.Migrations.Movie
                     b.Navigation("Directions");
                 });
 
-            modelBuilder.Entity("KinoSite.Models.Actor", b =>
-                {
-                    b.Navigation("ActorMovies");
-                });
-
             modelBuilder.Entity("KinoSite.Models.Direction", b =>
                 {
                     b.Navigation("Movie");
@@ -213,8 +251,6 @@ namespace KinoSite.Migrations.Movie
 
             modelBuilder.Entity("KinoSite.Models.Movie", b =>
                 {
-                    b.Navigation("ActorMovies");
-
                     b.Navigation("GenreMovies");
                 });
 #pragma warning restore 612, 618

@@ -39,12 +39,19 @@ namespace KinoSite.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            //List<SelectListItem> selectListItems = context.Genres.Select(a => new SelectListItem
-            //{
-            //    Text = a.NameGenre,
-            //    Value = a.Id.ToString()
-            //}).ToList();
-            //ViewBag.GenreId = selectListItems;
+            List<SelectListItem> selectListItems = context.Genres.Select(a => new SelectListItem
+            {
+                Text = a.NameGenre,
+                Value = a.Id.ToString()
+            }).ToList();
+            ViewBag.GenreId = selectListItems;
+
+            List<SelectListItem> selectListItems1 = context.Actors.Select(a => new SelectListItem
+            {
+                Text = a.SurnameActor,
+                Value = a.Id.ToString()
+            }).ToList();
+            ViewBag.ActorId = selectListItems1;
 
             ViewBag.DirectionId = new SelectList(context.Directions, "Id", "SurnameDirection");
             return View();
@@ -52,25 +59,39 @@ namespace KinoSite.Controllers
 
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost]
-        public async Task<IActionResult> Create(Movie movie, List<IFormFile> Image, List<int> GenreIdList)
+        public async Task<IActionResult> Create(Movie movie, List<IFormFile> Image, List<int> GenreIdList, List<int> ActorIdList)
         {
             if (ModelState.IsValid)
             {
                 movie = await ActionWithImage(movie, Image);
                 context.Movies.Add(movie);
                 context.SaveChanges();
-                //foreach (var item in GenreIdList)
-                //{
-                //    GenreMovie movieGenre = new GenreMovie()
-                //    {
-                //        GenreId = item,
-                //        MovieId = movie.Id,
-                //        Genre = context.Genres.Where(x => x.Id == item).FirstOrDefault(),
-                //        Movie = movie
-                //    };
-                //    context.GenreMovies.Add(movieGenre);
-                //}
-                //context.SaveChanges();
+                foreach (var item in GenreIdList)
+                {
+                    GenreMovie movieGenre = new GenreMovie()
+                    {
+                        GenreId = item,
+                        MovieId = movie.Id,
+                        Genre = context.Genres.Where(x => x.Id == item).FirstOrDefault(),
+                        Movie = movie
+                    };
+                    context.GenreMovies.Add(movieGenre);
+                }
+                context.SaveChanges();
+
+                foreach (var item in ActorIdList)
+                {
+                    ActorMovie actorMovie = new ActorMovie()
+                    {
+                        ActorId = item,
+                        MovieId = movie.Id,
+                        Actor = context.Actors.Where(x => x.Id == item).FirstOrDefault(),
+                        Movie = movie
+                    };
+                    context.ActorMovies.Add(actorMovie);
+                }
+                context.SaveChanges();
+
                 return RedirectToAction("ListMovie");
             }
             return View();
@@ -87,7 +108,7 @@ namespace KinoSite.Controllers
             var movie = context.Movies
                 .Select(m => m)
                 .Where(m => m.Id == Id)
-                .Include(d => d.Directions)
+                .Include(d => d.Directions)                
                 .FirstOrDefault();
             return View(movie);
         }
@@ -101,15 +122,21 @@ namespace KinoSite.Controllers
                 return NotFound();
             }
 
-            //List<SelectListItem> selectListItems = context.Genres.Select(a => new SelectListItem
-            //{
-            //    Text = a.NameGenre,
-            //    Value = a.Id.ToString()
-            //}).ToList();
-            //ViewBag.GenreId = selectListItems;
-            
-            ViewBag.DirectionId = new SelectList(context.Directions, "Id", "SurnameDirection");
+            List<SelectListItem> selectListItems = context.Genres.Select(a => new SelectListItem
+            {
+                Text = a.NameGenre,
+                Value = a.Id.ToString()
+            }).ToList();
+            ViewBag.GenreId = selectListItems;
 
+            List<SelectListItem> selectListItems1 = context.Actors.Select(a => new SelectListItem
+            {
+                Text = a.SurnameActor,
+                Value = a.Id.ToString()
+            }).ToList();
+            ViewBag.ActorId = selectListItems1;
+
+            ViewBag.DirectionId = new SelectList(context.Directions, "Id", "SurnameDirection");
             ViewBag.Movies = Id;
             Movie movie = context.Movies.Select(m => m).Where(m => m.Id == Id).First();
             return View(movie);
@@ -117,13 +144,37 @@ namespace KinoSite.Controllers
 
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost]
-        public async Task<IActionResult> Edit(Movie movie, List<IFormFile> Image, List<int> GenreIdList)
+        public async Task<IActionResult> Edit(Movie movie, List<IFormFile> Image, List<int> GenreIdLists, List<int> ActorIdLists)
         {
             if (ModelState.IsValid)
             {
                 movie = await ActionWithImage(movie, Image);
-               
                 context.Movies.Update(movie);
+                context.SaveChanges();
+                foreach (var item in GenreIdLists)
+                {
+                    GenreMovie genreMovie = new GenreMovie()
+                    {
+                        GenreId = item,
+                        MovieId = movie.Id,
+                        Genre = context.Genres.Where(x => x.Id == item).FirstOrDefault(),
+                        Movie = movie
+                    };
+                    context.GenreMovies.Add(genreMovie);
+                }
+                context.SaveChanges();
+
+                foreach (var item in ActorIdLists)
+                {
+                    ActorMovie actorMovie = new ActorMovie()
+                    {
+                        ActorId = item,
+                        MovieId = movie.Id,
+                        Actor = context.Actors.Where(x => x.Id == item).FirstOrDefault(),
+                        Movie = movie
+                    };
+                    context.ActorMovies.Update(actorMovie);
+                }
                 context.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }

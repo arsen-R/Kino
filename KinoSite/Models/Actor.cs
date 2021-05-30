@@ -11,6 +11,6 @@ namespace KinoSite.Models
         public string SurnameActor { get; set; }
         public string NameActor { get; set; }
 
-        public List<Movie> Movies { get; set; }
+        public List<ActorMovie> ActorMovies { get; set; }
     }
 }
