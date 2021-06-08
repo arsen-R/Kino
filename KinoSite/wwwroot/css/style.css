@@ -63,22 +63,6 @@ a {
     padding-left: 15px;
     align-self: center;
 }
-
-/*.navbar-link {
-    color: #000000;
-    text-decoration: none;
-    margin-right: 45px;
-    padding: 10px 15px;
-}
-*/
-/*.navbar-link:hover {
-        text-decoration: none;
-        color: #fff;
-        background-color: #000000;
-        border: none;
-        border-radius: 15px;*/
-/* padding: 20px 15px; */
-/*}*/
 /* =============== Search =============== */
 .form-search {
     align-self: center;
@@ -138,15 +122,6 @@ a {
 .tabs-container {
     text-align: right;
 }
-
-/*.btn {
-    color: #000000;
-    border: none;
-    border-radius: 15px;
-    padding: 10px 20px;
-    margin-right: 10px;
-}*/
-
 .active-tabs {
     background-color: #000000;
     color: #fff;
@@ -309,29 +284,48 @@ a {
             height: 30px;
             margin-right: 25px;
         }
+/* Admin Panel */
 
+.container-main-admin {
+    border-radius: 15px;
+    margin: 45px auto;
+    background-color: #ffffff;
+    padding-top: 5px;
+    width: 1240px;
+}
 
+.link-container {
+    margin: 0 95px;
+    padding: 0 25px 25px 25px;
 
-.link {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 25px;
+    grid-template-columns: repeat(3, 1fr);
     grid-row-gap: 25px;
+    grid-column-gap: 15px;
 }
 
 .image img {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    width: 225px;
-    height: 200px;
+    border-radius: 15px;
+    border: 1px solid #707070;
+    width: 280px;
+    height: 280px;
 }
 
 .link-item {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
     text-align: center;
     padding: 0;
-    width: 225px;
-    height: 225px;
+    width: 280px;
+    height: 300px;
+}
+
+.link-item-container {
     background-color: #d4a6a6;
+    border-radius: 15px;
+    height: 280px;
+}
+
+.link {
+    color: #000000;
+    font-size: 18px;
+    text-decoration: none;
 }

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<KinoSite.Models.Movie>
+@{
+    ViewData["Title"] = "ListMovie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Manage Movie</h1>
+<a asp-action="Create" asp-controller="Movie">Create movie</a>
+<form asp-controller="Movie" asp-action="MovieList" method="get">
+    <input type="text" id="searchString" name="SearchString" />
+    <input type="submit" value="Search" />
+</form>
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Release</th>
+        <th>Rating</th>
+        <th>Details</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="table">
+            <td>@item.Title</td>
+            <td>@item.DateRealise</td>
+            <td>@item.Rating</td>
+            <td><a asp-action="PlayMovie" asp-controller="Movie" asp-route-id="@item.Id">Visit</a></td>
+            <td><a asp-action="Edit" asp-controller="Movie" asp-route-id="@item.Id">Edit</a></td>
+            <td>
+                <form asp-action="Delete" asp-route-id="@item.Id" method="post">
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+
+    }
+</table>
+
+<script>
+    $('#searchString').on('keyup', function () {
+        var txtEnter = $(this).val();
+        $('table tr').each(function (result) {
+            if (result !== 0) {
+                var id = $(this).find("td:nth-child(2)").text();
+                if (id.indexOf(txtEnter) !== 0 && id.toLowerCase().indexOf(txtEnter.toLowerCase()) < 0) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            }
+        });
+    });
+</script>
+@*<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $('#searchString').keyup(function () {
+            let searchText = $('#searchString').val().toLowerCase();
+            $('.table').each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hise();
+                }
+                else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>*@

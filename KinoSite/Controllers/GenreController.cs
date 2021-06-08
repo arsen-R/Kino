@@ -32,12 +32,6 @@ namespace KinoSite.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            //List<SelectListItem> selectListItems = context.Categories.Select(c => new SelectListItem
-            //{
-            //    Text = c.NameCategory,
-            //    Value = c.Id.ToString()
-            //}).ToList();
-            //ViewBag.CategoryId = selectListItems;
             return View();
         }
         [HttpPost]
@@ -47,7 +41,7 @@ namespace KinoSite.Controllers
             {
                 context.Genres.Add(genre);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("GenreList", "Genre");
             }
             return View();
         }

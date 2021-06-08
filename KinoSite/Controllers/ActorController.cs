@@ -45,7 +45,7 @@ namespace KinoSite.Controllers
             {
                 context.Actors.Add(actor);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("ActorList", "Actor");
             }
             return View();
         }
@@ -71,7 +71,7 @@ namespace KinoSite.Controllers
             {
                 context.Actors.Update(actor);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("ActorList", "Actor");
             }
             return View();
         }
@@ -97,7 +97,7 @@ namespace KinoSite.Controllers
             {
                 context.Actors.Remove(actor);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("ActorList", "Actor");
             }
             return View();
         }

@@ -22,10 +22,30 @@ namespace KinoSite.Controllers
         {
             this.context = context;
         }
-
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View(context.Movies.ToList());
+        }
+        [HttpGet]
+        public IActionResult PlayMovie(int? Id)
+        {
+            if (Id == null)
+            {
+                return NotFound();
+            }
+            var movie = context.Movies
+                 .Select(m => m)
+                 .Where(m => m.Id == Id)
+                 .Include(m =>m.Directions)
+                 .Include(m => m.GenreMovies).ThenInclude(m => m.Genre)
+                 .Include(m => m.ActorMovies).ThenInclude(m => m.Actor)
+                 .FirstOrDefault();
+            return View(movie);
+        }
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpGet]
-        public async Task<IActionResult> ListMovie(string searchString)
+        public async Task<IActionResult> MovieList(string searchString)
         {
             var movies = context.Movies.Select(m => m);
             if (!String.IsNullOrEmpty(searchString))
@@ -92,27 +112,10 @@ namespace KinoSite.Controllers
                 }
                 context.SaveChanges();
 
-                return RedirectToAction("ListMovie");
+                return RedirectToAction("MovieList", "Movie");
             }
             return View();
         }
-
-        [Authorize(Roles = "Administrator, Moderator")]
-        [HttpGet]
-        public async Task<IActionResult> Details(int? Id)
-        {
-            if (Id == null)
-            {
-                return NotFound();
-            }
-            var movie = context.Movies
-                .Select(m => m)
-                .Where(m => m.Id == Id)
-                .Include(d => d.Directions)                
-                .FirstOrDefault();
-            return View(movie);
-        }
-
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpGet]
         public async Task<IActionResult> Edit(int? Id)
@@ -151,6 +154,7 @@ namespace KinoSite.Controllers
                 movie = await ActionWithImage(movie, Image);
                 context.Movies.Update(movie);
                 context.SaveChanges();
+
                 foreach (var item in GenreIdLists)
                 {
                     GenreMovie genreMovie = new GenreMovie()
@@ -176,7 +180,8 @@ namespace KinoSite.Controllers
                     context.ActorMovies.Update(actorMovie);
                 }
                 context.SaveChanges();
-                return RedirectToAction("Index", "Home");
+
+                return RedirectToAction("MovieList", "Movie");
             }
             return View();
         }
@@ -202,26 +207,11 @@ namespace KinoSite.Controllers
             {
                 context.Movies.Remove(movie);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("MovieList", "Movie");
             }
             return View();
         }
-
-        [HttpGet]
-        public async Task<IActionResult> Movie(int? Id)
-        {
-            if (Id == null)
-            {
-                return NotFound();
-            }
-            Movie movie = context.Movies
-                .Select(m => m)
-                .Where(m => m.Id == Id)
-                .Include(m => m.Directions)
-                .FirstOrDefault();           
-            return View(movie);
-        }
-
+       
         private async Task<Movie> ActionWithImage(Movie details, List<IFormFile> Image)
         {
             foreach (var item in Image)

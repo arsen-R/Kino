@@ -1,6 +1,6 @@
 ﻿@model KinoSite.Models.Movie
 @{
-    ViewData["Title"] = "Movie";
+    ViewData["Title"] = "PlayMovie";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container-main">
@@ -48,13 +48,12 @@
             <tr>
                 <td>Жанр:</td>
                 <td>
-                    @*<a href="#"><span class="genre">Пригоди</span></a>,
-                        <a href="#"><span class="genre">Комедії</span></a>,
-                        <a href="#"><span class="genre">Фентезі</span></a>,
-                        <a href="#"><span class="genre">Сімейні</span></a>,
-                        <a href="#"><span class="genre">Дитячі</span></a>,
-                        <a href="#"><span class="genre">Повнометражні</span></a>,
-                        <a href="#"><span class="genre">Зарубіжні</span></a>*@
+                    <p>
+                        @foreach (var item in Model.GenreMovies)
+                        {
+                            <span>@item.Genre.NameGenre </span>
+                        }
+                    </p>
                 </td>
             </tr>
             <tr>
@@ -66,44 +65,20 @@
                 <td>@Model.TimeLenght хв.</td>
             </tr>
             <tr>
-                <div class="list-persone">
-                    <td>У головних ролях:</td>
-                    <td>
-                        @*<span class="item">
-                                <span class="person-list" itemprop="actor">
-                                    <a href="#">
-                                        <span class="name">Майк Майерс</span>
-                                    </a>
-                                </span>
-                            </span>,
-                            <span class="item">
-                                <span class="person-list" itemprop="actor">
-                                    <a href="#">
-                                        <span class="name">Камерон Діаз</span>
-                                    </a>
-                                </span>
-                            </span>,
-                            <span class="item">
-                                <span class="person-list" itemprop="actor">
-                                    <a href="#">
-                                        <span class="name">Едді Мерфі</span>
-                                    </a>
-                                </span>
-                            </span>,
-                            <span class="item">
-                                <span class="person-list" itemprop="actor">
-                                    <a href="#">
-                                        <span class="name">Джон Лізгоу</span>
-                                    </a>
-                                </span>
-                            </span>*@
-                    </td>
-                </div>
+                <td>У головних ролях:</td>
+                <td>
+                   
+                        @foreach (var item in Model.ActorMovies)
+                        { 
+                            <span>@item.Actor.NameActor @item.Actor.SurnameActor </span>
+                        }
+                   
+                </td>
             </tr>
         </table>
     </div>
     <div class="description">
-        <h2>Про що мультфільм "Шрек"</h2>
+        <h2>Опис "@Model.Title"</h2>
         <div class="descriptions-text">
             @Model.Description
         </div>

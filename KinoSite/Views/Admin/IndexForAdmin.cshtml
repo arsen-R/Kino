@@ -3,38 +3,55 @@
     ViewData["Title"] = "IndexForAdmin";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container-movie">
-    <h1>Admin Panel</h1>
-    <div class="link">
+<div class="container-movie-admin">
+    <center>
+        <h1>Admin Panel</h1>
+    </center>
+    
+    <div class="link-container">
         <div class="link-item">
-            <a asp-action="RoleManager" asp-controller="Admin" class="image">
-                <img src="https://www.iconbunny.com/icons/media/catalog/product/6/4/640.6-admin-roles-icon-iconbunny.jpg" alt="">
-            </a>
-            <a asp-action="RoleManager" asp-controller="Admin">Role Manager</a>
+            <div class="link-item-container">
+                <a asp-action="MovieList" asp-controller="Movie" class="image">
+                    <img src="~/img/Movie.png" alt="movie">
+                </a>
+            </div>
+            <a asp-action="ListMovie" asp-controller="Movie" class="link">Manage Movie</a>
         </div>
+
         <div class="link-item">
-            <a asp-action="ListMovie" asp-controller="Movie" class="image">
-                <img src="https://cdn5.vectorstock.com/i/1000x1000/37/39/cinema-icon-design-vector-7553739.jpg" alt="">
-            </a>
-            <a asp-action="ListMovie" asp-controller="Movie">Manage Movie</a>
+            <div class="link-item-container">
+                <a asp-action="DirectionList" asp-controller="Direction" class="image">
+                    <img src="~/img/Direction.png" alt="">
+                </a>
+            </div>
+            <a asp-action="DirectionList" asp-controller="Direction" class="link">Manage Direction</a>
         </div>
+
         <div class="link-item">
-            <a asp-action="DirectionList" asp-controller="Direction" class="image">
-                <img src="https://www.kindpng.com/picc/m/581-5818694_cinema-director-chair-film-direction-icon-png-transparent.png" alt="">
-            </a>
-            <a asp-action="DirectionList" asp-controller="Direction">Manage Direction</a>
+            <div class="link-item-container">
+                <a asp-action="GenreList" asp-controller="Genre" class="image">
+                    <img src="~/img/Genre.png" alt="">
+                </a>
+            </div>
+            <a asp-action="GenreList" asp-controller="Genre" class="link">Manage Genre</a>
         </div>
+
         <div class="link-item">
-            <a asp-action="ActorList" asp-controller="Actor" class="image">
-                <img src="https://icon-library.com/images/actor-icon/actor-icon-23.jpg" alt="">
-            </a>
-            <a asp-action="ActorList" asp-controller="Actor">Manage Actor</a>
+            <div class="link-item-container">
+                <a asp-action="ActorList" asp-controller="Actor" class="image">
+                    <img src="~/img/Actor.png" alt="">
+                </a>
+            </div>
+            <a asp-action="ActorList" asp-controller="Actor" class="link">Manage Actor</a>
         </div>
+
         <div class="link-item">
-            <a asp-action="GenreList" asp-controller="Genre" class="image">
-                <img src="https://image.flaticon.com/icons/png/512/1710/1710164.png" alt="">
-            </a>
-            <a asp-action="GenreList" asp-controller="Genre">Manage Genre</a>
+            <div class="link-item-container">
+                <a asp-action="RoleManager" asp-controller="Admin" class="image">
+                    <img src="~/img/Role Model.png" alt="">
+                </a>
+            </div>
+            <a asp-action="RoleManager" asp-controller="Admin" class="link">Role Manager</a>
         </div>
     </div>
 </div>
