@@ -7,6 +7,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using KinoSite.Models;
 using KinoSite.Areas.Identity.Data;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.EntityFrameworkCore;
+
 namespace KinoSite.Controllers
 {
     [Authorize(Roles = "Administrator, Moderator")]
@@ -25,11 +29,23 @@ namespace KinoSite.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                direction = direction.Where(s => (s.SurnameDirection.Contains(searchString)) || (s.NameDirection.Contains(searchString)));
+                direction = direction.Where(s => (s.FullName.Contains(searchString)));
             }
             return View(direction.ToList());
         }
-
+        public async Task<IActionResult> Details(int? Id)
+        {
+            if(Id == null)
+            {
+                return NotFound();
+            }
+            var direction = context.Directions
+                    .Select(d => d)
+                    .Where(d => d.Id == Id)
+                    .Include(d => d.Movie)
+                    .FirstOrDefault();
+            return View(direction);
+        }
         [HttpGet]
         public IActionResult Create()
         {
@@ -37,10 +53,11 @@ namespace KinoSite.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Direction direction)
+        public async Task<IActionResult> Create(Direction direction, List<IFormFile> Image)
         {
             if (ModelState.IsValid)
             {
+                direction = await ActionWithImage(direction, Image);
                 context.Directions.Add(direction);
                 context.SaveChanges();
                 return RedirectToAction("DirectionList", "Direction");
@@ -61,10 +78,11 @@ namespace KinoSite.Controllers
         }
       
         [HttpPost]
-        public async Task<IActionResult> Edit(Direction direction)
+        public async Task<IActionResult> Edit(Direction direction, List<IFormFile> Image)
         {
             if (ModelState.IsValid)
             {
+                direction = await ActionWithImage(direction, Image);
                 context.Directions.Update(direction);
                 context.SaveChanges();
                 return RedirectToAction("DirectionList", "Direction");
@@ -94,6 +112,22 @@ namespace KinoSite.Controllers
                 return RedirectToAction("DirectionList", "Direction");
             }
             return View();
+        }
+
+        private async Task<Direction> ActionWithImage(Direction details, List<IFormFile> Image)
+        {
+            foreach (var item in Image)
+            {
+                if (item.Length > 0)
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        await item.CopyToAsync(stream);
+                        details.Image = stream.ToArray();
+                    }
+                }
+            }
+            return details;
         }
     }
 }

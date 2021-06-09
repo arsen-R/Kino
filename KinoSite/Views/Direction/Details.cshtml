@@ -1,0 +1,31 @@
+﻿@model KinoSite.Models.Direction
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-movie">
+    <h1>@Model.FullName </h1>
+    <div class="movie-container-block">
+        @foreach (var item in Model.Movie)
+        {
+            <div class="list-container-movie">
+                <div class="image-container">
+                    <a asp-action="PlayMovie" asp-controller="Movie" asp-route-id="@item.Id">
+                        @{
+                            var Base64 = Convert.ToBase64String(item.Image);
+                            var Imgsrc = string.Format("data:image/jpg; base64,{0}", Base64);
+                        }
+                        <img src="@Imgsrc" alt="" class="image-movie">
+                    </a>
+                </div>
+                <a asp-action="PlayMovie" asp-controller="Movie" asp-route-id="@item.Id" class="name-movie">@item.Title</a>
+            </div>
+        }
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication;
 using KinoSite.Models;
-using KinoSite.Data;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -43,6 +41,7 @@ namespace KinoSite.Controllers
                  .FirstOrDefault();
             return View(movie);
         }
+
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpGet]
         public async Task<IActionResult> MovieList(string searchString)
@@ -68,15 +67,21 @@ namespace KinoSite.Controllers
 
             List<SelectListItem> selectListItems1 = context.Actors.Select(a => new SelectListItem
             {
-                Text = a.SurnameActor,
+                Text = a.FullName,
                 Value = a.Id.ToString()
             }).ToList();
             ViewBag.ActorId = selectListItems1;
 
-            ViewBag.DirectionId = new SelectList(context.Directions, "Id", "SurnameDirection");
+            ViewBag.DirectionId = context.Directions.Select(d => new SelectListItem
+            {
+                Text = d.FullName,
+                Value = d.Id.ToString()
+            });
+            //
+            //new SelectList(context.Directions, "Id", "SurnameDirection");
             return View();
         }
-
+        
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost]
         public async Task<IActionResult> Create(Movie movie, List<IFormFile> Image, List<int> GenreIdList, List<int> ActorIdList)
@@ -134,17 +139,22 @@ namespace KinoSite.Controllers
 
             List<SelectListItem> selectListItems1 = context.Actors.Select(a => new SelectListItem
             {
-                Text = a.SurnameActor,
+                Text = a.FullName,
                 Value = a.Id.ToString()
             }).ToList();
             ViewBag.ActorId = selectListItems1;
 
-            ViewBag.DirectionId = new SelectList(context.Directions, "Id", "SurnameDirection");
+            ViewBag.DirectionId = context.Directions.Select(d => new SelectListItem
+            {
+                Text = d.FullName,
+                Value = d.Id.ToString()
+            });
+                //new SelectList(context.Directions, "Id", "SurnameDirection");
             ViewBag.Movies = Id;
             Movie movie = context.Movies.Select(m => m).Where(m => m.Id == Id).First();
             return View(movie);
         }
-
+        // Виправити Update
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost]
         public async Task<IActionResult> Edit(Movie movie, List<IFormFile> Image, List<int> GenreIdLists, List<int> ActorIdLists)

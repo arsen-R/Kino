@@ -39,7 +39,7 @@
                 <td>
                     <span class="item">
                         <span class="person-list" itemprop="director">
-                            <p>@Model.Directions.NameDirection @Model.Directions.SurnameDirection</p>
+                            <p>@Model.Directions.FullName</p>
                         </span>
                     </span>
                 </td>
@@ -70,7 +70,7 @@
                    
                         @foreach (var item in Model.ActorMovies)
                         { 
-                            <span>@item.Actor.NameActor @item.Actor.SurnameActor </span>
+                            <a asp-action="Details" asp-controller="Actor" asp-route-id="@item.ActorId">@item.Actor.FullName </a>
                         }
                    
                 </td>

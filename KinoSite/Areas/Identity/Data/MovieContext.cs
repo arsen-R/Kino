@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KinoSite.Models;
+
 namespace KinoSite.Areas.Identity.Data
 {
     public class MovieContext : DbContext

@@ -4,14 +4,16 @@ using KinoSite.Areas.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KinoSite.Migrations.Movie
 {
     [DbContext(typeof(MovieContext))]
-    partial class MovieContextModelSnapshot : ModelSnapshot
+    [Migration("20210609183554_AddColumnFullNameDirection")]
+    partial class AddColumnFullNameDirection
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,6 +33,12 @@ namespace KinoSite.Migrations.Movie
 
                     b.Property<byte[]>("Image")
                         .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("NameActor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SurnameActor")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -64,6 +72,12 @@ namespace KinoSite.Migrations.Movie
 
                     b.Property<byte[]>("Image")
                         .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("NameDirection")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SurnameDirection")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
