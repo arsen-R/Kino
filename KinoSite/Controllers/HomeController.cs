@@ -20,7 +20,7 @@ namespace KinoSite.Controllers
             this.context = context;
         }
 
-        public IActionResult Index(string searchString)
+        public IActionResult Index(string searchString, int PageNumber = 1)
         {
             //var movies = from m in context.Movies
             //             select m;
@@ -29,8 +29,13 @@ namespace KinoSite.Controllers
             {
                 movies = movies.Where(s => s.Title.Contains(searchString));
             }
-
+            ViewBag.TotalPages = Math.Ceiling(movies.Count() / 30.0);
+            movies = movies.Skip((PageNumber - 1) * 30).Take(30);
             return View(movies.ToList());
+            //ViewBag.TotalPages = Math.Ceiling(movies.Count() / 30.0);
+            //movies = movies.Skip((PageNumber - 1) * 30).Take(30);
+
+            //return View(movies.ToList());
         }
 
         public IActionResult Privacy()

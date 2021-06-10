@@ -23,7 +23,7 @@ namespace KinoSite.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> DirectionList(string searchString)
+        public async Task<IActionResult> DirectionList(string searchString, int PageNumber = 1)
         {
             var direction = context.Directions.Select(m => m);
 
@@ -31,6 +31,10 @@ namespace KinoSite.Controllers
             {
                 direction = direction.Where(s => (s.FullName.Contains(searchString)));
             }
+
+            ViewBag.TotalPages = Math.Ceiling(direction.Count() / 15.0);
+            direction = direction.Skip((PageNumber - 1) * 15).Take(15);
+
             return View(direction.ToList());
         }
         public async Task<IActionResult> Details(int? Id)

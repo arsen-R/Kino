@@ -45,4 +45,28 @@
         </tr>
     }
 </table>
+<nav>
+    @{
+        double totalPage = ViewBag.TotalPages;
+        <ul class="pagination">
+            @for (int i = 1; i <= totalPage; i++)
+            {
+                @if (i == ViewBag.TotalPages)
+                {
+                    <li class="page-item">
+                        @Html.ActionLink(i.ToString(), "DirectionList", "Direction", new { PageNumber = i }, new { @class = "page-link" })
+                    </li>
 
+                }
+                else
+                {
+                    <li class="page-item">
+                        @Html.ActionLink(i.ToString(), "DirectionList", "Direction", new { PageNumber = i }, new { @class = "page-link" })
+                    </li>
+
+                }
+
+            }
+        </ul>
+    }
+</nav>

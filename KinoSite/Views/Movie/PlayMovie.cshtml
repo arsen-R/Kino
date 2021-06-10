@@ -37,11 +37,7 @@
             <tr>
                 <td>Режисер:</td>
                 <td>
-                    <span class="item">
-                        <span class="person-list" itemprop="director">
-                            <p>@Model.Directions.FullName</p>
-                        </span>
-                    </span>
+                    @Model.Directions.FullName
                 </td>
             </tr>
 
@@ -51,7 +47,7 @@
                     <p>
                         @foreach (var item in Model.GenreMovies)
                         {
-                            <span>@item.Genre.NameGenre </span>
+                            @item.Genre.NameGenre
                         }
                     </p>
                 </td>

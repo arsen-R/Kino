@@ -24,7 +24,7 @@ namespace KinoSite.Controllers
 
         
         [HttpGet]
-        public async Task<IActionResult> ActorList(string searchString)
+        public async Task<IActionResult> ActorList(string searchString, int PageNumber = 1)
         {
             var actor = context.Actors.Select(m => m);
 
@@ -32,6 +32,8 @@ namespace KinoSite.Controllers
             {
                 actor = actor.Where(s => (s.FullName.Contains(searchString)));
             }
+            ViewBag.TotalPages = Math.Ceiling(actor.Count() / 15.0);
+            actor = actor.Skip((PageNumber - 1) * 15).Take(15);
             return View(actor.ToList());
         }
 

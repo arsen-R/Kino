@@ -21,8 +21,15 @@ namespace KinoSite.Controllers
             this.context = context;
         }
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string searchString, int PageNumber = 1)
         {
+            var movies = context.Movies.Select(m => m);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(s => s.Title.Contains(searchString));
+            }
+            ViewBag.TotalPages = Math.Ceiling(movies.Count() / 30.0);
+            movies = movies.Skip((PageNumber - 1) * 30).Take(30);
             return View(context.Movies.ToList());
         }
         [HttpGet]
@@ -44,13 +51,16 @@ namespace KinoSite.Controllers
 
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpGet]
-        public async Task<IActionResult> MovieList(string searchString)
+        public async Task<IActionResult> MovieList(string searchString, int PageNumber = 1)
         {
             var movies = context.Movies.Select(m => m);
             if (!String.IsNullOrEmpty(searchString))
             {
                 movies = movies.Where(s => s.Title.Contains(searchString));
             }
+
+            ViewBag.TotalPages = Math.Ceiling(movies.Count() / 15.0);
+            movies = movies.Skip((PageNumber - 1) * 15).Take(15);
             return View(movies.ToList());
         }
 
@@ -77,8 +87,6 @@ namespace KinoSite.Controllers
                 Text = d.FullName,
                 Value = d.Id.ToString()
             });
-            //
-            //new SelectList(context.Directions, "Id", "SurnameDirection");
             return View();
         }
         

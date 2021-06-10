@@ -48,6 +48,31 @@
 
     }
 </table>
+<nav>
+    @{
+        double totalPage = ViewBag.TotalPages;
+        <ul class="pagination">
+            @for (int i = 1; i <= totalPage; i++)
+            {
+                @if (i == ViewBag.TotalPages)
+                {
+                    <li class="page-item">
+                        @Html.ActionLink(i.ToString(), "MovieList", "Movie", new { PageNumber = i }, new { @class = "page-link" })
+                    </li>
+
+                }
+                else
+                {
+                    <li class="page-item">
+                        @Html.ActionLink(i.ToString(), "MovieList", "Movie", new { PageNumber = i }, new { @class = "page-link" })
+                    </li>
+
+                }
+
+            }
+        </ul>
+    }
+</nav>
 
 <script>
     $('#searchString').on('keyup', function () {
@@ -66,21 +91,21 @@
     });
 </script>
 @*<script>
-    $(document).ready(function () {
-        function Contains(text_one, text_two) {
-            if (text_one.indexOf(text_two) != -1)
-                return true;
-        }
-        $('#searchString').keyup(function () {
-            let searchText = $('#searchString').val().toLowerCase();
-            $('.table').each(function () {
-                if (!Contains($(this).text().toLowerCase(), searchText)) {
-                    $(this).hise();
-                }
-                else {
-                    $(this).show();
-                }
+        $(document).ready(function () {
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1)
+                    return true;
+            }
+            $('#searchString').keyup(function () {
+                let searchText = $('#searchString').val().toLowerCase();
+                $('.table').each(function () {
+                    if (!Contains($(this).text().toLowerCase(), searchText)) {
+                        $(this).hise();
+                    }
+                    else {
+                        $(this).show();
+                    }
+                });
             });
         });
-    });
-</script>*@
+    </script>*@

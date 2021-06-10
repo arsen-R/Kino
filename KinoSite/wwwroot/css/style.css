@@ -227,25 +227,7 @@ a {
     border: none;
     border-radius: 15px;
 }
-/* =============== Pagination =============== */
-.pagination {
-    position: relative;
-    padding: 35px 0;
-    text-align: center;
-}
 
-.page {
-    color: #000000;
-    padding: 15px;
-    border: none;
-    border-radius: 15px;
-    text-decoration: none;
-}
-
-.active, .pagination a:hover {
-    color: #fff;
-    background-color: #000000;
-}
 /* ======================================= */
 /* =============== Footer =============== */
 /* ======================================= */
