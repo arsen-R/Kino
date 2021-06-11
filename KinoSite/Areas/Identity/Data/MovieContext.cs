@@ -18,7 +18,7 @@ namespace KinoSite.Areas.Identity.Data
         public DbSet<Direction> Directions { get; set; }       
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Actor> Actors { get; set; }
-
+        public DbSet<Category> Categories { get; set; }
         public DbSet<GenreMovie> GenreMovies { get; set; }
         public DbSet<ActorMovie> ActorMovies { get; set; }
 

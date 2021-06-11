@@ -52,6 +52,21 @@ namespace KinoSite.Migrations.Movie
                     b.ToTable("ActorMovies");
                 });
 
+            modelBuilder.Entity("KinoSite.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("NameCategory")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("KinoSite.Models.Direction", b =>
                 {
                     b.Property<int>("Id")
@@ -110,6 +125,9 @@ namespace KinoSite.Migrations.Movie
                     b.Property<string>("Age")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("CountryRealise")
                         .HasColumnType("nvarchar(max)");
 
@@ -141,6 +159,8 @@ namespace KinoSite.Migrations.Movie
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("DirectionId");
 
@@ -187,11 +207,19 @@ namespace KinoSite.Migrations.Movie
 
             modelBuilder.Entity("KinoSite.Models.Movie", b =>
                 {
+                    b.HasOne("KinoSite.Models.Category", "Category")
+                        .WithMany("Movies")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("KinoSite.Models.Direction", "Directions")
                         .WithMany("Movie")
                         .HasForeignKey("DirectionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Category");
 
                     b.Navigation("Directions");
                 });
@@ -199,6 +227,11 @@ namespace KinoSite.Migrations.Movie
             modelBuilder.Entity("KinoSite.Models.Actor", b =>
                 {
                     b.Navigation("ActorMovies");
+                });
+
+            modelBuilder.Entity("KinoSite.Models.Category", b =>
+                {
+                    b.Navigation("Movies");
                 });
 
             modelBuilder.Entity("KinoSite.Models.Direction", b =>

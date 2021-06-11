@@ -23,7 +23,7 @@
     <nav>
     @{
         double totalPage = ViewBag.TotalPages;
-        <ul class="pagination">
+        <ul class="pagination justify-content-center">
             @for (int i = 1; i <= totalPage; i++)
             {
                 @if (i == ViewBag.TotalPages)

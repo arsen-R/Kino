@@ -20,24 +20,26 @@ namespace KinoSite.Controllers
             this.context = context;
         }
 
-        public IActionResult Index(string searchString, int PageNumber = 1)
+        public IActionResult Index(int PageNumber = 1)
         {
             //var movies = from m in context.Movies
             //             select m;
+            var movies = context.Movies.Select(m => m);
+           
+            ViewBag.TotalPages = Math.Ceiling(movies.Count() / 30.0);
+            movies = movies.Skip((PageNumber - 1) * 30).Take(30);
+            return View(movies.ToList());
+            //.OrderBy(m => m.Title).ThenByDescending(m => m.Id)
+        }
+        public IActionResult Search(string searchString)
+        {
             var movies = context.Movies.Select(m => m);
             if (!String.IsNullOrEmpty(searchString))
             {
                 movies = movies.Where(s => s.Title.Contains(searchString));
             }
-            ViewBag.TotalPages = Math.Ceiling(movies.Count() / 30.0);
-            movies = movies.Skip((PageNumber - 1) * 30).Take(30);
-            return View(movies.ToList());
-            //ViewBag.TotalPages = Math.Ceiling(movies.Count() / 30.0);
-            //movies = movies.Skip((PageNumber - 1) * 30).Take(30);
-
-            //return View(movies.ToList());
+            return View(movies);
         }
-
         public IActionResult Privacy()
         {
             return View();

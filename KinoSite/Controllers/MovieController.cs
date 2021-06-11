@@ -21,7 +21,7 @@ namespace KinoSite.Controllers
             this.context = context;
         }
         [HttpGet]
-        public IActionResult Index(string searchString, int PageNumber = 1)
+        public IActionResult Movie(string searchString, int PageNumber = 1)
         {
             var movies = context.Movies.Select(m => m);
             if (!String.IsNullOrEmpty(searchString))
@@ -29,9 +29,21 @@ namespace KinoSite.Controllers
                 movies = movies.Where(s => s.Title.Contains(searchString));
             }
             ViewBag.TotalPages = Math.Ceiling(movies.Count() / 30.0);
-            movies = movies.Skip((PageNumber - 1) * 30).Take(30);
-            return View(context.Movies.ToList());
+            movies = movies.Skip((PageNumber - 1) * 30).Take(30).Include(m => m.Category);
+            return View(movies.ToList());
         }
+        //[HttpGet]
+        //public IActionResult TvSerias(string searchString, int PageNumber = 1)
+        //{
+        //    var movies = context.Movies.Select(m => m);
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        movies = movies.Where(s => s.Title.Contains(searchString));
+        //    }
+        //    ViewBag.TotalPages = Math.Ceiling(movies.Count() / 30.0);
+        //    movies = movies.Skip((PageNumber - 1) * 30).Take(30).Include(m => m.Category);
+        //    return View(movies.ToList());
+        //}
         [HttpGet]
         public IActionResult PlayMovie(int? Id)
         {
@@ -43,6 +55,7 @@ namespace KinoSite.Controllers
                  .Select(m => m)
                  .Where(m => m.Id == Id)
                  .Include(m =>m.Directions)
+                 .Include(m => m.Category)
                  .Include(m => m.GenreMovies).ThenInclude(m => m.Genre)
                  .Include(m => m.ActorMovies).ThenInclude(m => m.Actor)
                  .FirstOrDefault();
@@ -87,6 +100,13 @@ namespace KinoSite.Controllers
                 Text = d.FullName,
                 Value = d.Id.ToString()
             });
+
+            ViewBag.CategoryId = context.Categories.Select(c => new SelectListItem
+            {
+                Text = c.NameCategory,
+                Value = c.Id.ToString()
+            });
+
             return View();
         }
         
@@ -157,7 +177,13 @@ namespace KinoSite.Controllers
                 Text = d.FullName,
                 Value = d.Id.ToString()
             });
-                //new SelectList(context.Directions, "Id", "SurnameDirection");
+
+            ViewBag.CategoryId = context.Categories.Select(c => new SelectListItem
+            {
+                Text = c.NameCategory,
+                Value = c.Id.ToString()
+            });
+            //new SelectList(context.Directions, "Id", "SurnameDirection");
             ViewBag.Movies = Id;
             Movie movie = context.Movies.Select(m => m).Where(m => m.Id == Id).First();
             return View(movie);

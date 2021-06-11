@@ -44,12 +44,10 @@
             <tr>
                 <td>Жанр:</td>
                 <td>
-                    <p>
-                        @foreach (var item in Model.GenreMovies)
-                        {
-                            @item.Genre.NameGenre
-                        }
-                    </p>
+                    @foreach (var item in Model.GenreMovies)
+                    {
+                        <span>@item.Genre.NameGenre </span> 
+                    } 
                 </td>
             </tr>
             <tr>
@@ -84,9 +82,10 @@
     </div>
     <center>
         @{
-            var link = "https://28.svetacdn.in/MrJszJIePquE/movie/";
+            var catory = Model.Category.NameCategory;
+            var link = "https://28.svetacdn.in/MrJszJIePquE/";
             var model = Model.Video;
-            var movieLink = link + model;
+            var movieLink = link + catory + "/" + model;
         }
         <iframe src="@movieLink" width="1020" height="532" frameborder="0" allowfullscreen></iframe>
     </center>
