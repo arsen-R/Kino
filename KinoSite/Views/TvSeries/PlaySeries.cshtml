@@ -46,8 +46,8 @@
                 <td>
                     @foreach (var item in Model.GenreMovies)
                     {
-                        <span>@item.Genre.NameGenre </span> 
-                    } 
+                        <span>@item.Genre.NameGenre </span>
+                    }
                 </td>
             </tr>
             <tr>
@@ -61,12 +61,12 @@
             <tr>
                 <td>У головних ролях:</td>
                 <td>
-                   
-                        @foreach (var item in Model.ActorMovies)
-                        { 
-                            <a asp-action="Details" asp-controller="Actor" asp-route-id="@item.ActorId">@item.Actor.FullName </a>
-                        }
-                   
+
+                    @foreach (var item in Model.ActorMovies)
+                    {
+                        <a asp-action="Details" asp-controller="Actor" asp-route-id="@item.ActorId">@item.Actor.FullName </a>
+                    }
+
                 </td>
             </tr>
         </table>
@@ -78,7 +78,7 @@
         </div>
     </div>
     <div class="movie-video">
-       
+
     </div>
     <center>
         @{

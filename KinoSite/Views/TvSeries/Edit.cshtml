@@ -1,18 +1,19 @@
 ﻿@model KinoSite.Models.Movie
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<h1>Edit</h1>
 
 <h4>Movie</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
@@ -33,24 +34,23 @@
                 <input asp-for="DateRealise" class="form-control" />
                 <span asp-validation-for="DateRealise" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="DirectionId" class="control-label"></label>
                 <select asp-for="DirectionId" class="form-control" asp-items="ViewBag.DirectionId"></select>
-                <span asp-validation-for="DirectionId" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label class="control-label"></label>
-                <select class="form-control" id="multiSelect" asp-items="ViewBag.GenreId" name="GenreIdList" multiple>
+                <select class="form-control" id="multiSelect" asp-items="ViewBag.GenreId" name="GenreIdLists" multiple>
                 </select>
             </div>
 
             <div class="form-group">
                 <label class="control-label"></label>
-                <select class="form-control" id="multiActorSelect" asp-items="ViewBag.ActorId" name="ActorIdList" multiple>
+                <select class="form-control" id="multiActorSelect" asp-items="ViewBag.ActorId" name="ActorIdLists" multiple>
                 </select>
             </div>
-
 
             <div class="form-group">
                 <label asp-for="CountryRealise" class="control-label"></label>
@@ -77,28 +77,34 @@
                 <input type="file" asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
+            @*<div class="form-group">
+                    <label asp-for="CategoryId" class="control-label"></label>
+                    <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>*@
             <div class="form-group">
                 <label asp-for="Video" class="control-label"></label>
-                <input asp-for="Video" class="form-control" />
+                <input asp-for="Video" name="Video" class="form-control" />
                 <span asp-validation-for="Video" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
+
 <div>
-    <a asp-action="Index" asp-controller="Home">Back to List</a>
+    <a asp-action="ListMovie" asp-controller="Movie">Back to List</a>
 </div>
 
 @section Scripts {
-<script>
+    <script>
     $(function () {
         $("#multiSelect").chosen();
     });
-    $(function () {
-        $("#multiActorSelect").chosen();
-    });
-</script>
+        $(function () {
+            $("#multiActorSelect").chosen();
+        });
+    </script>
 } 

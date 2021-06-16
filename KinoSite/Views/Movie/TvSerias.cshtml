@@ -8,7 +8,7 @@
 
         @foreach (var item in Model)
         {
-            @if (item.CategoryId == 1)
+            @if (item.CategoryId == 3)
             {
                 <div class="list-container-movie">
                     <div class="image-container">
@@ -34,14 +34,14 @@
                 @if (i == ViewBag.TotalPages)
                 {
                     <li class="page-item">
-                        @Html.ActionLink(i.ToString(), "Movie", "Movie", new { PageNumber = i }, new { @class = "page-link" })
+                        @Html.ActionLink(i.ToString(), "Index", "Movie", new { PageNumber = i }, new { @class = "page-link" })
                     </li>
 
                 }
                 else
                 {
                     <li class="page-item">
-                        @Html.ActionLink(i.ToString(), "Movie", "Movie", new { PageNumber = i }, new { @class = "page-link" })
+                        @Html.ActionLink(i.ToString(), "Index", "Movie", new { PageNumber = i }, new { @class = "page-link" })
                     </li>
 
                 }

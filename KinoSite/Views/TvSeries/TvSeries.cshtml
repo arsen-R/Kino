@@ -1,0 +1,52 @@
+﻿@model IEnumerable<KinoSite.Models.Movie>
+@{
+    ViewData["Title"] = "Tv-Series Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-movie">
+    <div class="movie-container-block">
+
+        @foreach (var item in Model)
+        {
+            @if (item.CategoryId == 3)
+            {
+                <div class="list-container-movie">
+                    <div class="image-container">
+                        <a asp-action="PlaySeries" asp-controller="TvSeries" asp-route-id="@item.Id">
+                            @{
+                                var base64 = Convert.ToBase64String(item.Image);
+                                var imgsrc = string.Format("data:image/jpg; base64,{0}", base64);
+                            }
+                            <img src="@imgsrc" alt="" class="image-movie">
+                        </a>
+                    </div>
+                    <a asp-action="PlaySeries" asp-controller="TvSeries" asp-route-id="@item.Id" class="name-movie">@item.Title</a>
+                </div>
+            }
+
+        }
+    </div>
+    @*@{
+            double totalPage = ViewBag.TotalPages;
+            <ul class="pagination justify-content-center">
+                @for (int i = 1; i <= totalPage; i++)
+                {
+                    @if (i == ViewBag.TotalPages)
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(i.ToString(), "Index", "Movie", new { PageNumber = i }, new { @class = "page-link" })
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(i.ToString(), "Index", "Movie", new { PageNumber = i }, new { @class = "page-link" })
+                        </li>
+
+                    }
+
+                }
+            </ul>
+        }*@
+</div>
