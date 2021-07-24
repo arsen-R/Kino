@@ -46,8 +46,8 @@
                 <td>
                     @foreach (var item in Model.GenreMovies)
                     {
-                        <span>@item.Genre.NameGenre </span> 
-                    } 
+                        <span>@item.Genre.NameGenre </span>
+                    }
                 </td>
             </tr>
             <tr>
@@ -61,12 +61,12 @@
             <tr>
                 <td>У головних ролях:</td>
                 <td>
-                   
-                        @foreach (var item in Model.ActorMovies)
-                        { 
-                            <a asp-action="Details" asp-controller="Actor" asp-route-id="@item.ActorId">@item.Actor.FullName </a>
-                        }
-                   
+
+                    @foreach (var item in Model.ActorMovies)
+                    {
+                        <a asp-action="Details" asp-controller="Actor" asp-route-id="@item.ActorId">@item.Actor.FullName </a>
+                    }
+
                 </td>
             </tr>
         </table>
@@ -78,7 +78,7 @@
         </div>
     </div>
     <div class="movie-video">
-       
+
     </div>
     <center>
         @{
@@ -89,4 +89,33 @@
         }
         <iframe src="@movieLink" width="1020" height="532" frameborder="0" allowfullscreen></iframe>
     </center>
+    <div class="row">
+        <h3>Коментарії</h3>
+        @{
+            await Html.RenderPartialAsync("_MainComment", new CommentViewModel { MovieId = Model.Id, MainCommentId = 0 });
+        }
+        @foreach (var c in Model.MainComments)
+        {
+            <div class="comentar">
+                <div class="commentar-text">
+                    <div class="user-name">"UserName" @c.Created </div>
+                    <p class="coment-texblock"><span class="text">@c.Message</span></p>
+                </div>
+            </div>
+            <div style="margin-left: 30px">
+                @foreach (var sc in c.SubComments)
+                {
+                    <div class="comentar">
+                        <div class="commentar-text">
+                            <div class="user-name">"UserName" @sc.Created </div>
+                            <p class="coment-texblock"><span class="text">@sc.Message</span></p>
+                        </div>
+                    </div>
+                }
+                @{
+                    await Html.RenderPartialAsync("_MainComment", new CommentViewModel { MovieId = Model.Id, MainCommentId = c.Id });
+                }
+            </div>
+        }
+    </div>
 </div>

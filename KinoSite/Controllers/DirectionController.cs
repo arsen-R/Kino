@@ -10,6 +10,7 @@ using KinoSite.Areas.Identity.Data;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace KinoSite.Controllers
 {

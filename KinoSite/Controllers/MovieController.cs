@@ -10,15 +10,60 @@ using System.IO;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KinoSite.Areas.Identity.Data;
-
+using KinoSite.Models.Comments;
+using KinoSite.ViewModel;
+using Microsoft.AspNetCore.Identity;
 namespace KinoSite.Controllers
 {
     public class MovieController : Controller
     {
         MovieContext context;
-        public MovieController(MovieContext context)
+        private UserManager<ApplicationUser> _userManager;
+        public MovieController(MovieContext context, UserManager<ApplicationUser> userManager)
         {
             this.context = context;
+            _userManager = userManager;   
+        }
+        [HttpPost]
+        public async  Task<IActionResult> Comment(CommentViewModel vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("PlayMovie", new { Id = vm.MovieId });
+            }
+            if (User.Identity.IsAuthenticated)
+            {
+                var post = context.Movies
+                .Select(m => m)
+                .Where(m => m.Id == vm.MovieId)
+                .Include(m => m.MainComments)
+                .ThenInclude(mc => mc.SubComments)
+                .FirstOrDefault();
+                if (vm.MainCommentId == 0)
+                {
+                    post.MainComments = post.MainComments ?? new List<MainComment>();
+                    post.MainComments.Add(new MainComment
+                    {
+                        Message = vm.Message,
+                        Created = DateTime.Now,
+                    });
+                    context.Movies.Update(post);
+                }
+                else
+                {
+                    var comment = new SubComment
+                    {
+                        MainCommentId = vm.MainCommentId,
+                        Message = vm.Message,
+                        Created = DateTime.Now
+                    };
+                    context.SubComments.Add(comment);
+                }
+                await context.SaveChangesAsync();
+
+                return RedirectToAction("PlayMovie", new { Id = vm.MovieId });
+            }
+            return RedirectToAction("PlayMovie", new { Id = vm.MovieId });
         }
         [HttpGet]
         public IActionResult Movie(string searchString, int PageNumber = 1)
@@ -44,6 +89,7 @@ namespace KinoSite.Controllers
                  .Where(m => m.Id == Id)
                  .Include(m =>m.Directions)
                  .Include(m => m.Category)
+                 .Include(m => m.MainComments).ThenInclude(m => m.SubComments)
                  .Include(m => m.GenreMovies).ThenInclude(m => m.Genre)
                  .Include(m => m.ActorMovies).ThenInclude(m => m.Actor)
                  .FirstOrDefault();

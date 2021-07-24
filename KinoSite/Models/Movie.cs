@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KinoSite.Models.Comments;
 
 namespace KinoSite.Models
 {
@@ -27,5 +28,7 @@ namespace KinoSite.Models
 
         public byte[] Image { get; set; }
         public string Video { get; set; }
+
+        public List<MainComment> MainComments { get; set; }
     }
 }

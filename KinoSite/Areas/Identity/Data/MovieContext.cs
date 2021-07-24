@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KinoSite.Models;
-
+using KinoSite.Models.Comments;
 namespace KinoSite.Areas.Identity.Data
 {
     public class MovieContext : DbContext
@@ -21,6 +21,8 @@ namespace KinoSite.Areas.Identity.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<GenreMovie> GenreMovies { get; set; }
         public DbSet<ActorMovie> ActorMovies { get; set; }
+        public DbSet<MainComment> MainComments { get; set; }
+        public DbSet<SubComment> SubComments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

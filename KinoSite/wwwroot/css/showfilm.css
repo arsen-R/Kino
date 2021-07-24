@@ -162,12 +162,10 @@ video {
 
 .comentar {
     margin: 15px 0;
-    background-color: #fbfbfb;
+    background-color: #a9a8a8;
     border-radius: 15px;
     padding: 10px 0 5px 15px;
-    width: 1230px;
-    display: flex;
-    justify-content: safe;
+    width: 650px;
 }
 
 .icon-account {

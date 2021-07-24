@@ -1,0 +1,18 @@
+﻿@model CommentViewModel
+@{
+
+}
+<div>
+    @*@if (User.Identity.IsAuthenticated)
+    {*@
+        <form method="post" asp-controller="Movie" asp-action="Comment">
+            <input asp-for="MovieId" type="hidden" />
+            <input asp-for="MainCommentId" type="hidden" />
+            @*<textarea asp-for="Message"></textarea>*@
+            <input asp-for="Message"/>
+            <button type="submit">
+                Submit
+            </button>
+        </form>
+    @*}*@
+</div>
