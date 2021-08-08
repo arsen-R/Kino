@@ -30,6 +30,6 @@ namespace KinoSite.Models
         public byte[] Image { get; set; }
         public string Video { get; set; }
 
-        //public List<MainComment> MainComments { get; set; }
+        public List<MainComment> MainComments { get; set; }
     }
 }

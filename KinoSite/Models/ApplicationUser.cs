@@ -9,6 +9,6 @@ namespace KinoSite.Areas.Identity.Data
     {
         public string Name { get; set; }
 
-        //public ICollection<Comment> Comments { get; set; }
+        public ICollection<MainComment> MainComments { get; set; }
     }
 }

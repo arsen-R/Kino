@@ -36,6 +36,7 @@ namespace KinoSite
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                     .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationContext>();
+            services.AddHttpContextAccessor();
 
             services.AddAuthentication();
             services.AddRazorPages();

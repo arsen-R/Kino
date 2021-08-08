@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KinoSite.Areas.Identity.Data;
 using KinoSite.Models;
+using KinoSite.Models.Comments;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -25,8 +26,8 @@ namespace KinoSite.Data
         //public DbSet<Category> Categories { get; set; }
         //public DbSet<GenreMovie> GenreMovies { get; set; }
         //public DbSet<ActorMovie> ActorMovies { get; set; }
-        //public DbSet<MainComment> MainComments { get; set; }
-        //public DbSet<SubComment> SubComments { get; set; }
+        public DbSet<MainComment> MainComments { get; set; }
+        public DbSet<SubComment> SubComments { get; set; }
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{

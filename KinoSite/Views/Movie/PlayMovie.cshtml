@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td>Слоган</td>
-                <td>@Model.Slogan</td>
+                <td>"@Model.Slogan"</td>
             </tr>
             <tr>
                 <td>Дата виходу:</td>
@@ -91,14 +91,14 @@
     </center>
     <div class="row">
         <h3>Коментарії</h3>
-        @*@{
+        @{
             await Html.RenderPartialAsync("_MainComment", new CommentViewModel { MovieId = Model.Id, MainCommentId = 0 });
         }
         @foreach (var c in Model.MainComments)
         {
             <div class="comentar">
                 <div class="commentar-text">
-                    <div class="user-name">"UserName" @c.Created </div>
+                    <div class="user-name">@c.UserName  @c.Created </div>
                     <p class="coment-texblock"><span class="text">@c.Message</span></p>
                 </div>
             </div>
@@ -116,6 +116,6 @@
                     await Html.RenderPartialAsync("_MainComment", new CommentViewModel { MovieId = Model.Id, MainCommentId = c.Id });
                 }
             </div>
-        }*@
+        }
     </div>
 </div>
