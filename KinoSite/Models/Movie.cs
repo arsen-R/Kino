@@ -16,19 +16,20 @@ namespace KinoSite.Models
         public string CountryRealise { get; set; }
         public string Description { get; set; }
 
-        public int DirectionId { get; set; }
-        public Direction Directions { get; set; }
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        //public int DirectionId { get; set; }
+        //public Direction Directions { get; set; }
+
+        //public int CategoryId { get; set; }
+        //public Category Category { get; set; }
         public string Age { get; set; }
         public int TimeLenght { get; set; }
 
-        public List<GenreMovie> GenreMovies { get; set; }
-        public List<ActorMovie> ActorMovies { get; set; }
+        //public List<GenreMovie> GenreMovies { get; set; }
+        //public List<ActorMovie> ActorMovies { get; set; }
 
         public byte[] Image { get; set; }
         public string Video { get; set; }
 
-        public List<MainComment> MainComments { get; set; }
+        //public List<MainComment> MainComments { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model KinoSite.Models.Movie
+﻿@*@model KinoSite.Models.Movie
 
 @{
     ViewData["Title"] = "Edit";
@@ -77,11 +77,6 @@
                 <input type="file" asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
-                    <label asp-for="CategoryId" class="control-label"></label>
-                    <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
-                    <span asp-validation-for="CategoryId" class="text-danger"></span>
-                </div>*@
             <div class="form-group">
                 <label asp-for="Video" class="control-label"></label>
                 <input asp-for="Video" name="Video" class="form-control" />
@@ -107,4 +102,4 @@
             $("#multiActorSelect").chosen();
         });
     </script>
-} 
+}*@ 

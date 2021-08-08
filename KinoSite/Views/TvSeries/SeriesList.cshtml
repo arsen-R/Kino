@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KinoSite.Models.Movie>
+﻿@*@model IEnumerable<KinoSite.Models.Movie>
 @{
     ViewData["Title"] = "ListMovie";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,8 +18,6 @@
         <th>Рейтинг</th>
         <th>Категорії</th>
         <th colspan="3">Операції</th>
-        @*<th>Змінити</th>
-            <th>Видалити</th>*@
     </tr>
 
     @foreach (var item in Model)
@@ -93,7 +91,7 @@
             }
         });
     });
-</script>
+</script>*@
 @*<script>
         $(document).ready(function () {
             function Contains(text_one, text_two) {

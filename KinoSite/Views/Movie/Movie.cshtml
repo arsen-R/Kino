@@ -8,8 +8,8 @@
 
         @foreach (var item in Model)
         {
-            @if (item.CategoryId == 1)
-            {
+            //@if (item.CategoryId == 1)
+            //{
                 <div class="list-container-movie">
                     <div class="image-container">
                         <a asp-action="PlayMovie" asp-controller="Movie" asp-route-id="@item.Id">
@@ -22,7 +22,7 @@
                     </div>
                     <a asp-action="PlayMovie" asp-controller="Movie" asp-route-id="@item.Id" class="name-movie">@item.Title</a>
                 </div>
-            }
+            //}
 
         }
     </div>
@@ -50,3 +50,4 @@
         </ul>
     }*@
 </div>
+    

@@ -13,8 +13,8 @@ namespace KinoSite.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        MovieContext context;
-        public HomeController(ILogger<HomeController> logger, MovieContext context)
+        ApplicationContext context;
+        public HomeController(ILogger<HomeController> logger, ApplicationContext context)
         {
             _logger = logger;
             this.context = context;
@@ -22,14 +22,13 @@ namespace KinoSite.Controllers
 
         public IActionResult Index(int PageNumber = 1)
         {
-            //var movies = from m in context.Movies
-            //             select m;
             var movies = context.Movies.Select(m => m);
-           
+
             ViewBag.TotalPages = Math.Ceiling(movies.Count() / 20.0);
             movies = movies.Skip((PageNumber - 1) * 20).Take(20);
             return View(movies.ToList());
             //.OrderBy(m => m.Title).ThenByDescending(m => m.Id)
+
         }
         public IActionResult Search(string searchString)
         {

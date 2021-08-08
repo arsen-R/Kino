@@ -9,11 +9,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using KinoSite.Data;
 using KinoSite.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
+
 namespace KinoSite
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
             using (var s = host.Services.CreateScope())
@@ -21,8 +23,11 @@ namespace KinoSite
                 var services = s.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<MovieContext>();
-                    DataInitializer.Initialize(context);
+                    var role = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    var user = services.GetRequiredService<UserManager<ApplicationUser>>();
+                    var context = services.GetRequiredService<ApplicationContext>();
+
+                    await DataInitializer.Initialize(context, role, user);
                 }
                 catch (Exception ex)
                 {

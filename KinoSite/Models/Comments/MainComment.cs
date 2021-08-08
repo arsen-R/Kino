@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace KinoSite.Models.Comments
 {
-    public class MainComment : Comment
-    {
-        public List<SubComment> SubComments { get; set; }
+    //public class MainComment : Comment
+    //{
+    //    public List<SubComment> SubComments { get; set; }
 
-        public int MovieId { get; set; }
-        public Movie Movie { get; set; }
-    }
+    //    public int MovieId { get; set; }
+    //    public Movie Movie { get; set; }
+    //}
 }

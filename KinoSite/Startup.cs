@@ -31,7 +31,7 @@ namespace KinoSite
         {
             string connection = Configuration.GetConnectionString("ApplicationContextConnection");
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
-            services.AddDbContext<MovieContext>(options => options.UseSqlServer(connection));
+            //services.AddDbContext<MovieContext>(options => options.UseSqlServer(connection));
 
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                     .AddRoles<IdentityRole>()

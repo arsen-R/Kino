@@ -1,138 +1,138 @@
-﻿using KinoSite.Data;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using KinoSite.Models;
-using KinoSite.Areas.Identity.Data;
-using Microsoft.AspNetCore.Http;
-using System.IO;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿//using KinoSite.Data;
+//using Microsoft.AspNetCore.Authorization;
+//using Microsoft.AspNetCore.Mvc;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Threading.Tasks;
+//using KinoSite.Models;
+//using KinoSite.Areas.Identity.Data;
+//using Microsoft.AspNetCore.Http;
+//using System.IO;
+//using Microsoft.EntityFrameworkCore;
+//using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace KinoSite.Controllers
-{
-    [Authorize(Roles = "Administrator, Moderator")]
-    public class DirectionController : Controller
-    {
-        MovieContext context;
-        public DirectionController(MovieContext context)
-        {
-            this.context = context;
-        }
+//namespace KinoSite.Controllers
+//{
+//    [Authorize(Roles = "Administrator, Moderator")]
+//    public class DirectionController : Controller
+//    {
+//        MovieContext context;
+//        public DirectionController(MovieContext context)
+//        {
+//            this.context = context;
+//        }
 
-        [HttpGet]
-        public async Task<IActionResult> DirectionList(string searchString, int PageNumber = 1)
-        {
-            var direction = context.Directions.Select(m => m);
+//        [HttpGet]
+//        public async Task<IActionResult> DirectionList(string searchString, int PageNumber = 1)
+//        {
+//            var direction = context.Directions.Select(m => m);
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                direction = direction.Where(s => (s.FullName.Contains(searchString)));
-            }
+//            if (!String.IsNullOrEmpty(searchString))
+//            {
+//                direction = direction.Where(s => (s.FullName.Contains(searchString)));
+//            }
 
-            ViewBag.TotalPages = Math.Ceiling(direction.Count() / 15.0);
-            direction = direction.Skip((PageNumber - 1) * 15).Take(15);
+//            ViewBag.TotalPages = Math.Ceiling(direction.Count() / 15.0);
+//            direction = direction.Skip((PageNumber - 1) * 15).Take(15);
 
-            return View(direction.ToList());
-        }
-        public async Task<IActionResult> Details(int? Id)
-        {
-            if(Id == null)
-            {
-                return NotFound();
-            }
-            var direction = context.Directions
-                    .Select(d => d)
-                    .Where(d => d.Id == Id)
-                    .Include(d => d.Movie)
-                    .FirstOrDefault();
-            return View(direction);
-        }
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
+//            return View(direction.ToList());
+//        }
+//        public async Task<IActionResult> Details(int? Id)
+//        {
+//            if(Id == null)
+//            {
+//                return NotFound();
+//            }
+//            var direction = context.Directions
+//                    .Select(d => d)
+//                    .Where(d => d.Id == Id)
+//                    .Include(d => d.Movie)
+//                    .FirstOrDefault();
+//            return View(direction);
+//        }
+//        [HttpGet]
+//        public IActionResult Create()
+//        {
+//            return View();
+//        }
 
-        [HttpPost]
-        public async Task<IActionResult> Create(Direction direction, List<IFormFile> Image)
-        {
-            if (ModelState.IsValid)
-            {
-                direction = await ActionWithImage(direction, Image);
-                context.Directions.Add(direction);
-                context.SaveChanges();
-                return RedirectToAction("DirectionList", "Direction");
-            }
-            return View();
-        }
+//        [HttpPost]
+//        public async Task<IActionResult> Create(Direction direction, List<IFormFile> Image)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                direction = await ActionWithImage(direction, Image);
+//                context.Directions.Add(direction);
+//                context.SaveChanges();
+//                return RedirectToAction("DirectionList", "Direction");
+//            }
+//            return View();
+//        }
 
-        [HttpGet]
-        public async Task<IActionResult> Edit(int? Id)
-        {
-            if (Id == null)
-            {
-                return NotFound();
-            }
-            ViewBag.Direction = Id;
-            Direction direction = context.Directions.Select(m => m).Where(m => m.Id == Id).First();
-            return View(direction);
-        }
+//        [HttpGet]
+//        public async Task<IActionResult> Edit(int? Id)
+//        {
+//            if (Id == null)
+//            {
+//                return NotFound();
+//            }
+//            ViewBag.Direction = Id;
+//            Direction direction = context.Directions.Select(m => m).Where(m => m.Id == Id).First();
+//            return View(direction);
+//        }
       
-        [HttpPost]
-        public async Task<IActionResult> Edit(Direction direction, List<IFormFile> Image)
-        {
-            if (ModelState.IsValid)
-            {
-                direction = await ActionWithImage(direction, Image);
-                context.Directions.Update(direction);
-                context.SaveChanges();
-                return RedirectToAction("DirectionList", "Direction");
-            }
-            return View();
-        }
+//        [HttpPost]
+//        public async Task<IActionResult> Edit(Direction direction, List<IFormFile> Image)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                direction = await ActionWithImage(direction, Image);
+//                context.Directions.Update(direction);
+//                context.SaveChanges();
+//                return RedirectToAction("DirectionList", "Direction");
+//            }
+//            return View();
+//        }
 
-        [HttpGet]
-        public IActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            ViewBag.Direction = id;
-            Direction direction = context.Directions.Select(m => m).Where(m => m.Id == id).First();
-            return View(direction);
-        }
+//        [HttpGet]
+//        public IActionResult Delete(int? id)
+//        {
+//            if (id == null)
+//            {
+//                return NotFound();
+//            }
+//            ViewBag.Direction = id;
+//            Direction direction = context.Directions.Select(m => m).Where(m => m.Id == id).First();
+//            return View(direction);
+//        }
        
-        [HttpPost]
-        public async Task<IActionResult> Delete(Direction direction)
-        {
-            if (ModelState.IsValid)
-            {
-                context.Directions.Remove(direction);
-                context.SaveChanges();
-                return RedirectToAction("DirectionList", "Direction");
-            }
-            return View();
-        }
+//        [HttpPost]
+//        public async Task<IActionResult> Delete(Direction direction)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                context.Directions.Remove(direction);
+//                context.SaveChanges();
+//                return RedirectToAction("DirectionList", "Direction");
+//            }
+//            return View();
+//        }
 
-        private async Task<Direction> ActionWithImage(Direction details, List<IFormFile> Image)
-        {
-            foreach (var item in Image)
-            {
-                if (item.Length > 0)
-                {
-                    using (var stream = new MemoryStream())
-                    {
-                        await item.CopyToAsync(stream);
-                        details.Image = stream.ToArray();
-                    }
-                }
-            }
-            return details;
-        }
-    }
-}
+//        private async Task<Direction> ActionWithImage(Direction details, List<IFormFile> Image)
+//        {
+//            foreach (var item in Image)
+//            {
+//                if (item.Length > 0)
+//                {
+//                    using (var stream = new MemoryStream())
+//                    {
+//                        await item.CopyToAsync(stream);
+//                        details.Image = stream.ToArray();
+//                    }
+//                }
+//            }
+//            return details;
+//        }
+//    }
+//}

@@ -37,17 +37,17 @@
             <tr>
                 <td>Режисер:</td>
                 <td>
-                    @Model.Directions.FullName
+                    @*@Model.Directions.FullName*@
                 </td>
             </tr>
 
             <tr>
                 <td>Жанр:</td>
                 <td>
-                    @foreach (var item in Model.GenreMovies)
+                    @*@foreach (var item in Model.GenreMovies)
                     {
                         <span>@item.Genre.NameGenre </span>
-                    }
+                    }*@
                 </td>
             </tr>
             <tr>
@@ -62,10 +62,10 @@
                 <td>У головних ролях:</td>
                 <td>
 
-                    @foreach (var item in Model.ActorMovies)
+                    @*@foreach (var item in Model.ActorMovies)
                     {
                         <a asp-action="Details" asp-controller="Actor" asp-route-id="@item.ActorId">@item.Actor.FullName </a>
-                    }
+                    }*@
 
                 </td>
             </tr>
@@ -82,16 +82,16 @@
     </div>
     <center>
         @{
-            var catory = Model.Category.NameCategory;
-            var link = "https://28.svetacdn.in/MrJszJIePquE/";
+            //var catory = Model.Category.NameCategory;
+            var link = "https://28.svetacdn.in/MrJszJIePquE/movie";
             var model = Model.Video;
-            var movieLink = link + catory + "/" + model;
+            var movieLink = link +  "/" + model;
         }
         <iframe src="@movieLink" width="1020" height="532" frameborder="0" allowfullscreen></iframe>
     </center>
     <div class="row">
         <h3>Коментарії</h3>
-        @{
+        @*@{
             await Html.RenderPartialAsync("_MainComment", new CommentViewModel { MovieId = Model.Id, MainCommentId = 0 });
         }
         @foreach (var c in Model.MainComments)
@@ -116,6 +116,6 @@
                     await Html.RenderPartialAsync("_MainComment", new CommentViewModel { MovieId = Model.Id, MainCommentId = c.Id });
                 }
             </div>
-        }
+        }*@
     </div>
 </div>
