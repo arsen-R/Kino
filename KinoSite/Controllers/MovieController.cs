@@ -33,7 +33,6 @@ namespace KinoSite.Controllers
             {
                 return RedirectToAction("PlayMovie", new { Id = vm.MovieId });
             }
-            var user = await _userManager.GetUserAsync(User);
             if (User.Identity.IsAuthenticated)
             {
                 var post = context.Movies
@@ -61,7 +60,9 @@ namespace KinoSite.Controllers
                     {
                         MainCommentId = vm.MainCommentId,
                         Message = vm.Message,
-                        Created = DateTime.Now
+                        Created = DateTime.Now,
+                        ApplicationUserId = _userManager.GetUserId(User),
+                        UserName = User.Identity.Name
                     };
                     context.SubComments.Add(comment);
                 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using KinoSite.Areas.Identity.Data;
 
 namespace KinoSite.Models.Comments
 {
@@ -9,5 +6,10 @@ namespace KinoSite.Models.Comments
     {
         public int MainCommentId { get; set; }
         public MainComment MainComment { get; set; }
+
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+
+        public string UserName { get; set; }
     }
 }

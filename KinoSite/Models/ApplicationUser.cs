@@ -10,5 +10,6 @@ namespace KinoSite.Areas.Identity.Data
         public string Name { get; set; }
 
         public ICollection<MainComment> MainComments { get; set; }
+        public ICollection<SubComment> SubComments { get; set; }
     }
 }
