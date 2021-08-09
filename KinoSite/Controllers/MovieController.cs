@@ -295,17 +295,21 @@ namespace KinoSite.Controllers
 
         private async Task<Movie> ActionWithImage(Movie details, List<IFormFile> Image)
         {
-            foreach (var item in Image)
+            if (ModelState.IsValid)
             {
-                if (item.Length > 0)
+                foreach (var item in Image)
                 {
-                    using (var stream = new MemoryStream())
+                    if (item.Length > 0)
                     {
-                        await item.CopyToAsync(stream);
-                        details.Image = stream.ToArray();
+                        using (var stream = new MemoryStream())
+                        {
+                            await item.CopyToAsync(stream);
+                            details.Image = stream.ToArray();
+                        }
                     }
                 }
             }
+            
             return details;
         }
     }

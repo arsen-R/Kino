@@ -22,8 +22,8 @@
 
     @foreach (var item in Model)
     {
-        //@if (item.CategoryId == 1)
-        //{
+        @if (item.CategoryId == 1)
+        {
             <tr class="table">
                 <td>@item.Id</td>
                 <td>
@@ -47,7 +47,7 @@
                     </form>
                 </td>
             </tr>
-        //}
+        }
     }
 </table>
 <nav>

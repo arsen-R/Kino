@@ -25,9 +25,13 @@ namespace KinoSite.Controllers
             var movies = context.Movies.Select(m => m);
 
             ViewBag.TotalPages = Math.Ceiling(movies.Count() / 20.0);
-            movies = movies.Skip((PageNumber - 1) * 20).Take(20);
+            movies = movies
+                .Skip((PageNumber - 1) * 20)
+                .Take(20)
+                .OrderByDescending(m => m.Title)
+                .ThenByDescending(m => m.Id);
             return View(movies.ToList());
-            //.OrderBy(m => m.Title).ThenByDescending(m => m.Id)
+            //
 
         }
         public IActionResult Search(string searchString)
