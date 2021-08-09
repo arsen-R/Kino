@@ -16,11 +16,11 @@ namespace KinoSite.Models
         public string CountryRealise { get; set; }
         public string Description { get; set; }
 
-        //public int DirectionId { get; set; }
-        //public Direction Directions { get; set; }
+        public int DirectionId { get; set; }
+        public Direction Directions { get; set; }
 
-        //public int CategoryId { get; set; }
-        //public Category Category { get; set; }
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
         public string Age { get; set; }
         public int TimeLenght { get; set; }
 

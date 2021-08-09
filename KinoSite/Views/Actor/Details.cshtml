@@ -1,10 +1,10 @@
-﻿@*@model KinoSite.Models.Actor
+﻿@model KinoSite.Models.Actor
 
 @{
     ViewData["Title"] = "Deatils";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@*<div class="container-main">
+<div class="container-main">
     <div class="container-info-movie">
         <div class="image-container poster">
             @{
@@ -15,16 +15,16 @@
         </div>
         <table class="table-info">
             <tr>
-                <td colspan="2" class="title-movie">@Model.NameActor  @Model.SurnameActor </td>
+                <td colspan="2" class="title-movie">@Model.FullName </td>
             </tr>
         </table>
     </div>
-</div>*@
-@*
+</div>
+
 <div class="container-movie">
     <h1>@Model.FullName </h1>
     <div class="movie-container-block">
-        @foreach (var item in Model.ActorMovies)
+        @*@foreach (var item in Model.ActorMovies)
         {
             <div class="list-container-movie">
                 <div class="image-container">
@@ -38,11 +38,10 @@
                 </div>
                 <a asp-action="PlayMovie" asp-controller="Movie" asp-route-id="@item.Movie.Id" class="name-movie">@item.Movie.Title</a>
             </div>
-        }
+        }*@
     </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" asp-controller="Home">Back to List</a>
 </div>
-*@

@@ -14,16 +14,18 @@ namespace KinoSite
         // movie, anime, tv-series, show-tv-series, anime-tv-series
         public static async Task Initialize(ApplicationContext context, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> user)
         {
-            //if (!context.Categories.Any())
-            //{
-            //    context.Categories.AddRange(
-            //        new Category { NameCategory = "movie" },
-            //        new Category { NameCategory = "anime" },
-            //        new Category { NameCategory = "tv-series" },
-            //        new Category { NameCategory = "show-tv-series" },
-            //        new Category { NameCategory = "anime-tv-series" }
-            //        );
-            //}
+            if (!context.Categories.Any())
+            {
+                context.Categories.AddRange(
+                    new Category { NameCategory = "movie" },
+                    new Category { NameCategory = "anime" },
+                    new Category { NameCategory = "tv-series" },
+                    new Category { NameCategory = "show-tv-series" },
+                    new Category { NameCategory = "anime-tv-series" }
+                    );
+            }
+
+            context.SaveChanges();
             if (await roleManager.FindByNameAsync("Administrator") == null)
             {
                 await roleManager.CreateAsync(new IdentityRole("Administrator"));

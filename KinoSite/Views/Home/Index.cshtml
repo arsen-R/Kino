@@ -6,21 +6,21 @@
     <div class="movie-container-block">
         @foreach (var item in Model)
         {
-            //if (item.CategoryId == 1)
-            //{
-            <div class="list-container-movie">
-                <div class="image-container">
-                    <a asp-action="PlayMovie" asp-controller="Movie" asp-route-id="@item.Id">
-                        @{
-                            var base64 = Convert.ToBase64String(item.Image);
-                            var imgsrc = string.Format("data:image/jpg; base64,{0}", base64);
-                        }
-                        <img src="@imgsrc" alt="" class="image-movie">
-                    </a>
+            if (item.CategoryId == 1)
+            {
+                <div class="list-container-movie">
+                    <div class="image-container">
+                        <a asp-action="PlayMovie" asp-controller="Movie" asp-route-id="@item.Id">
+                            @{
+                                var base64 = Convert.ToBase64String(item.Image);
+                                var imgsrc = string.Format("data:image/jpg; base64,{0}", base64);
+                            }
+                            <img src="@imgsrc" alt="" class="image-movie">
+                        </a>
+                    </div>
+                    <a asp-action="PlayMovie" asp-controller="Movie" asp-route-id="@item.Id" class="name-movie">@item.Title</a>
                 </div>
-                <a asp-action="PlayMovie" asp-controller="Movie" asp-route-id="@item.Id" class="name-movie">@item.Title</a>
-            </div>
-            //}
+            }
 
             @*if (item.CategoryId == 3)
                         {

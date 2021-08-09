@@ -97,8 +97,8 @@ namespace KinoSite.Controllers
             var movie = context.Movies
                  .Select(m => m)
                  .Where(m => m.Id == Id)
-                 //.Include(m => m.Directions)
-                 //.Include(m => m.Category)
+                 .Include(m => m.Directions)
+                 .Include(m => m.Category)
                  .Include(m => m.MainComments).ThenInclude(m => m.SubComments)
                  //.Include(m => m.GenreMovies).ThenInclude(m => m.Genre)
                  //.Include(m => m.ActorMovies).ThenInclude(m => m.Actor)
@@ -119,8 +119,8 @@ namespace KinoSite.Controllers
             ViewBag.TotalPages = Math.Ceiling(movies.Count() / 15.0);
             movies = movies
                 .Skip((PageNumber - 1) * 15)
-                .Take(15); 
-                //.Include(m => m.Category);
+                .Take(15) 
+                .Include(m => m.Category);
             return View(movies.ToList());
         }
 
@@ -142,11 +142,11 @@ namespace KinoSite.Controllers
             //}).ToList();
             //ViewBag.ActorId = selectListItems1;
 
-            //ViewBag.DirectionId = context.Directions.Select(d => new SelectListItem
-            //{
-            //    Text = d.FullName,
-            //    Value = d.Id.ToString()
-            //});
+            ViewBag.DirectionId = context.Directions.Select(d => new SelectListItem
+            {
+                Text = d.FullName,
+                Value = d.Id.ToString()
+            });
             return View();
         }
 
@@ -157,7 +157,7 @@ namespace KinoSite.Controllers
             if (ModelState.IsValid)
             {
                 movie = await ActionWithImage(movie, Image);
-                //movie.CategoryId = 1;
+                movie.CategoryId = 1;
                 context.Movies.Add(movie);
                 context.SaveChanges();
 
@@ -214,18 +214,12 @@ namespace KinoSite.Controllers
             //}).ToList();
             //ViewBag.ActorId = selectListItems1;
 
-            //ViewBag.DirectionId = context.Directions.Select(d => new SelectListItem
-            //{
-            //    Text = d.FullName,
-            //    Value = d.Id.ToString()
-            //});
+            ViewBag.DirectionId = context.Directions.Select(d => new SelectListItem
+            {
+                Text = d.FullName,
+                Value = d.Id.ToString()
+            });
 
-            //ViewBag.CategoryId = context.Categories.Select(c => new SelectListItem
-            //{
-            //    Text = c.NameCategory,
-            //    Value = c.Id.ToString()
-            //});
-            //new SelectList(context.Directions, "Id", "SurnameDirection");
             ViewBag.Movies = Id;
             Movie movie = context.Movies.Select(m => m).Where(m => m.Id == Id).First();
             return View(movie);
@@ -238,7 +232,7 @@ namespace KinoSite.Controllers
             if (ModelState.IsValid)
             {
                 movie = await ActionWithImage(movie, Image);
-                //movie.CategoryId = 1;
+                movie.CategoryId = 1;
                 context.Movies.Update(movie);
                 context.SaveChanges();
 

@@ -36,7 +36,7 @@
                 <td>@item.Title</td>
                 <td>@item.DateRealise.ToLongDateString()</td>
                 <td>@item.Rating</td>
-                <td>item.Category.NameCategory</td>
+                <td>@item.Category.NameCategory</td>
                 <td><a asp-action="PlayMovie" asp-controller="Movie" asp-route-id="@item.Id">Visit</a></td>
                 <td><a asp-action="Edit" asp-controller="Movie" asp-route-id="@item.Id">Edit</a></td>
                 <td>
