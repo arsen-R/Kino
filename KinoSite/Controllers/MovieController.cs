@@ -157,7 +157,10 @@ namespace KinoSite.Controllers
             if (ModelState.IsValid)
             {
                 movie = await ActionWithImage(movie, Image);
-                movie.CategoryId = 1;
+                movie.CategoryId = 1; 
+
+                movie.VideoLink = $"https://28.svetacdn.in/MrJszJIePquE/{movie.Category.NameCategory}/{movie.Video}";
+
                 context.Movies.Add(movie);
                 context.SaveChanges();
 
@@ -233,6 +236,9 @@ namespace KinoSite.Controllers
             {
                 movie = await ActionWithImage(movie, Image);
                 movie.CategoryId = 1;
+                //var video = movie.Video;
+                //movie.VideoLink = "https://28.svetacdn.in/MrJszJIePquE/" + movie.Category.NameCategory + "/" + movie.Video;
+
                 context.Movies.Update(movie);
                 context.SaveChanges();
 
