@@ -28,7 +28,7 @@ namespace KinoSite.Controllers
             movies = movies
                 .Skip((PageNumber - 1) * 20)
                 .Take(20)
-                .OrderByDescending(m => m.Title)
+                .OrderByDescending(m => m.Id)
                 .ThenByDescending(m => m.Id);
             return View(movies.ToList());
             //

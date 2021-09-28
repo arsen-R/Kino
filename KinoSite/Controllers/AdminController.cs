@@ -12,7 +12,7 @@ using KinoSite.Areas.Identity.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-
+using KinoSite.ViewModel;
 namespace KinoSite.Controllers
 {
     public class AdminController : Controller

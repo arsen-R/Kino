@@ -81,39 +81,37 @@
 
     </div>
     <center>
-        @{
-            var catory = Model.Category.NameCategory;
-            var link = "https://28.svetacdn.in/MrJszJIePquE/";
-            var model = Model.Video;
-            var movieLink = link + catory + "/" + model;
-        }
-        <iframe src="@movieLink" width="1020" height="532" frameborder="0" allowfullscreen></iframe>
+        <iframe src="@Model.VideoLink" width="1020" height="532" frameborder="0" allowfullscreen></iframe>
     </center>
     <div class="row">
         <h3>Коментарії</h3>
         @{
             await Html.RenderPartialAsync("_MainComment", new CommentViewModel { MovieId = Model.Id, MainCommentId = 0 });
         }
-        @foreach (var c in Model.MainComments)
+        @foreach (var mainComment in Model.MainComments)
         {
             <div class="comentar">
                 <div class="commentar-text">
-                    <div class="user-name">@c.UserName  @c.Created </div>
-                    <p class="coment-texblock"><span class="text">@c.Message</span></p>
+                    <div class="user-name">
+                        <span class="comment-user-email">@mainComment.UserName</span>  <span class="comment-time-created">@mainComment.Created</span> 
+                    </div>
+                    <p class="coment-texblock"><span class="text">@mainComment.Message</span></p>
                 </div>
             </div>
-            <div style="margin-left: 30px">
-                @foreach (var sc in c.SubComments)
+            <div style="margin-left: 50px">
+                @foreach (var subCommet in mainComment.SubComments)
                 {
                     <div class="comentar">
                         <div class="commentar-text">
-                            <div class="user-name">@sc.UserName @sc.Created </div>
-                            <p class="coment-texblock"><span class="text">@sc.Message</span></p>
+                            <div class="user-name">
+                               <span class="comment-user-email">@subCommet.UserName</span>  <span class="comment-time-created">@subCommet.Created</span>
+                            </div>
+                            <p class="coment-texblock"><span class="text">@subCommet.Message</span></p>
                         </div>
                     </div>
                 }
                 @{
-                    await Html.RenderPartialAsync("_MainComment", new CommentViewModel { MovieId = Model.Id, MainCommentId = c.Id });
+                    await Html.RenderPartialAsync("_MainComment", new CommentViewModel { MovieId = Model.Id, MainCommentId = mainComment.Id });
                 }
             </div>
         }

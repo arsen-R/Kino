@@ -35,41 +35,45 @@ namespace KinoSite.Controllers
             }
             if (User.Identity.IsAuthenticated)
             {
+
                 var post = context.Movies
                 .Select(m => m)
                 .Where(m => m.Id == vm.MovieId)
                 .Include(m => m.MainComments)
                 .ThenInclude(mc => mc.SubComments)
                 .FirstOrDefault();
-
-                if (vm.MainCommentId == 0)
+                if (vm.Message != null)
                 {
-                    post.MainComments = post.MainComments ?? new List<MainComment>();
-                    post.MainComments.Add(new MainComment
+                    if (vm.MainCommentId == 0)
                     {
-                        Message = vm.Message,
-                        Created = DateTime.Now,
-                        ApplicationUserId = _userManager.GetUserId(User),
-                        UserName = User.Identity.Name
-                    });
-                    context.Movies.Update(post);
-                }
-                else
-                {
-                    var comment = new SubComment
+                        post.MainComments = post.MainComments ?? new List<MainComment>();
+                        post.MainComments.Add(new MainComment
+                        {
+                            Message = vm.Message,
+                            Created = DateTime.Now,
+                            ApplicationUserId = _userManager.GetUserId(User),
+                            UserName = User.Identity.Name
+                        });
+                        context.Movies.Update(post);
+                    }
+                    else
                     {
-                        MainCommentId = vm.MainCommentId,
-                        Message = vm.Message,
-                        Created = DateTime.Now,
-                        ApplicationUserId = _userManager.GetUserId(User),
-                        UserName = User.Identity.Name
-                    };
-                    context.SubComments.Add(comment);
-                }
-                await context.SaveChangesAsync();
+                        var comment = new SubComment
+                        {
+                            MainCommentId = vm.MainCommentId,
+                            Message = vm.Message,
+                            Created = DateTime.Now,
+                            ApplicationUserId = _userManager.GetUserId(User),
+                            UserName = User.Identity.Name
+                        };
+                        context.SubComments.Add(comment);
+                    }
+                    await context.SaveChangesAsync();
 
-                return RedirectToAction("PlayMovie", new { Id = vm.MovieId });
+                    return RedirectToAction("PlayMovie", new { Id = vm.MovieId });
+                }
             }
+            
             return RedirectToAction("PlayMovie", new { Id = vm.MovieId });
         }
         [HttpGet]
@@ -83,7 +87,9 @@ namespace KinoSite.Controllers
             ViewBag.TotalPages = Math.Ceiling(movies.Count() / 30.0);
             movies = movies
                 .Skip((PageNumber - 1) * 30)
-                .Take(30);
+                .Take(30)
+                .OrderByDescending(m => m.Id)
+                .ThenByDescending(m =>m.Id);
                 //.Include(m => m.Category);
             return View(movies.ToList());
         }
@@ -157,9 +163,10 @@ namespace KinoSite.Controllers
             if (ModelState.IsValid)
             {
                 movie = await ActionWithImage(movie, Image);
-                movie.CategoryId = 1; 
-
-                movie.VideoLink = $"https://28.svetacdn.in/MrJszJIePquE/{movie.Category.NameCategory}/{movie.Video}";
+                movie.CategoryId = 1;
+                int categoryId = movie.CategoryId;
+                var category = context.Categories.Select(c => c).Where(c => c.Id == categoryId).FirstOrDefault();
+                movie.VideoLink += $"{category}/{movie.Video}";
 
                 context.Movies.Add(movie);
                 context.SaveChanges();
@@ -236,8 +243,9 @@ namespace KinoSite.Controllers
             {
                 movie = await ActionWithImage(movie, Image);
                 movie.CategoryId = 1;
-                //var video = movie.Video;
-                //movie.VideoLink = "https://28.svetacdn.in/MrJszJIePquE/" + movie.Category.NameCategory + "/" + movie.Video;
+                int categoryId = movie.CategoryId;
+                var category = context.Categories.Select(c => c).Where(c => c.Id == categoryId).FirstOrDefault();
+                movie.VideoLink += $"{category.NameCategory}/{movie.Video}";
 
                 context.Movies.Update(movie);
                 context.SaveChanges();

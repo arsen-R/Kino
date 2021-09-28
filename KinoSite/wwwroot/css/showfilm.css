@@ -143,28 +143,47 @@ video {
     border-radius: 15px;
 }
 
+.background-comment-form {
+    width: 685px;
+    padding: 15px;
+    margin: 15px 0 0 25px;
+}
+.form-comment-button {
+    float: right;
+    padding-right: 5px;
+}
+.btn-comment {
+    width: 85px;
+    height: 30px;
+    border: none;
+    background-color: #1827d1;
+    color: #fbfbfb;
+}
 /*  */
 .textarea-container {
     background-color: #fbfbfb;
-    width: 1230px;
-    min-width: 1230px;
-    max-width: 1230px;
-    height: 69.71px;
+    min-width: 650px;
+    max-width: 650px;
     min-height: 69.71px;
-    border: none;
-    height: 69.71px;
+    border: 1px solid #d0cbcb;
     border-radius: 15px;
     padding-left: 15px;
     padding-top: 10px;
-    color: #000000;
     font-size: 18px;
 }
-
+.comment-user-email {
+    font-weight: bold;
+    font-size: 18px;
+}
+.comment-time-created {
+    float: right;
+    padding-right: 15px;
+}
 .comentar {
-    margin: 15px 0;
-    background-color: #a9a8a8;
+    margin: 15px 40px;
+    background-color: #efeded;
     border-radius: 15px;
-    padding: 10px 0 5px 15px;
+    padding: 10px 15px 5px 15px;
     width: 650px;
 }
 
@@ -187,8 +206,7 @@ video {
 }
 
 .text {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 18px;
     color: #000000;
 }
 

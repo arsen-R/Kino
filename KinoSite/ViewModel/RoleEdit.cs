@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using KinoSite.Areas.Identity.Data;
 
-namespace KinoSite.Models
+namespace KinoSite.ViewModel
 {
     public class RoleEdit
     {
