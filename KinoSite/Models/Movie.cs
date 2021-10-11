@@ -13,6 +13,7 @@ namespace KinoSite.Models
         [Required]
         public string Slogan { get; set; }
         [Required]
+        // Rating IMDB
         public double Rating { get; set; }
         [Required]
         public DateTime DateRealise { get; set; }

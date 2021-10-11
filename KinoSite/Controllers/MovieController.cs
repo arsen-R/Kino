@@ -164,6 +164,7 @@ namespace KinoSite.Controllers
             {
                 movie = await ActionWithImage(movie, Image);
                 movie.CategoryId = 1;
+
                 int categoryId = movie.CategoryId;
                 var category = context.Categories.Select(c => c).Where(c => c.Id == categoryId).FirstOrDefault();
                 movie.VideoLink += $"{category}/{movie.Video}";
