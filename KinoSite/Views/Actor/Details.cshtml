@@ -4,7 +4,8 @@
     ViewData["Title"] = "Deatils";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container-main">
+<div class="main">
+    <div class="container-main">
     <div class="container-info-movie">
         <div class="image-container poster">
             @{
@@ -13,34 +14,35 @@
             }
             <img src="@imgsrc" alt="" class="image-movie">
         </div>
-        <table class="table-info">
-            <tr>
-                <td colspan="2" class="title-movie">@Model.FullName </td>
-            </tr>
-        </table>
+            <table class="table-info">
+                <tr>
+                    <td colspan="2" class="title-movie">@Model.FullName </td>
+                </tr>
+            </table>
+        </div>
     </div>
-</div>
-<div class="container-movie">
-    <h1>@Model.FullName </h1>
-    <div class="movie-container-block">
-        @*@foreach (var item in Model.ActorMovies)
-        {
-            <div class="list-container-movie">
-                <div class="image-container">
-                    <a asp-action="PlayMovie" asp-controller="Movie" asp-route-id="@item.Movie.Id">
-                        @{
-                            var Base64 = Convert.ToBase64String(item.Movie.Image);
-                            var Imgsrc = string.Format("data:image/jpg; base64,{0}", Base64);
-                        }
-                        <img src="@Imgsrc" alt="" class="image-movie">
-                    </a>
+    <div class="container-movie">
+        <h1>@Model.FullName </h1>
+        <div class="movie-container-block">
+            @*@foreach (var item in Model.ActorMovies)
+            {
+                <div class="list-container-movie">
+                    <div class="image-container">
+                        <a asp-action="PlayMovie" asp-controller="Movie" asp-route-id="@item.Movie.Id">
+                            @{
+                                var Base64 = Convert.ToBase64String(item.Movie.Image);
+                                var Imgsrc = string.Format("data:image/jpg; base64,{0}", Base64);
+                            }
+                            <img src="@Imgsrc" alt="" class="image-movie">
+                        </a>
+                    </div>
+                    <a asp-action="PlayMovie" asp-controller="Movie" asp-route-id="@item.Movie.Id" class="name-movie">@item.Movie.Title</a>
                 </div>
-                <a asp-action="PlayMovie" asp-controller="Movie" asp-route-id="@item.Movie.Id" class="name-movie">@item.Movie.Title</a>
-            </div>
-        }*@
+            }*@
+        </div>
     </div>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index" asp-controller="Home">Back to List</a>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index" asp-controller="Home">Back to List</a>
+    </div>
 </div>

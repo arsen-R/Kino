@@ -3,117 +3,119 @@
     ViewData["Title"] = Model.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container-main">
-    <div class="container-info-movie">
-        <div class="image-container poster">
-            @{
-                var base64 = Convert.ToBase64String(Model.Image);
-                var imgsrc = string.Format("data:image/jpg; base64,{0}", base64);
-            }
-            <img src="@imgsrc" alt="" class="image-movie">
-        </div>
-        <table class="table-info">
-            <tr>
-                <td colspan="2" class="title-movie">@Model.Title</td>
-            </tr>
-            <tr>
-                <td>Рейтинг</td>
-                <td>
-                    @Model.Rating
-                </td>
-            </tr>
-            <tr>
-                <td>Слоган</td>
-                <td>"@Model.Slogan"</td>
-            </tr>
-            <tr>
-                <td>Дата виходу:</td>
-                <td>@Model.DateRealise.ToLongDateString()</td>
-            </tr>
-            <tr>
-                <td>Країна:</td>
-                <td><span class="country">@Model.CountryRealise</span></td>
-            </tr>
-            <tr>
-                <td>Режисер:</td>
-                <td>
-                    @Model.Directions.FullName
-                </td>
-            </tr>
-
-            <tr>
-                <td>Жанр:</td>
-                <td>
-                    @*@foreach (var item in Model.GenreMovies)
-                    {
-                        <span>@item.Genre.NameGenre </span>
-                    }*@
-                </td>
-            </tr>
-            <tr>
-                <td>Вік:</td>
-                <td><span class="age">@Model.Age+</span></td>
-            </tr>
-            <tr>
-                <td>Тривалість:</td>
-                <td>@Model.TimeLenght хв.</td>
-            </tr>
-            <tr>
-                <td>У головних ролях:</td>
-                <td>
-
-                    @*@foreach (var item in Model.ActorMovies)
-                    {
-                        <a asp-action="Details" asp-controller="Actor" asp-route-id="@item.ActorId">@item.Actor.FullName </a>
-                    }*@
-
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="description">
-        <h2>Опис "@Model.Title"</h2>
-        <div class="descriptions-text">
-            @Model.Description
-        </div>
-    </div>
-    <div class="movie-video">
-
-    </div>
-    <center>
-        <iframe src="@Model.VideoLink" width="1020" height="532" frameborder="0" allowfullscreen></iframe>
-    </center>
-    <div class="row">
-        <h3>Коментарії</h3>
-        @{
-            await Html.RenderPartialAsync("_MainComment", new CommentViewModel { MovieId = Model.Id, MainCommentId = 0 });
-        }
-        @foreach (var mainComment in Model.MainComments)
-        {
-            <div class="comentar">
-                <div class="commentar-text">
-                    <div class="user-name">
-                        <span class="comment-user-email">@mainComment.UserName</span>  <span class="comment-time-created">@mainComment.Created</span> 
-                    </div>
-                    <p class="coment-texblock"><span class="text">@mainComment.Message</span></p>
-                </div>
-            </div>
-            <div style="margin-left: 50px">
-                @foreach (var subCommet in mainComment.SubComments)
-                {
-                    <div class="comentar">
-                        <div class="commentar-text">
-                            <div class="user-name">
-                               <span class="comment-user-email">@subCommet.UserName</span>  <span class="comment-time-created">@subCommet.Created</span>
-                            </div>
-                            <p class="coment-texblock"><span class="text">@subCommet.Message</span></p>
-                        </div>
-                    </div>
-                }
+<div class="main">
+    <div class="container-main">
+        <div class="container-info-movie">
+            <div class="table poster-movie">
                 @{
-                    await Html.RenderPartialAsync("_MainComment", new CommentViewModel { MovieId = Model.Id, MainCommentId = mainComment.Id });
+                    var base64 = Convert.ToBase64String(Model.Image);
+                    var imgsrc = string.Format("data:image/jpg; base64,{0}", base64);
                 }
+               <img src="@imgsrc" alt="" class="poster-movie">
             </div>
-        }
+            <table class="table-info">
+                <tr>
+                    <td colspan="2" class="title-movie">@Model.Title</td>
+                </tr>
+                <tr>
+                    <td>IMDB</td>
+                    <td>
+                        @Model.Rating
+                    </td>
+                </tr>
+                <tr>
+                    <td>Слоган</td>
+                    <td>"@Model.Slogan"</td>
+                </tr>
+                <tr>
+                    <td>Дата виходу:</td>
+                    <td>@Model.DateRealise.ToLongDateString()</td>
+                </tr>
+                <tr>
+                    <td>Країна:</td>
+                    <td><span class="country">@Model.CountryRealise</span></td>
+                </tr>
+                <tr>
+                    <td>Режисер:</td>
+                    <td>
+                        @Model.Directions.FullName
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Жанр:</td>
+                    <td>
+                        @*@foreach (var item in Model.GenreMovies)
+                            {
+                            <span>@item.Genre.NameGenre </span>
+                            }*@
+                    </td>
+                </tr>
+                <tr>
+                    <td>Вік:</td>
+                    <td><span class="age">@Model.Age+</span></td>
+                </tr>
+                <tr>
+                    <td>Тривалість:</td>
+                    <td>@Model.TimeLenght хв.</td>
+                </tr>
+                <tr>
+                    <td>У головних ролях:</td>
+                    <td>
+
+                        @*@foreach (var item in Model.ActorMovies)
+                            {
+                            <a asp-action="Details" asp-controller="Actor" asp-route-id="@item.ActorId">@item.Actor.FullName </a>
+                            }*@
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="description">
+            <h2>Опис "@Model.Title"</h2>
+            <div class="descriptions-text">
+                @Model.Description
+            </div>
+        </div>
+        <div class="movie-video">
+        </div>
+        <center>
+            <iframe src="@Model.VideoLink" width="1020" height="532" frameborder="0" allowfullscreen></iframe>
+        </center>
+        <div class="row">
+            <h3>Коментарії</h3>
+            @{
+                await Html.RenderPartialAsync("_MainComment", new CommentViewModel { MovieId = Model.Id, MainCommentId = 0 });
+            }
+            @foreach (var mainComment in Model.MainComments)
+            {
+                <div class="comentar">
+                    <div class="commentar-text">
+                        <div class="user-name">
+                            <span class="comment-user-email">@mainComment.UserName</span>  <span class="comment-time-created">@mainComment.Created</span>
+                        </div>
+                        <p class="coment-texblock"><span class="text">@mainComment.Message</span></p>
+                    </div>
+                </div>
+                <div style="margin-left: 50px">
+                    @foreach (var subCommet in mainComment.SubComments)
+                    {
+                        <div class="comentar">
+                            <div class="commentar-text">
+                                <div class="user-name">
+                                    <span class="comment-user-email">@subCommet.UserName</span>  <span class="comment-time-created">@subCommet.Created</span>
+                                </div>
+                                <p class="coment-texblock"><span class="text">@subCommet.Message</span></p>
+                            </div>
+                        </div>
+                    }
+                    @{
+                        await Html.RenderPartialAsync("_MainComment", new CommentViewModel { MovieId = Model.Id, MainCommentId = mainComment.Id });
+                    }
+                </div>
+            }
+        </div>
     </div>
 </div>
+

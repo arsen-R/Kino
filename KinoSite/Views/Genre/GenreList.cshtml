@@ -4,43 +4,46 @@
     ViewData["Title"] = "GenreList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="main">
+    <h1>Manage Genre</h1>
 
-<h1>Manage Genre</h1>
+    <p>
+        <a asp-action="Create" asp-controller="Genre">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NameGenre)
+                </th>
+                <th>
+                    Update
+                </th>
+                <th>
+                    Delete
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NameGenre)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="Genre" asp-route-id="@item.Id">Edit</a>
+                    </td>
+                    <td>
+                        <form asp-action="Delete" asp-route-id="@item.Id" method="post">
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<p>
-    <a asp-action="Create" asp-controller="Genre">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NameGenre)
-            </th>
-            <th>
-                Update
-            </th>
-            <th>
-                Delete
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameGenre)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-controller="Genre" asp-route-id="@item.Id">Edit</a>
-            </td>
-            <td>               
-                <form asp-action="Delete" asp-route-id="@item.Id" method="post">
-                    <button type="submit" class="btn btn-sm btn-danger">
-                        Delete
-                    </button>
-                </form>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+</div>

@@ -167,7 +167,7 @@ namespace KinoSite.Controllers
 
                 int categoryId = movie.CategoryId;
                 var category = context.Categories.Select(c => c).Where(c => c.Id == categoryId).FirstOrDefault();
-                movie.VideoLink += $"{category}/{movie.Video}";
+                movie.VideoLink += $"{category.NameCategory}/{movie.Video}";
 
                 context.Movies.Add(movie);
                 context.SaveChanges();
