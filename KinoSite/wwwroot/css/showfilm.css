@@ -20,6 +20,7 @@
     width: 250px;
     height: 350px;
 }
+
 .poster-movie {
     margin: 10px 25px 0 10px;
     float: left;
@@ -27,6 +28,7 @@
     height: 350px;
     border-radius: 15px;
 }
+
 .table-info {
     color: #000000;
 }
@@ -44,6 +46,7 @@ td {
 .bold {
     font-weight: bold;
 }
+
 .title-movie {
     font-size: 50px;
 }
@@ -153,10 +156,12 @@ video {
     padding: 15px;
     margin: 15px 0 0 25px;
 }
+
 .form-comment-button {
     float: right;
     padding-right: 5px;
 }
+
 .btn-comment {
     width: 85px;
     height: 30px;
@@ -176,14 +181,17 @@ video {
     padding-top: 10px;
     font-size: 18px;
 }
+
 .comment-user-email {
     font-weight: bold;
     font-size: 18px;
 }
+
 .comment-time-created {
     float: right;
     padding-right: 15px;
 }
+
 .comentar {
     margin: 15px 40px;
     background-color: #efeded;
@@ -209,6 +217,7 @@ video {
 .user-name {
     color: #000000;
 }
+
 .text {
     font-size: 18px;
     color: #000000;

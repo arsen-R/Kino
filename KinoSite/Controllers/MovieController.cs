@@ -106,7 +106,7 @@ namespace KinoSite.Controllers
                  .Include(m => m.Directions)
                  .Include(m => m.Category)
                  .Include(m => m.MainComments).ThenInclude(m => m.SubComments)
-                 //.Include(m => m.GenreMovies).ThenInclude(m => m.Genre)
+                 .Include(m => m.GenreMovies).ThenInclude(m => m.Genre)
                  //.Include(m => m.ActorMovies).ThenInclude(m => m.Actor)
                  .FirstOrDefault();
             return View(movie);
@@ -134,12 +134,11 @@ namespace KinoSite.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            //List<SelectListItem> selectListItems = context.Genres.Select(a => new SelectListItem
-            //{
-            //    Text = a.NameGenre,
-            //    Value = a.Id.ToString()
-            //}).ToList();
-            //ViewBag.GenreId = selectListItems;
+            ViewBag.GenreId = context.Genres.Select(a => new SelectListItem
+            {
+                Text = a.NameGenre,
+                Value = a.Id.ToString()
+            }).ToList();
 
             //List<SelectListItem> selectListItems1 = context.Actors.Select(a => new SelectListItem
             //{
@@ -158,7 +157,7 @@ namespace KinoSite.Controllers
 
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost]
-        public async Task<IActionResult> Create(Movie movie, List<IFormFile> Image, List<int> GenreIdList, List<int> ActorIdList)
+        public async Task<IActionResult> Create(Movie movie, List<IFormFile> Image, List<int> genreId, List<int> ActorIdList)
         {
             if (ModelState.IsValid)
             {
@@ -172,18 +171,18 @@ namespace KinoSite.Controllers
                 context.Movies.Add(movie);
                 context.SaveChanges();
 
-                //foreach (var item in GenreIdList)
-                //{
-                //    GenreMovie movieGenre = new GenreMovie()
-                //    {
-                //        GenreId = item,
-                //        MovieId = movie.Id,
-                //        Genre = context.Genres.Where(x => x.Id == item).FirstOrDefault(),
-                //        Movie = movie
-                //    };
-                //    context.GenreMovies.Add(movieGenre);
-                //}
-                //context.SaveChanges();
+                foreach (var item in genreId)
+                {
+                    GenreMovie movieGenre = new GenreMovie()
+                    {
+                        GenreId = item,
+                        MovieId = movie.Id,
+                        Genre = context.Genres.Where(x => x.Id == item).FirstOrDefault(),
+                        Movie = movie
+                    };
+                    context.GenreMovies.Add(movieGenre);
+                }
+                context.SaveChanges();
 
                 //foreach (var item in ActorIdList)
                 //{
@@ -210,13 +209,11 @@ namespace KinoSite.Controllers
             {
                 return NotFound();
             }
-
-            //List<SelectListItem> selectListItems = context.Genres.Select(a => new SelectListItem
-            //{
-            //    Text = a.NameGenre,
-            //    Value = a.Id.ToString()
-            //}).ToList();
-            //ViewBag.GenreId = selectListItems;
+            ViewBag.GenreId = context.Genres.Select(a => new SelectListItem
+            {
+                Text = a.NameGenre,
+                Value = a.Id.ToString()
+            }).ToList();
 
             //List<SelectListItem> selectListItems1 = context.Actors.Select(a => new SelectListItem
             //{
@@ -238,7 +235,7 @@ namespace KinoSite.Controllers
         // Виправити Update
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost]
-        public async Task<IActionResult> Edit(Movie movie, List<IFormFile> Image, List<int> GenreIdLists, List<int> ActorIdLists)
+        public async Task<IActionResult> Edit(Movie movie, List<IFormFile> Image, List<int> genreId, List<int> ActorIdLists)
         {
             if (ModelState.IsValid)
             {
@@ -251,18 +248,22 @@ namespace KinoSite.Controllers
                 context.Movies.Update(movie);
                 context.SaveChanges();
 
-                //foreach (var item in GenreIdLists)
-                //{
-                //    GenreMovie genreMovie = new GenreMovie()
-                //    {
-                //        GenreId = item,
-                //        MovieId = movie.Id,
-                //        Genre = context.Genres.Where(x => x.Id == item).FirstOrDefault(),
-                //        Movie = movie
-                //    };
-                //    context.GenreMovies.Add(genreMovie);
-                //}
-                //context.SaveChanges();
+                var genreMovies = context.GenreMovies.Where(gm => gm.MovieId == movie.Id).ToList();
+                context.GenreMovies.RemoveRange(genreMovies);
+                context.SaveChanges();
+
+                foreach (var item in genreId)
+                {
+                    GenreMovie genreMovie = new GenreMovie()
+                    {
+                        GenreId = item,
+                        MovieId = movie.Id,
+                        Genre = context.Genres.Where(x => x.Id == item).FirstOrDefault(),
+                        Movie = movie
+                    };
+                    context.GenreMovies.Add(genreMovie);
+                }
+                context.SaveChanges();
 
                 //foreach (var item in ActorIdLists)
                 //{

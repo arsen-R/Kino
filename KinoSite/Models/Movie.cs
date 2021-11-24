@@ -32,7 +32,7 @@ namespace KinoSite.Models
         [Required]
         public int TimeLenght { get; set; }
 
-        //public List<GenreMovie> GenreMovies { get; set; }
+        public List<GenreMovie> GenreMovies { get; set; }
         //public List<ActorMovie> ActorMovies { get; set; }
 
         public byte[] Image { get; set; }

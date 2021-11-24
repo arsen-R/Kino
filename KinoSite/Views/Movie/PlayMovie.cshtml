@@ -18,9 +18,9 @@
                     <td colspan="2" class="title-movie">@Model.Title</td>
                 </tr>
                 <tr>
-                    <td>IMDB</td>
+                    <td>Рейтинг</td>
                     <td>
-                        @Model.Rating
+                        IMDB: @Model.Rating
                     </td>
                 </tr>
                 <tr>
@@ -45,10 +45,10 @@
                 <tr>
                     <td>Жанр:</td>
                     <td>
-                        @*@foreach (var item in Model.GenreMovies)
+                        @foreach (var item in Model.GenreMovies)
                             {
                             <span>@item.Genre.NameGenre </span>
-                            }*@
+                        }
                     </td>
                 </tr>
                 <tr>

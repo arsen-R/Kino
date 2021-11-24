@@ -106,7 +106,7 @@ namespace KinoSite.Controllers
                  .Include(m => m.Directions)
                  .Include(m => m.Category)
                  .Include(m => m.MainComments).ThenInclude(m => m.SubComments)
-                 //.Include(m => m.GenreMovies).ThenInclude(m => m.Genre)
+                 .Include(m => m.GenreMovies).ThenInclude(m => m.Genre)
                  //.Include(m => m.ActorMovies).ThenInclude(m => m.Actor)
                  .FirstOrDefault();
             return View(movie);
@@ -133,7 +133,12 @@ namespace KinoSite.Controllers
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpGet]
         public IActionResult Create()
-        { 
+        {
+            ViewBag.GenreId = context.Genres.Select(a => new SelectListItem
+            {
+                Text = a.NameGenre,
+                Value = a.Id.ToString()
+            }).ToList();
             ViewBag.DirectionId = context.Directions.Select(d => new SelectListItem
             {
                 Text = d.FullName,
@@ -158,6 +163,18 @@ namespace KinoSite.Controllers
                 context.Movies.Add(movie);
                 context.SaveChanges();
 
+                foreach (var item in GenreIdList)
+                {
+                    GenreMovie movieGenre = new GenreMovie()
+                    {
+                        GenreId = item,
+                        MovieId = movie.Id,
+                        Genre = context.Genres.Where(x => x.Id == item).FirstOrDefault(),
+                        Movie = movie
+                    };
+                    context.GenreMovies.Add(movieGenre);
+                }
+                context.SaveChanges();
                 return RedirectToAction("SeriesList", "TvSeries");
             }
             return View();
@@ -170,6 +187,12 @@ namespace KinoSite.Controllers
             {
                 return NotFound();
             }
+            ViewBag.GenreId = context.Genres.Select(a => new SelectListItem
+            {
+                Text = a.NameGenre,
+                Value = a.Id.ToString()
+            }).ToList();
+
             ViewBag.DirectionId = context.Directions.Select(d => new SelectListItem
             {
                 Text = d.FullName,
@@ -180,10 +203,9 @@ namespace KinoSite.Controllers
             Movie movie = context.Movies.Select(m => m).Where(m => m.Id == Id).First();
             return View(movie);
         }
-        // Виправити Update
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost]
-        public async Task<IActionResult> Edit(Movie movie, List<IFormFile> Image, List<int> GenreIdLists, List<int> ActorIdLists)
+        public async Task<IActionResult> Edit(Movie movie, List<IFormFile> Image, List<int> genreId, List<int> ActorIdLists)
         {
             if (ModelState.IsValid)
             {
@@ -194,6 +216,23 @@ namespace KinoSite.Controllers
                 movie.VideoLink += $"{category.NameCategory}/{movie.Video}";
 
                 context.Movies.Update(movie);
+                context.SaveChanges();
+
+                var genreMovies = context.GenreMovies.Where(gm => gm.MovieId == movie.Id).ToList();
+                context.GenreMovies.RemoveRange(genreMovies);
+                context.SaveChanges();
+
+                foreach (var item in genreId)
+                {
+                    GenreMovie movieGenre = new GenreMovie()
+                    {
+                        GenreId = item,
+                        MovieId = movie.Id,
+                        Genre = context.Genres.Where(x => x.Id == item).FirstOrDefault(),
+                        Movie = movie
+                    };
+                    context.GenreMovies.Add(movieGenre);
+                }
                 context.SaveChanges();
 
                 return RedirectToAction("SeriesList", "TvSeries");

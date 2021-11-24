@@ -12,6 +12,6 @@ namespace KinoSite.Models
         [Required]
         public string NameGenre { get; set; }
 
-        //public List<GenreMovie> GenreMovies { get; set; }
+        public List<GenreMovie> GenreMovies { get; set; }
     }
 }
