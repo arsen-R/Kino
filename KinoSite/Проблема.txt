@@ -1,1 +1,0 @@
-Не виводяться жанри в Movie/Details.cshtml
