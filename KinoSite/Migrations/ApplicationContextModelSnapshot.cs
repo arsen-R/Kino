@@ -106,6 +106,21 @@ namespace KinoSite.Migrations
                     b.ToTable("Actors");
                 });
 
+            modelBuilder.Entity("KinoSite.Models.ActorMovie", b =>
+                {
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ActorId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MovieId", "ActorId");
+
+                    b.HasIndex("ActorId");
+
+                    b.ToTable("ActorMovies");
+                });
+
             modelBuilder.Entity("KinoSite.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -431,6 +446,25 @@ namespace KinoSite.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("KinoSite.Models.ActorMovie", b =>
+                {
+                    b.HasOne("KinoSite.Models.Actor", "Actor")
+                        .WithMany("ActorMovies")
+                        .HasForeignKey("ActorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("KinoSite.Models.Movie", "Movie")
+                        .WithMany("ActorMovies")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Actor");
+
+                    b.Navigation("Movie");
+                });
+
             modelBuilder.Entity("KinoSite.Models.Comments.MainComment", b =>
                 {
                     b.HasOne("KinoSite.Areas.Identity.Data.ApplicationUser", "ApplicationUser")
@@ -561,6 +595,11 @@ namespace KinoSite.Migrations
                     b.Navigation("SubComments");
                 });
 
+            modelBuilder.Entity("KinoSite.Models.Actor", b =>
+                {
+                    b.Navigation("ActorMovies");
+                });
+
             modelBuilder.Entity("KinoSite.Models.Category", b =>
                 {
                     b.Navigation("Movies");
@@ -583,6 +622,8 @@ namespace KinoSite.Migrations
 
             modelBuilder.Entity("KinoSite.Models.Movie", b =>
                 {
+                    b.Navigation("ActorMovies");
+
                     b.Navigation("GenreMovies");
 
                     b.Navigation("MainComments");

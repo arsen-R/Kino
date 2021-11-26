@@ -24,7 +24,7 @@ namespace KinoSite.Data
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<GenreMovie> GenreMovies { get; set; }
-        //public DbSet<ActorMovie> ActorMovies { get; set; }
+        public DbSet<ActorMovie> ActorMovies { get; set; }
         public DbSet<MainComment> MainComments { get; set; }
         public DbSet<SubComment> SubComments { get; set; }
 
@@ -41,16 +41,16 @@ namespace KinoSite.Data
                 .WithMany(c => c.GenreMovies)
                 .HasForeignKey(bc => bc.GenreId);
 
-            //   modelBuilder.Entity<ActorMovie>()
-            //.HasKey(bc => new { bc.MovieId, bc.ActorId });
-            //   modelBuilder.Entity<ActorMovie>()
-            //       .HasOne(bc => bc.Movie)
-            //       .WithMany(b => b.ActorMovies)
-            //       .HasForeignKey(bc => bc.MovieId);
-            //   modelBuilder.Entity<ActorMovie>()
-            //       .HasOne(bc => bc.Actor)
-            //       .WithMany(c => c.ActorMovies)
-            //       .HasForeignKey(bc => bc.ActorId);
+            modelBuilder.Entity<ActorMovie>()
+         .HasKey(bc => new { bc.MovieId, bc.ActorId });
+            modelBuilder.Entity<ActorMovie>()
+                .HasOne(bc => bc.Movie)
+                .WithMany(b => b.ActorMovies)
+                .HasForeignKey(bc => bc.MovieId);
+            modelBuilder.Entity<ActorMovie>()
+                .HasOne(bc => bc.Actor)
+                .WithMany(c => c.ActorMovies)
+                .HasForeignKey(bc => bc.ActorId);
 
             base.OnModelCreating(modelBuilder);
         }

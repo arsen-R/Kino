@@ -63,17 +63,17 @@
                     <td>У головних ролях:</td>
                     <td>
 
-                        @*@foreach (var item in Model.ActorMovies)
+                        @foreach (var item in Model.ActorMovies)
                             {
                             <a asp-action="Details" asp-controller="Actor" asp-route-id="@item.ActorId">@item.Actor.FullName </a>
-                            }*@
+                            }
 
                     </td>
                 </tr>
             </table>
         </div>
         <div class="description">
-            <h2>Опис "@Model.Title"</h2>
+            <h2>Опис @Model.Title</h2>
             <div class="descriptions-text">
                 @Model.Description
             </div>

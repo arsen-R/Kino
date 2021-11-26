@@ -60,14 +60,14 @@
                     @if (i == ViewBag.TotalPages)
                     {
                         <li class="page-item">
-                            @Html.ActionLink(i.ToString(), "MovieList", "Movie", new { PageNumber = i }, new { @class = "page-link" })
+                            @Html.ActionLink(i.ToString(), "SeriesList", "TvSeries", new { PageNumber = i }, new { @class = "page-link" })
                         </li>
 
                     }
                     else
                     {
                         <li class="page-item">
-                            @Html.ActionLink(i.ToString(), "MovieList", "Movie", new { PageNumber = i }, new { @class = "page-link" })
+                            @Html.ActionLink(i.ToString(), "SeriesList", "TvSeries", new { PageNumber = i }, new { @class = "page-link" })
                         </li>
 
                     }

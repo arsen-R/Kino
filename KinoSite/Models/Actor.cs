@@ -13,6 +13,6 @@ namespace KinoSite.Models
         public string FullName { get; set; }
         public byte[] Image { get; set; }
 
-        //public List<ActorMovie> ActorMovies { get; set; }
+        public List<ActorMovie> ActorMovies { get; set; }
     }
 }

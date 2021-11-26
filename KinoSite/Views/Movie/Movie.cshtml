@@ -27,29 +27,29 @@
 
             }
         </div>
-        @*@{
+        @{
             double totalPage = ViewBag.TotalPages;
             <ul class="pagination justify-content-center">
-            @for (int i = 1; i <= totalPage; i++)
-            {
-            @if (i == ViewBag.TotalPages)
-            {
-            <li class="page-item">
-            @Html.ActionLink(i.ToString(), "Movie", "Movie", new { PageNumber = i }, new { @class = "page-link" })
-            </li>
+                @for (int i = 1; i <= totalPage; i++)
+                {
+                    @if (i == ViewBag.TotalPages)
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(i.ToString(), "Movie", "Movie", new { PageNumber = i }, new { @class = "page-link" })
+                        </li>
 
-            }
-            else
-            {
-            <li class="page-item">
-            @Html.ActionLink(i.ToString(), "Movie", "Movie", new { PageNumber = i }, new { @class = "page-link" })
-            </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(i.ToString(), "Movie", "Movie", new { PageNumber = i }, new { @class = "page-link" })
+                        </li>
 
-            }
+                    }
 
-            }
+                }
             </ul>
-            }*@
+        }
     </div>
 
 

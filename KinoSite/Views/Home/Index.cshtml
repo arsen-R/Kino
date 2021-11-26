@@ -24,47 +24,47 @@
                 }
 
                 if (item.CategoryId == 2)
-                            {
-                <div class="list-container-movie">
-                    <div class="image-container">
-                        <a asp-action="PlaySeries" asp-controller="TvSeries" asp-route-id="@item.Id">
-                            @{
-                                var bas64 = Convert.ToBase64String(item.Image);
-                                var img = string.Format("data:image/jpg; base64,{0}", bas64);
-                            }
-                            <img src="@img" alt="" class="image-movie">
-                        </a>
+                {
+                    <div class="list-container-movie">
+                        <div class="image-container">
+                            <a asp-action="PlaySeries" asp-controller="TvSeries" asp-route-id="@item.Id">
+                                @{
+                                    var bas64 = Convert.ToBase64String(item.Image);
+                                    var img = string.Format("data:image/jpg; base64,{0}", bas64);
+                                }
+                                <img src="@img" alt="" class="image-movie">
+                            </a>
+                        </div>
+                        <a asp-action="PlaySeries" asp-controller="TvSeries" asp-route-id="@item.Id" class="name-movie">@item.Title</a>
                     </div>
-                    <a asp-action="PlaySeries" asp-controller="TvSeries" asp-route-id="@item.Id" class="name-movie">@item.Title</a>
-                </div>
-                 }
+                }
 
             }
         </div>
     </div>
-   @* <nav>
-    @{
-        double totalPage = ViewBag.TotalPages;
-        <ul class="pagination justify-content-center">
-            @for (int i = 1; i <= totalPage; i++)
-            {
-                @if (i == ViewBag.TotalPages)
+    <nav>
+        @{
+            double totalPage = ViewBag.TotalPages;
+            <ul class="pagination justify-content-center">
+                @for (int i = 1; i <= totalPage; i++)
                 {
-                    <li class="page-item">
-                        @Html.ActionLink(i.ToString(), "Index", "Home", new { PageNumber = i }, new { @class = "page-link" })
-                    </li>
+                    @if (i == ViewBag.TotalPages)
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(i.ToString(), "Index", "Home", new { PageNumber = i }, new { @class = "page-link" })
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(i.ToString(), "Index", "Home", new { PageNumber = i }, new { @class = "page-link" })
+                        </li>
+
+                    }
 
                 }
-                else
-                {
-                    <li class="page-item">
-                        @Html.ActionLink(i.ToString(), "Index", "Home", new { PageNumber = i }, new { @class = "page-link" })
-                    </li>
-
-                }
-
-            }
-        </ul>
-    }
-    </nav>*@
+            </ul>
+        }
+    </nav>
 </div>
