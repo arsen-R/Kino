@@ -41,7 +41,7 @@
                     <td><a asp-action="PlaySeries" asp-controller="TvSeries" asp-route-id="@item.Id">Visit</a></td>
                     <td><a asp-action="Edit" asp-controller="TvSeries" asp-route-id="@item.Id">Edit</a></td>
                     <td>
-                        <form asp-action="Delete" asp-route-id="@item.Id" method="post">
+                        <form asp-action="Delete" asp-controller="TvSeries" asp-route-id="@item.Id" method="post">
                             <button type="submit" class="btn btn-sm btn-danger">
                                 Delete
                             </button>

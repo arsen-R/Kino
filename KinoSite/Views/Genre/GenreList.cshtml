@@ -35,7 +35,7 @@
                         <a asp-action="Edit" asp-controller="Genre" asp-route-id="@item.Id">Edit</a>
                     </td>
                     <td>
-                        <form asp-action="Delete" asp-route-id="@item.Id" method="post">
+                        <form asp-action="Delete" asp-controller="Genre" asp-route-id="@item.Id" method="post">
                             <button type="submit" class="btn btn-sm btn-danger">
                                 Delete
                             </button>

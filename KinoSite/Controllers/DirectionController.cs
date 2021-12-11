@@ -6,11 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KinoSite.Models;
-using KinoSite.Areas.Identity.Data;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace KinoSite.Controllers
 {
@@ -94,29 +92,25 @@ namespace KinoSite.Controllers
             }
             return View();
         }
-
         [HttpGet]
-        public IActionResult Delete(int? id)
+        [ActionName("Delete")]
+        public IActionResult ConfirmDelete(int? id)
         {
-            if (id == null)
+            if (id != null)
             {
-                return NotFound();
-            }
-            ViewBag.Direction = id;
-            Direction direction = _context.Directions.Select(m => m).Where(m => m.Id == id).First();
-            return View(direction);
-        }
+                Direction direction = _context.Directions.FirstOrDefault(m => m.Id == id);
+                return View(direction);
 
-        [HttpPost]
-        public async Task<IActionResult> Delete(Direction direction)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Directions.Remove(direction);
-                _context.SaveChanges();
-                return RedirectToAction("DirectionList", "Direction");
             }
-            return View();
+            return NotFound();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            Direction direction = await _context.Directions.FirstOrDefaultAsync(m => m.Id == id);
+            _context.Directions.Remove(direction);
+            _context.SaveChanges();
+            return RedirectToAction("DirectionList", "Direction");
         }
 
         private async Task<Direction> ActionWithImage(Direction details, List<IFormFile> Image)

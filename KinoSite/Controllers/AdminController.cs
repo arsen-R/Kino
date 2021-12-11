@@ -1,18 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication;
-using KinoSite.Models;
-using KinoSite.Data;
 using KinoSite.Areas.Identity.Data;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using KinoSite.ViewModel;
+
 namespace KinoSite.Controllers
 {
     public class AdminController : Controller

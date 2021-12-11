@@ -23,7 +23,7 @@ namespace KinoSite.Controllers
         private UserManager<ApplicationUser> _userManager;
         public MovieController(ApplicationContext context, UserManager<ApplicationUser> userManager)
         {
-            this._context = context;
+            _context = context;
             _userManager = userManager;
         }
         [HttpPost]
@@ -73,7 +73,7 @@ namespace KinoSite.Controllers
                     return RedirectToAction("PlayMovie", new { Id = vm.MovieId });
                 }
             }
-            
+
             return RedirectToAction("PlayMovie", new { Id = vm.MovieId });
         }
         [HttpGet]
@@ -89,8 +89,7 @@ namespace KinoSite.Controllers
                 .Skip((PageNumber - 1) * 30)
                 .Take(30)
                 .OrderByDescending(m => m.Id)
-                .ThenByDescending(m =>m.Id);
-                //.Include(m => m.Category);
+                .ThenByDescending(m => m.Id);
             return View(movies.ToList());
         }
         [HttpGet]
@@ -125,7 +124,7 @@ namespace KinoSite.Controllers
             ViewBag.TotalPages = Math.Ceiling(movies.Count() / 15.0);
             movies = movies
                 .Skip((PageNumber - 1) * 15)
-                .Take(15) 
+                .Take(15)
                 .Include(m => m.Category);
             return View(movies.ToList());
         }
@@ -182,7 +181,7 @@ namespace KinoSite.Controllers
                     _context.GenreMovies.Add(movieGenre);
                     _context.SaveChanges();
                 }
-               
+
 
                 foreach (var item in actorId)
                 {
@@ -263,7 +262,7 @@ namespace KinoSite.Controllers
                     _context.GenreMovies.Add(genreMovie);
                     _context.SaveChanges();
                 }
-               
+
 
                 var actorMovies = _context.ActorMovies.Where(am => am.MovieId == movie.Id).ToList();
                 _context.ActorMovies.RemoveRange(actorMovies);
@@ -281,7 +280,7 @@ namespace KinoSite.Controllers
                     _context.ActorMovies.Add(actorMovie);
                     _context.SaveChanges();
                 }
-                
+
 
                 return RedirectToAction("MovieList", "Movie");
             }
@@ -290,30 +289,26 @@ namespace KinoSite.Controllers
 
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpGet]
-        public IActionResult Delete(int? id)
+        [ActionName("Delete")]
+        public IActionResult ConfirmDelete(int? id)
         {
-            if (id == null)
+            if (id != null)
             {
-                return NotFound();
-            }
-            ViewBag.MovieDetails = id;
-            Movie movie = _context.Movies.Select(m => m).Where(m => m.Id == id).First();
-            return View(movie);
-        }
+                Movie movie = _context.Movies.FirstOrDefault(m => m.Id == id);
+                return View(movie);
 
+            }
+            return NotFound();
+        }
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost]
-        public async Task<IActionResult> Delete(Movie movie)
+        public async Task<IActionResult> Delete(int? id)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Movies.Remove(movie);
-                _context.SaveChanges();
-                return RedirectToAction("MovieList", "Movie");
-            }
-            return View();
+            Movie movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
+            _context.Movies.Remove(movie);
+            _context.SaveChanges();
+            return RedirectToAction("MovieList", "Movie");
         }
-
         private async Task<Movie> ActionWithImage(Movie details, List<IFormFile> Image)
         {
             if (ModelState.IsValid)
@@ -330,7 +325,7 @@ namespace KinoSite.Controllers
                     }
                 }
             }
-            
+
             return details;
         }
     }

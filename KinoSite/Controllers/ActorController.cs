@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KinoSite.Models;
-using KinoSite.Areas.Identity.Data;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
@@ -96,31 +95,25 @@ namespace KinoSite.Controllers
             }
             return View();
         }
-
-
         [HttpGet]
-        public IActionResult Delete(int? id)
+        [ActionName("Delete")]
+        public IActionResult ConfirmDelete(int? id)
         {
-            if (id == null)
+            if (id != null)
             {
-                return NotFound();
+                Actor actor = _context.Actors.FirstOrDefault(m => m.Id == id);
+                return View(actor);
+
             }
-            ViewBag.Actor = id;
-            Actor actor = _context.Actors.Select(m => m).Where(m => m.Id == id).First();
-            return View(actor);
+            return NotFound();
         }
-
-
         [HttpPost]
-        public async Task<IActionResult> Delete(Actor actor)
+        public async Task<IActionResult> Delete(int? id)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Actors.Remove(actor);
-                _context.SaveChanges();
-                return RedirectToAction("ActorList", "Actor");
-            }
-            return View();
+           Actor actor = await _context.Actors.FirstOrDefaultAsync(m => m.Id == id);
+            _context.Actors.Remove(actor);
+            _context.SaveChanges();
+            return RedirectToAction("ActorList", "Actor");
         }
         private async Task<Actor> ActionWithImage(Actor details, List<IFormFile> Image)
         {

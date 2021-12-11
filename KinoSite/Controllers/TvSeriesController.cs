@@ -284,28 +284,26 @@ namespace KinoSite.Controllers
 
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpGet]
-        public IActionResult Delete(int? id)
+        [ActionName("Delete")]
+        public IActionResult ConfirmDelete(int? id)
         {
-            if (id == null)
+            if (id != null)
             {
-                return NotFound();
+                Movie movie = _context.Movies.FirstOrDefault(m => m.Id == id);
+                return View(movie);
+
             }
-            ViewBag.MovieDetails = id;
-            Movie movie = _context.Movies.Select(m => m).Where(m => m.Id == id).First();
-            return View(movie);
+            return NotFound();
         }
 
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost]
-        public async Task<IActionResult> Delete(Movie movie)
+        public async Task<IActionResult> Delete(int? id)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Movies.Remove(movie);
-                _context.SaveChanges();
-                return RedirectToAction("SeriesList", "TvSeries");
-            }
-            return View();
+            Movie movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
+            _context.Movies.Remove(movie);
+            _context.SaveChanges();
+            return RedirectToAction("SeriesList", "TvSeries");
         }
 
         private async Task<Movie> ActionWithImage(Movie details, List<IFormFile> Image)

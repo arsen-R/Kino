@@ -4,14 +4,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using KinoSite.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore;
-using KinoSite.Models;
 using KinoSite.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 
@@ -31,7 +25,6 @@ namespace KinoSite
         {
             string connection = Configuration.GetConnectionString("ApplicationContextConnection");
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
-            //services.AddDbContext<MovieContext>(options => options.UseSqlServer(connection));
 
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                     .AddRoles<IdentityRole>()
